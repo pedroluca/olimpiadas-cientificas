@@ -1,0 +1,19 @@
+@import '../../global.css';
+
+.btn-principal {
+  margin-top: 1rem;
+  align-self: center;
+  width: 75%;
+  padding: 1rem;
+  background: var(--black2-color);
+  color: var(--white-color);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: ease-in-out .2s;
+  border: 1px solid var(--black2-color)
+}
+
+.btn-principal:hover {
+  background: var(--lightgray-color);
+  color: var(--black2-color)
+}

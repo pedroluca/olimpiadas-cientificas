@@ -1,0 +1,47 @@
+@import '../../global.css';
+
+.container-aluno {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: .5rem;
+}
+
+.olimp-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: .5rem;
+}
+
+.olimpiada {
+  border-radius: 20px;
+  padding: .5rem;
+  width: 100%;
+  background: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .container-aluno {
+    padding: 2rem 15%;
+  }
+
+  .container-aluno h2 {
+    margin-top: 2rem;
+  }
+
+  .olimp-container {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .olimpiada {
+    width: 30%;
+  }
+}

@@ -1,0 +1,39 @@
+@import "../../global.css";
+
+.container-cadastro h1 {
+  text-align: center;
+  margin: 1rem 0 2rem;
+}
+
+.container-cadastro form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  padding: 0 .6rem;
+}
+
+.container-cadastro form > * {
+  font-size: 1rem;
+}
+
+.container-cadastro input {
+  border-radius: 20px;
+  line-height: 2rem;
+  padding: 0 .5rem;
+  margin: -.5rem 0 .5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .container-cadastro {
+    margin: 2rem 15%;
+    padding: 0 15%;
+    border: 1px solid var(--black2-color);
+    border-radius: 20px;
+    background: var(--lightgray-color);
+  }
+
+  .container-cadastro form {
+    gap: .5rem;
+  }
+}

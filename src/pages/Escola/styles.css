@@ -1,0 +1,34 @@
+@import '../../global.css';
+
+.container-escola {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: .5rem;
+}
+
+.container-escola h2 {
+  margin-top: 1rem;
+}
+
+.container-escola li {
+  list-style-type: square;
+  margin: 0 0 .3rem 1.5rem;
+}
+
+.container-escola table {
+  border-collapse: collapse;
+}
+
+.container-escola table,
+.container-escola table td,
+.container-escola table th {
+  border: 1px solid #000;
+  padding: .25rem;
+}
+
+@media screen and (min-width: 768px) {
+  .container-escola {
+    padding: 2rem 15%;
+  }
+}
