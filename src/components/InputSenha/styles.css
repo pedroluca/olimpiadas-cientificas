@@ -1,0 +1,29 @@
+@import '../../global.css';
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.password-container input[type="password"],
+.password-container input[type="text"] {
+  padding-right:  30px; /* Espaço para o ícone */
+  width: 100%;
+}
+
+.togglePassword {
+  position: absolute;
+  right:  15px;
+  top:  40%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--main-color);
+}
+
+@media screen and (min-width: 1024px) {
+  .togglePassword {
+    top: 45%;
+  }
+}

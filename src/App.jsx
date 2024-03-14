@@ -9,7 +9,6 @@ import { Escola } from './pages/Escola/Escola'
 import { NotFound } from './pages/NotFound/NotFound'
 
 function App() {
-
   return (
     <>
       <BrowserRouter>

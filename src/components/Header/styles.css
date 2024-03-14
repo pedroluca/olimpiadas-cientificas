@@ -3,17 +3,25 @@
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem 1rem 1rem .5rem;
-  background: var(--black2-color);
+  background: rgb(255,102,0);
+  background: linear-gradient(45deg, rgba(255,102,0,1) 0%, rgba(153,0,204,1) 100%);
   color: var(--white-color);
 }
 
-.menu-mobile.active nav {
-  height: auto;
-  visibility: visible;
+header span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+}
+
+header span img {
+  height: 2rem;
 }
   
-nav {
+.menu-mobile nav {
   display: flex;
   flex-direction: column;
   padding: 1rem .5rem;
@@ -21,7 +29,8 @@ nav {
   position: absolute;
   margin-top: 15px;
   right: 2px;
-  background: var(--black2-color);
+  background: rgb(255,102,0);
+  background: linear-gradient(45deg, rgba(255,102,0,1) 0%, rgba(153,0,204,1) 100%);
   color: var(--font-color);
   transition: ease-in-out .2s;
   visibility: hidden;
@@ -30,14 +39,19 @@ nav {
   border-radius: 15px;
 }
 
-nav a {
+.menu-mobile.active nav {
+  height: auto;
+  visibility: visible;
+}
+
+.menu-mobile nav a {
   text-decoration: none;
   color: var(--white-color);
   border-bottom: 1px solid transparent;
 }
 
-nav a:hover,
-nav a.active {
+.menu-mobile nav a:hover,
+.menu-mobile nav a.active {
   color: var(--white2-color);
   border-color: var(--white-color);
 }
@@ -53,32 +67,30 @@ nav a.active {
 
 .icone-menu {
   color: var(--white-color);
+  font-size: 1.5rem;
 }
 
 .img1 { 
   width: 100%;
 }
 
-.logout-opt {
+.menu-mobile nav a.logout-opt {
   color: #ff0000;
 }
 
-.logout-opt:hover {
-  color: #ff6666;
+.menu-mobile nav a.logout-opt:hover,
+.menu-mobile nav a.logout-opt.active {
+  border: none;
+  color: #dd0000;
 }
 
-.logout-opt.active {
-  color: #ff6666;
-  border-color: #ff6666;
-}
-
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1020px) {
   header {
     padding: 1rem 2rem;
     align-items: center;
   }
 
-  nav {
+  .menu-mobile nav {
     display: flex;
     flex-direction: row;
     visibility: visible;
@@ -88,9 +100,10 @@ nav a.active {
     overflow-x: visible;
     gap: 1rem;
     border-radius: 0;
+    background: transparent;
   }
 
-  nav a {
+  .menu-mobile nav a {
     transition: ease-in-out .2s;
   }
 

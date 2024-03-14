@@ -1,12 +1,12 @@
 @import '../../global.css';
 
 .btn-principal {
-  margin-top: 1rem;
+  margin: 1rem auto;
   align-self: center;
-  width: 75%;
+  width: 50%;
   padding: 1rem;
-  background: var(--black2-color);
-  color: var(--white-color);
+  background: var(--white2-color);
+  color: var(--black-color);
   border-radius: 50px;
   cursor: pointer;
   transition: ease-in-out .2s;
@@ -14,6 +14,5 @@
 }
 
 .btn-principal:hover {
-  background: var(--lightgray-color);
-  color: var(--black2-color)
+  background: var(--main-color);
 }

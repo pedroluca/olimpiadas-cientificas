@@ -1,39 +1,76 @@
 @import "../../global.css";
 
-.container-cadastro h1 {
+.container-cadastro {
+  padding: 2rem 1rem;
+}
+
+.container-cadastro > :not(:first-child) {
+  margin-top: 1rem;
+}
+
+.container-cadastro h1,
+.container-cadastro p {
   text-align: center;
-  margin: 1rem 0 2rem;
 }
 
 .container-cadastro form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   width: 100%;
-  padding: 0 .6rem;
+  background: #fcfcfc;
+  border-radius: 10px;
+  padding: 1rem;
+  -webkit-box-shadow: 0px 0px 5px 0px #a9a9a9; 
+  box-shadow: 0px 0px 5px 0px #a9a9a9;
 }
 
-.container-cadastro form > * {
+.container-cadastro form * {
   font-size: 1rem;
 }
 
 .container-cadastro input {
-  border-radius: 20px;
+  border-radius: 10px;
   line-height: 2rem;
   padding: 0 .5rem;
-  margin: -.5rem 0 .5rem;
+  margin: .25rem 0 1rem;
+  border: none;
+  -webkit-box-shadow: 0px 3px 3px 0px var(--lightgray-color); 
+  box-shadow: 0px 3px 3px 0px var(--lightgray-color);
+  width: 100%;
 }
 
-@media screen and (min-width: 768px) {
+.container-cadastro .login-switch {
+  font-size: .9rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+@media screen and (768px < width < 1024px) {
   .container-cadastro {
-    margin: 2rem 15%;
-    padding: 0 15%;
-    border: 1px solid var(--black2-color);
-    border-radius: 20px;
-    background: var(--lightgray-color);
+    margin: 0 10%;
+    padding: 2rem 10%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container-cadastro {
+    padding: 2rem 15%;
   }
 
   .container-cadastro form {
-    gap: .5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .container-cadastro form span {
+    width: 49%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .5rem;
+  }
+
+  .container-cadastro form input {
+    margin-top: .5rem;
   }
 }

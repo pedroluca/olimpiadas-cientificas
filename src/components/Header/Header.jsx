@@ -1,5 +1,6 @@
 import { useState, useEffect }  from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
+import Logo3 from '../../assets/images/logo3.png'
 import './styles.css'
 
 export function Header() {
@@ -33,7 +34,10 @@ export function Header() {
   }
   return (
     <header>
-      <p>Olimpíadas Científicas</p>
+      <span>
+        <img src={Logo3} alt="Logo" />
+        <p>I Olimpíadas<br/>Científicas</p>
+      </span>
       <div className={`menu-mobile ${isMenuActive ? 'active' : ''}`} id="menu-mobile">
         <button className="botao-mobile" onClick={toggleMenu}>
           <i className="fa-solid fa-bars icone-menu"></i>

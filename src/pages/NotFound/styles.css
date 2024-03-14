@@ -15,7 +15,6 @@
 @media screen and (min-width: 768px) {
   .container-not-found {
     padding: 2rem 15%;
-    height: 100vh;
   }
 
   .container-not-found img {
