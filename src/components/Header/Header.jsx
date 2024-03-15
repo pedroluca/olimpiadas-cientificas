@@ -48,6 +48,7 @@ export function Header() {
           <NavLink to="/aluno">Sou Aluno</NavLink>
           <NavLink to="/cadastroEscola">Cadastrar Escola</NavLink>
           <NavLink to="/escola">Área da Escola</NavLink>
+          <NavLink to="/admin">Admin</NavLink>
           <NavLink to="/logout=1" className="logout-opt">Sair</NavLink>
         </nav>
       </div>

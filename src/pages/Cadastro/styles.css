@@ -34,9 +34,15 @@
   padding: 0 .5rem;
   margin: .25rem 0 1rem;
   border: none;
-  -webkit-box-shadow: 0px 3px 3px 0px var(--lightgray-color); 
-  box-shadow: 0px 3px 3px 0px var(--lightgray-color);
+  -webkit-box-shadow: 0px 2px 3px 0px var(--lightgray-color); 
+  box-shadow: 0px 2px 3px 0px var(--lightgray-color);
   width: 100%;
+}
+
+.container-cadastro input:focus {
+  outline: none;
+  -webkit-box-shadow: 0px 2px 3px 0px var(--black-color); 
+  box-shadow: 0px 2px 3px 0px var(--black-color);
 }
 
 .container-cadastro .login-switch {

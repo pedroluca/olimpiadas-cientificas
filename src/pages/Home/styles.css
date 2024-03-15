@@ -16,7 +16,8 @@
 
 .sessao-img h1 {
   color: var(--white-color);
-  background: url("../../assets/images/escola.jpg") center top no-repeat;
+  background: url("../../assets/images/escola2.jpg") no-repeat;
+  background-size: cover;
   height: 15rem;
   display: flex;
   justify-content: center;
@@ -28,7 +29,7 @@
   .sessao-img h1 {
     margin-top: 2rem;
     height: 20rem;
-    background-size: cover;
+    background-position: center;
     margin: 2rem 15% 0;
   }
 
