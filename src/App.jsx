@@ -15,7 +15,6 @@ function App() {
       <Routes>
         <Route path="/*" element={<MainLayout />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )
@@ -32,6 +31,7 @@ function MainLayout() {
         <Route path="/cadastroEscola" element={<CadastroEscola />} end  />
         <Route path="/escola" element={<Escola />} />
         <Route path="/login" element={<Login />} end />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   )
