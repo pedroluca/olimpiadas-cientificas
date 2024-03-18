@@ -32,6 +32,7 @@ export function Header() {
     if (event.type === 'touchstart') event.preventDefault()
     setIsMenuActive((prevIsMenuActive) => !prevIsMenuActive)
   }
+  
   return (
     <header>
       <span>

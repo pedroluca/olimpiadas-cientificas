@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
 import { InputSenha } from '../../components/InputSenha/InputSenha'
 import './styles.css'
@@ -21,14 +22,6 @@ export function CadastroAluno() {
           <input type="text" id="cpf" name="cpf" placeholder="Ex: 00000000000" />
         </span>
         <span>
-          <label htmlFor="usuario">Escolha um nome de usuário</label>
-          <input type="text" id="usuario" name="usuario" placeholder="Ex: joaopedro" />
-        </span>
-        <span className>
-          <label htmlFor="senha">Informe sua senha:</label>
-          <InputSenha />
-        </span>
-        <span>
           <label htmlFor="codigoEscola">Informe o código da sua escola:</label>
           <input type="text" id="codigoEscola" name="codigoEscola" placeholder="Ex: 000000" />
         </span>
@@ -40,13 +33,42 @@ export function CadastroAluno() {
 }
 
 export function CadastroEscola() {
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    cnpj: '',
+    telefone: '',
+    usuario: '',
+    senha: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    let requisicao = {
+      method: 'POST',
+      headers: {'Content-Type' : 'application/json'},
+      body: JSON.stringify(formData)
+    }
+
+    const response = await fetch('http://localhost/Cursos%20YouTube%20Programa%c3%a7%c3%a3o/PHP%20+%20React%20-%20FormContato/', requisicao);
+    const data = await response.json();
+    return data.msg;
+  };
   return (
     <div className="container-cadastro">
       <h1>Cadastro</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <span>
           <label htmlFor="nome">Informe o nome:</label>
-          <input type="text" id="nome" name="nome" placeholder="Ex: Escola X" />
+          <input type="text" id="nome" name="nome" placeholder="Ex: Escola X" onChange={handleChange} />
         </span>
         <span>
           <label htmlFor="email">Informe o email:</label>
@@ -59,14 +81,6 @@ export function CadastroEscola() {
         <span>
           <label htmlFor="telefone">Informe o telefone:</label>
           <input type="text" id="telefone" name="telefone" placeholder="Ex: 00000000000" />
-        </span>
-        <span>
-          <label htmlFor="usuario">Escolha um nome de usuário</label>
-          <input type="text" id="usuario" name="usuario" placeholder="Ex: escolax" />
-        </span>
-        <span>
-          <label htmlFor="senha">Informe a senha:</label>
-          <InputSenha />
         </span>
         <p className="login-switch">Já possui conta? <a className="login-switch" href="/loginEscola">Faça login aqui</a></p>
         <BotaoPrincipal type="submit" content="Cadastrar" />

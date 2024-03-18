@@ -1,0 +1,63 @@
+@import '../../global.css';
+
+.container-school {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: .5rem;
+  border-radius: 15px;
+  background: var(--white2-color);
+  -webkit-box-shadow: 0px 0px 5px 0px #a9a9a9; 
+  box-shadow: 0px 0px 5px 0px #a9a9a9;
+  width: 100%;
+  position: relative;
+}
+
+.container-school h2,
+.container-school h3,
+.container-school ul li {
+  margin: 0;
+}
+
+.container-school ul {
+  list-style-type: square;
+  margin: 0 1.5rem;
+}
+
+.container-school .option-btn {
+  position: absolute;
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: .3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+}
+
+.container-school .option-btn .icone {
+  font-size: 1.2rem;
+}
+
+.accept {
+  color: #008e00;
+}
+
+.reject {
+  color: #ff0000;
+}
+
+.option-btn .options {
+  display: none;
+  flex-direction: column;
+  gap: .5rem;
+  background: var(--lightgray-color);
+  border-radius: 10px;
+  padding: .5rem;
+}
+
+.option-btn .options.active {
+  display: flex;
+}
