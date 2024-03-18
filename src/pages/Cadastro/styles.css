@@ -39,16 +39,66 @@
   width: 100%;
 }
 
-.container-cadastro input:focus {
+.container-cadastro input:not([type = "checkbox"]):focus {
   outline: none;
   -webkit-box-shadow: 0px 2px 3px 0px var(--black-color); 
   box-shadow: 0px 2px 3px 0px var(--black-color);
+}
+
+/* Hide the actual checkbox */
+.container-areas input[type="checkbox"] {
+  display: none;
+}
+
+.container-areas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+/* Style the custom checkbox */
+.container-areas .custom-checkbox {
+  display: flex;
+  width: 100%;
+  padding: .5rem;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid var(--lightgray-color);
+  margin: 0;
+  cursor: pointer;
+}
+
+.container-areas input[type="checkbox"]:disabled + .custom-checkbox {
+  background-color: var(--lightgray-color);
+  color: var(--black-color);
+}
+
+/* Style the custom checkbox when the actual checkbox is checked */
+.container-areas input[type="checkbox"]:checked + .custom-checkbox {
+  background-color: var(--second-color);
+  color: var(--white-color);
+}
+
+.areas p {
+  text-align: left;
+  color: #ff0000;
+  font-size: .75rem;
+  margin-bottom: .5rem;
 }
 
 .container-cadastro .login-switch {
   font-size: .9rem;
   margin-top: 1rem;
   width: 100%;
+}
+
+.login-switch a {
+  color: var(--main-color);
+  transition: ease-in-out .2s;
+}
+
+.login-switch a:hover {
+  color: var(--second-color);
 }
 
 @media screen and (768px < width < 1024px) {

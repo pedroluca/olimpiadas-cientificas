@@ -20,7 +20,8 @@
   border-radius: 20px;
   padding: .5rem;
   width: 100%;
-  background: var(--main-color);
+  background: var(--second-color);
+  color: var(--white-color);
   display: flex;
   flex-direction: column;
   gap: .5rem;
