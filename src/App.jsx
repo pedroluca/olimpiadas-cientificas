@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Header } from './components/Header/Header'
 import { Home } from './pages/Home/Home'
-import { CadastroAluno, CadastroEscola } from './pages/Cadastro/Cadastro'
+import { CadastroAluno, CadastroEscola, Login } from './pages/Cadastro/Cadastro'
 import { Aluno } from './pages/Aluno/Aluno'
 import { Escola } from './pages/Escola/Escola'
 import { NotFound } from './pages/NotFound/NotFound'
@@ -30,6 +30,7 @@ function MainLayout() {
         <Route path="/aluno" element={<Aluno />} />
         <Route path="/cadastroEscola" element={<CadastroEscola />} end  />
         <Route path="/escola" element={<Escola />} />
+        <Route path="/login" element={<Login />} end />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

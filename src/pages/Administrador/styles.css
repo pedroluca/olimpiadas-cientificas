@@ -6,12 +6,22 @@
   width: 100%;
 }
 
+.botao-mobile-admin {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
 aside {
   width: 0;
   visibility: hidden;
   height: 100vh;
   transition: width .5s;
   position: fixed;
+  background: linear-gradient(45deg, rgba(255,102,0,1) 0%, rgba(153,0,204,1) 100%);
 }
 
 aside.active {
@@ -20,7 +30,6 @@ aside.active {
   visibility: visible;
   -webkit-box-shadow: 0px 0px 5px 0px #a9a9a9; 
   box-shadow: 0px 0px 5px 0px #a9a9a9;
-  background: linear-gradient(45deg, rgba(255,102,0,1) 0%, rgba(153,0,204,1) 100%);
 }
 
 aside div {
@@ -62,7 +71,7 @@ main:last-child {
   margin-bottom: 1.5rem;
 }
 
-.container-admin .icone-menu {
+.container-admin .icone-menu-admin {
   color: var(--black-color);
 }
 
@@ -75,18 +84,27 @@ main:last-child {
   gap: 1rem;
 }
 
-@media screen and (min-width: 768px) {
-  aside.active {
-    width: 35%;
+@media screen and (min-width: 768px) {  
+  aside.mobile-bar {
+    visibility: visible;
+    width: 20%;
+    position: fixed;
   }
 
-  .cards {
+  main {
+    margin-left: 20%;
+    width: 80%;
+    padding: 2rem;
+  }
+
+  .cards,
+  .schools {
     flex-direction: row;
     flex-wrap: wrap;
     gap: .5rem;
   }
-}
 
-@media screen and (min-width: 1024px) {
-  
+  .botao-mobile-admin {
+    display: none;
+  }
 }

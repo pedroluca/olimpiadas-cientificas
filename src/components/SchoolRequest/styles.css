@@ -17,6 +17,8 @@
 .container-school h3,
 .container-school ul li {
   margin: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .container-school ul {
@@ -60,4 +62,16 @@
 
 .option-btn .options.active {
   display: flex;
+}
+
+@media screen and (768px < width < 1024px) {
+  .container-school {
+    width: calc(50% - .5rem);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container-school {
+    width: calc(25% - .5rem);
+  }
 }

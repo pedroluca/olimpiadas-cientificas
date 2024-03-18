@@ -17,7 +17,7 @@ export function Admin() {
     const handleClickOutsideMenu = (event) => {
       const menuMobile = document.getElementById('mobile-bar')
       const isClickInsideMenu = menuMobile.contains(event.target)
-      const isClickInsideButton = event.target.closest('.botao-mobile')
+      const isClickInsideButton = event.target.closest('.botao-mobile-admin')
       if (!isClickInsideMenu && !isClickInsideButton && isMenuActive) {
         setIsMenuActive(false)
       }
@@ -39,8 +39,8 @@ export function Admin() {
     <div className="container-admin">
       <aside className={`mobile-bar ${isMenuActive ? 'active' : ''}`} id="mobile-bar">
         <div>
-          <button className="botao-mobile" onClick={toggleMenu}>
-            <i className="fa-solid fa-xmark icone-menu"></i>
+          <button className="botao-mobile-admin" onClick={toggleMenu}>
+            <i className="fa-solid fa-xmark icone-menu-admin"></i>
           </button>
           <h1>Olá, Administrador(a)</h1>
           <p>Email: admin@gmail.com</p>
@@ -48,8 +48,8 @@ export function Admin() {
         </div>
       </aside>
       <main>
-        <button className="botao-mobile" onClick={toggleMenu}>
-          <i className="fa-solid fa-bars icone-menu"></i>
+        <button className="botao-mobile-admin" onClick={toggleMenu}>
+          <i className="fa-solid fa-bars icone-menu-admin"></i>
         </button>
         <h1>Dashboard</h1>
         <section className="cards">
@@ -62,14 +62,14 @@ export function Admin() {
           <h2 className="sr-title">Solicitações pendentes</h2>
           <div className="schools">
             <SchoolRequest name="João Bastos" email="joaobastos@gmail.com" city="Guanambi" />
-            <SchoolRequest name="João Bastos" email="joaobastos@gmail.com" city="Guanambi" />
+            <SchoolRequest name="José Neves" email="joseneves@gmail.com" city="Guanambi" />
           </div>
         </section>
         <section className="registered-schools">
           <h2 className="rs-title">Escolas cadastradas</h2>
           <div className="schools">
-            <School name="Escola Josefina" email="escolax@gmail.com" city="Guanambi" />
-            <School name="Escola X" email="escolax@gmail.com" city="Guanambi" />
+            <School name="Escola Josefina" email="josefina@gmail.com" city="Guanambi" />
+            <School name="Escola Pedro Magalhães" email="pedromagalhaes@gmail.com" city="Mutans" />
           </div>
         </section>
       </main>
