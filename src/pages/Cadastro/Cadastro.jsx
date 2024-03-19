@@ -46,19 +46,19 @@ export function CadastroAluno() {
       <form onSubmit={handleSubmit}>
         <span>
           <label htmlFor="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" placeholder="Ex: João Pedro" onChange={handleChange} />
+          <input type="text" id="nome" name="nome" placeholder="Ex: João Pedro" onChange={handleChange} required />
         </span>
         <span>
           <label htmlFor="email">Email:</label>
-          <input type="text" id="email" name="email" placeholder="Ex: joaopedro@gmail.com" onChange={handleChange} />
+          <input type="email" id="email" name="email" placeholder="Ex: joaopedro@gmail.com" onChange={handleChange} required />
         </span>
         <span>
           <label htmlFor="cpf">CPF:</label>
-          <input type="text" id="cpf" name="cpf" placeholder="Ex: 00000000000" onChange={handleChange} />
+          <input type="text" id="cpf" name="cpf" placeholder="Ex: 00000000000" pattern="\d{11}" onChange={handleChange} required />
         </span>
         <span>
           <label htmlFor="codigoEscola">Código da escola:</label>
-          <input type="text" id="codigoEscola" name="codigoEscola" placeholder="Ex: 000000" onChange={handleChange} />
+          <input type="text" id="codigoEscola" name="codigoEscola" placeholder="Ex: 000000" pattern="\d{6}" onChange={handleChange} required />
         </span>
         <p className="login-switch">Já possui conta? <a className="login-switch" href="/login">Faça login aqui</a></p>
         <p className="login-switch">Deseja cadastrar uma escola? <a className="login-switch" href="/cadastroEscola">Clique aqui</a></p>
@@ -73,7 +73,8 @@ export function CadastroEscola() {
     nome: '',
     email: '',
     cnpj: '',
-    telefone: ''
+    telefone: '',
+    areas: []
   });
 
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
@@ -82,8 +83,16 @@ export function CadastroEscola() {
     if (e.target.type === 'checkbox') {
       if (e.target.checked) {
         setSelectedCheckboxes([...selectedCheckboxes, e.target.value]);
+        setFormData({
+          ...formData,
+          areas: [...formData.areas, e.target.value]
+        });
       } else {
         setSelectedCheckboxes(selectedCheckboxes.filter(value => value !== e.target.value));
+        setFormData({
+          ...formData,
+          areas: formData.areas.filter(value => value !== e.target.value)
+        });
       }
     } else {
       setFormData({
@@ -121,19 +130,19 @@ export function CadastroEscola() {
       <form onSubmit={handleSubmit}>
         <span>
           <label htmlFor="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" placeholder="Ex: Escola X" onChange={handleChange} />
+          <input type="text" id="nome" name="nome" placeholder="Ex: Escola X" onChange={handleChange} required />
         </span>
         <span>
           <label htmlFor="email">Email:</label>
-          <input type="text" id="email" name="email" placeholder="Ex: escolax@gmail.com" onChange={handleChange} />
+          <input type="email" id="email" name="email" placeholder="Ex: escolax@gmail.com" onChange={handleChange} required />
         </span>
         <span>
           <label htmlFor="cnpj">CNPJ:</label>
-          <input type="text" id="cnpj" name="cnpj" placeholder="Ex: 00000000000000" onChange={handleChange} />
+          <input type="text" id="cnpj" name="cnpj" placeholder="Ex: 00000000000000" pattern="\d{14}" onChange={handleChange} required />
         </span>
         <span>
           <label htmlFor="telefone">Telefone:</label>
-          <input type="text" id="telefone" name="telefone" placeholder="Ex: 00000000000" onChange={handleChange} />
+          <input type="text" id="telefone" name="telefone" placeholder="Ex: 77900000000" pattern="\d{11}" onChange={handleChange} required />
         </span>
         <span className="areas">
           <label htmlFor="area">Áreas:</label>
@@ -187,7 +196,7 @@ export function Login() {
       <form>
         <span>
           <label htmlFor="usuario">Usuário:</label>
-          <input type="text" name="usuario" id="usuario" placeholder="Ex: usuario" />
+          <input type="text" name="usuario" id="usuario" placeholder="Ex: usuario" required />
         </span>
         <span>
           <label htmlFor="senha">Senha:</label>

@@ -35,7 +35,7 @@ export function Header() {
   
   return (
     <header>
-      <span>
+      <span className="home-click" onClick={() => {window.location.href="/"}}>
         <img src={Logo3} alt="Logo" />
         <p>I Olimpíadas<br/>Científicas</p>
       </span>

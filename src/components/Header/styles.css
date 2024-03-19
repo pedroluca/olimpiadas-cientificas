@@ -22,6 +22,10 @@ header span {
 header span img {
   height: 2rem;
 }
+
+.home-click {
+  cursor: pointer;
+}
   
 .menu-mobile nav {
   display: flex;
