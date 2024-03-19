@@ -28,7 +28,7 @@ export function CadastroAluno() {
     }
 
     try {
-      const response = await fetch('http://localhost/Cursos%20YouTube%20Programa%c3%a7%c3%a3o/PHP%20+%20React%20-%20FormContato/', requisicao);
+      const response = await fetch('http://127.0.0.1:8000/api/aluno', requisicao);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -103,7 +103,7 @@ export function CadastroEscola() {
     }
 
     try {
-      const response = await fetch('http://localhost/Cursos%20YouTube%20Programa%c3%a7%c3%a3o/PHP%20+%20React%20-%20FormContato/', requisicao);
+      const response = await fetch('http://127.0.0.1:8000/api/escola', requisicao);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
