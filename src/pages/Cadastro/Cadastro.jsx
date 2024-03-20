@@ -28,7 +28,7 @@ export function CadastroAluno() {
     }
 
     try {
-      const response = await fetch('http://localhost/Cursos%20YouTube%20Programa%c3%a7%c3%a3o/PHP%20+%20React%20-%20FormContato/', requisicao);
+      const response = await fetch('http://localhost:8000/api/aluno', requisicao);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -112,7 +112,7 @@ export function CadastroEscola() {
     }
 
     try {
-      const response = await fetch('http://localhost/Cursos%20YouTube%20Programa%c3%a7%c3%a3o/PHP%20+%20React%20-%20FormContato/', requisicao);
+      const response = await fetch('http:/localhost:8000/api/escola', requisicao);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -146,7 +146,7 @@ export function CadastroEscola() {
         </span>
         <span className="areas">
           <label htmlFor="area">Áreas:</label>
-          <p>OBS: no máximo 2!</p>
+          <p>* Escolha 2 opções</p>
           <div className="container-areas">
             <label>
               <input type="checkbox" id="area" name="quimica" onChange={handleChange} value="Química" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Química")} />

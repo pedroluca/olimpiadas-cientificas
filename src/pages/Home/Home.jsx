@@ -1,10 +1,12 @@
+import ImgBack from '../../assets/images/back2.jpg'
+
 import './styles.css'
 
 export function Home() {
   return (
     <div className="container">
       <session className="sessao-img">
-        <h1>Olimpíadas Científicas</h1>
+        <img src={ImgBack} alt="Logo do evento I Olimpíadas Científicas" />
       </session>
       <session className="container sessao-texto">
         <h2>O que são as Olimpíadas Científicas?</h2>

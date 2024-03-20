@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import './styles.css'
 import { useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { AdminCard } from '../../components/AdminCards/AdminCards'
 import { School, SchoolRequest } from '../../components/SchoolRequest/SchoolRequest'
+import Logo4 from '../../assets/images/logo4.png'
+import './styles.css'
 
 export function Admin() {
   const [isMenuActive, setIsMenuActive] = useState(false)
@@ -42,6 +43,10 @@ export function Admin() {
           <button className="botao-mobile-admin" onClick={toggleMenu}>
             <i className="fa-solid fa-xmark icone-menu-admin"></i>
           </button>
+          <span className="home-click" onClick={() => {window.location.href="/"}}>
+            <img src={Logo4} alt="Logo" />
+            <p>I Olimpíadas<br/>Científicas</p>
+          </span>
           <h1>Olá, Administrador(a)</h1>
           <p>Email: admin@gmail.com</p>
           <a href="/logout=1"><i className="fa-solid fa-arrow-right-from-bracket"></i>Sair</a>

@@ -1,5 +1,3 @@
-@import '../../global.css';
-
 .container-aluno {
   display: flex;
   flex-direction: column;
