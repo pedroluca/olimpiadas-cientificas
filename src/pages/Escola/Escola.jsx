@@ -1,3 +1,4 @@
+import { CadastroAluno } from "../Cadastro/Cadastro"
 import "./styles.css"
 
 export function Escola() {
@@ -9,7 +10,8 @@ export function Escola() {
         <li>Química</li>
         <li>Física</li>
       </ul>
-      <h2>Alunos inscritos:</h2>
+      <h2>Alunos</h2>
+      <CadastroAluno />
       <table>
         <tr>
           <th>Aluno</th>

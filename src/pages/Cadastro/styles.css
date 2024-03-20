@@ -62,7 +62,8 @@ form hr {
 }
 
 /* Hide the actual checkbox */
-.container-areas input[type="checkbox"] {
+.container-areas input[type="checkbox"],
+.container-areas input[type="radio"] {
   display: none;
 }
 
@@ -84,13 +85,15 @@ form hr {
   cursor: pointer;
 }
 
-.container-areas input[type="checkbox"]:disabled + .custom-checkbox {
+.container-areas input[type="checkbox"]:disabled + .custom-checkbox,
+.container-areas input[type="radio"]:disabled + .custom-checkbox {
   background-color: var(--lightgray-color);
   color: var(--black-color);
 }
 
 /* Style the custom checkbox when the actual checkbox is checked */
-.container-areas input[type="checkbox"]:checked + .custom-checkbox {
+.container-areas input[type="checkbox"]:checked + .custom-checkbox,
+.container-areas input[type="radio"]:checked + .custom-checkbox {
   background-color: var(--second-color);
   color: var(--white-color);
 }
@@ -117,10 +120,37 @@ form hr {
   color: var(--second-color);
 }
 
+.cadastro-alunos {
+  padding: 0;
+}
+
+.cadastro-alunos form {
+  margin: 0;
+  gap: .5rem;
+  padding: .5rem;
+}
+
+.cadastro-alunos input {
+  margin-bottom: .25rem;
+}
+
+.cadastro-alunos .btn-principal {
+  margin: .5rem 0 0;
+}
+
+.cadastro-alunos .container-areas {
+  align-items: center;
+}
+
 @media screen and (768px < width < 1024px) {
   .container-cadastro {
     margin: 0 10%;
     padding: 2rem 10%;
+  }
+
+  .cadastro-alunos {
+    margin: 0;
+    padding: 0;
   }
 }
 
@@ -145,5 +175,22 @@ form hr {
 
   .container-cadastro span.areas {
     width: 100%;
+  }
+
+  .cadastro-alunos {
+    padding: 0;
+  }
+
+  .cadastro-alunos form span {
+    width: calc(33% - .5rem);
+  }
+
+  .cadastro-alunos form input {
+    width: 100%;
+  }
+
+  .cadastro-alunos .btn-principal {
+    align-self: center;
+    margin: 0 auto;
   }
 }

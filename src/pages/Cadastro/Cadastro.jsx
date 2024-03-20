@@ -40,9 +40,8 @@ export function CadastroAluno() {
   };
 
   return (
-    <div className="container-cadastro">
-      <h1>Cadastro de Alunos</h1>
-      <p>Por favor faça o cadastro para participar</p>
+    <div className="container-cadastro cadastro-alunos">
+      <h2>Cadastre um aluno</h2>
       <form onSubmit={handleSubmit}>
         <span>
           <label htmlFor="nome">Nome:</label>
@@ -56,12 +55,28 @@ export function CadastroAluno() {
           <label htmlFor="cpf">CPF:</label>
           <input type="text" id="cpf" name="cpf" placeholder="Ex: 00000000000" pattern="\d{11}" onChange={handleChange} required />
         </span>
-        <span>
-          <label htmlFor="codigoEscola">Código da escola:</label>
-          <input type="text" id="codigoEscola" name="codigoEscola" placeholder="Ex: 000000" pattern="\d{6}" onChange={handleChange} required />
-        </span>
-        <p className="login-switch">Já possui conta? <a className="login-switch" href="/login">Faça login aqui</a></p>
-        <p className="login-switch">Deseja cadastrar uma escola? <a className="login-switch" href="/cadastroEscola">Clique aqui</a></p>
+        <div className="container-areas">
+          <label htmlFor="modalidade">Modalidade:</label>
+          <label>
+            <input type="radio" id="modalidade" name="modalidade" onChange={handleChange} value="a" />
+            <span className="custom-checkbox">1° Ano</span>
+          </label>
+          <label>
+            <input type="radio" id="modalidade" name="modalidade" onChange={handleChange} value="b" />
+            <span className="custom-checkbox">2° Ano</span>
+          </label>
+        </div>
+        <div className="container-areas">
+          <label htmlFor="area">Área:</label>
+          <label>
+            <input type="radio" id="area" name="area" onChange={handleChange} value="" />
+            <span className="custom-checkbox">Química</span>
+          </label>
+          <label>
+            <input type="radio" id="area" name="area" onChange={handleChange} value="" />
+            <span className="custom-checkbox">Física</span>
+          </label>
+        </div>
         <BotaoPrincipal type="submit" content="Cadastrar" />
       </form>
     </div>

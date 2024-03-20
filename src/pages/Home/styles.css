@@ -12,6 +12,10 @@
   text-align: justify;
 }
 
+.sessao-texto > h2:not(:first-child) {
+  margin-top: 1rem;
+}
+
 .sessao-img {
   display: flex;
   align-items: center;
