@@ -74,6 +74,8 @@ export function CadastroEscola() {
     email: '',
     cnpj: '',
     telefone: '',
+    nomeResponsavel: '',
+    cpfResponsavel: '',
     areas: []
   });
 
@@ -128,60 +130,73 @@ export function CadastroEscola() {
       <h1>Cadastro de Escolas</h1>
       <p>Por favor faça o cadastro para participar</p>
       <form onSubmit={handleSubmit}>
-        <span>
-          <label htmlFor="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" placeholder="Ex: Escola X" onChange={handleChange} required />
-        </span>
-        <span>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" placeholder="Ex: escolax@gmail.com" onChange={handleChange} required />
-        </span>
-        <span>
-          <label htmlFor="cnpj">CNPJ:</label>
-          <input type="text" id="cnpj" name="cnpj" placeholder="Ex: 00000000000000" pattern="\d{14}" onChange={handleChange} required />
-        </span>
-        <span>
-          <label htmlFor="telefone">Telefone:</label>
-          <input type="text" id="telefone" name="telefone" placeholder="Ex: 77900000000" pattern="\d{11}" onChange={handleChange} required />
-        </span>
-        <span className="areas">
-          <label htmlFor="area">Áreas:</label>
-          <p>* Escolha 2 opções</p>
-          <div className="container-areas">
-            <label>
-              <input type="checkbox" id="area" name="quimica" onChange={handleChange} value="Química" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Química")} />
-              <span className="custom-checkbox">Química</span>
-              
-            </label>
-            <label>
-              <input type="checkbox" id="area" name="fisica" onChange={handleChange} value="Física" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Física")} />
-              <span className="custom-checkbox">Física</span>
-              
-            </label>
-            <label>
-              <input type="checkbox" id="area" name="historia" onChange={handleChange} value="História" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("História")} />
-              <span className="custom-checkbox">História</span>
-              
-            </label>
-            <label>
-              <input type="checkbox" id="area" name="arte" onChange={handleChange} value="Arte e Cultura" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Arte e Cultura")} />
-              <span className="custom-checkbox">Arte e Cultura</span>
-              
-            </label>
-            <label>
-              <input type="checkbox" id="area" name="ambiente" onChange={handleChange} value="Meio Ambiente e Sustentabilidade" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Meio Ambiente e Sustentabilidade")} />
-              <span className="custom-checkbox">Meio Ambiente e Sustentabilidade</span>
-              
-            </label>
-            <label>
-              <input type="checkbox" id="area" name="inovacao" onChange={handleChange} value="Empreendedorismo e Inovação" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Empreendedorismo e Inovação")} />
-              <span className="custom-checkbox">Empreendedorismo e Inovação</span>
-              
-            </label>
-          </div>
-        </span>
+        <session className="form-session">
+          <span>
+            <label htmlFor="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: Escola X" onChange={handleChange} required />
+          </span>
+          <span>
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Ex: escolax@gmail.com" onChange={handleChange} required />
+          </span>
+          <span>
+            <label htmlFor="cnpj">CNPJ:</label>
+            <input type="text" id="cnpj" name="cnpj" placeholder="Ex: 00000000000000" pattern="\d{14}" onChange={handleChange} required />
+          </span>
+          <span>
+            <label htmlFor="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" placeholder="Ex: 77900000000" pattern="\d{11}" onChange={handleChange} required />
+          </span>
+          <span>
+            <label htmlFor="municipio">Município:</label>
+            <input type="text" id="municipio" name="municipio" placeholder="Ex: Guanambi" onChange={handleChange} required />
+          </span>
+        </session>
+        <hr/>
+        <session className="form-session">
+          <span className="areas">
+            <label htmlFor="area">Áreas:</label>
+            <p>* Escolha 2 opções</p>
+            <div className="container-areas">
+              <label>
+                <input type="checkbox" id="area" name="quimica" onChange={handleChange} value="Química" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Química")} />
+                <span className="custom-checkbox">Química</span>
+              </label>
+              <label>
+                <input type="checkbox" id="area" name="fisica" onChange={handleChange} value="Física" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Física")} />
+                <span className="custom-checkbox">Física</span>
+              </label>
+              <label>
+                <input type="checkbox" id="area" name="historia" onChange={handleChange} value="História" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("História")} />
+                <span className="custom-checkbox">História</span>
+              </label>
+              <label>
+                <input type="checkbox" id="area" name="arte" onChange={handleChange} value="Arte e Cultura" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Arte e Cultura")} />
+                <span className="custom-checkbox">Arte e Cultura</span>
+              </label>
+              <label>
+                <input type="checkbox" id="area" name="ambiente" onChange={handleChange} value="Meio Ambiente e Sustentabilidade" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Meio Ambiente e Sustentabilidade")} />
+                <span className="custom-checkbox">Meio Ambiente e Sustentabilidade</span>
+              </label>
+              <label>
+                <input type="checkbox" id="area" name="inovacao" onChange={handleChange} value="Empreendedorismo e Inovação" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Empreendedorismo e Inovação")} />
+                <span className="custom-checkbox">Empreendedorismo e Inovação</span>
+              </label>
+            </div>
+          </span>
+        </session>
+        <hr/>
+        <session className="form-session">
+          <span>
+            <label htmlFor="nomeResponsavel">Nome do(a) Responsável:</label>
+            <input type="text" id="nomeResponsavel" name="nomeResponsavel" placeholder="Ex: Maria" onChange={handleChange} required />
+          </span>
+          <span>
+            <label htmlFor="cpfResponsavel">CPF do(a) Responsável:</label>
+            <input type="text" id="cpfResponsavel" name="cpfResponsavel" placeholder="Ex: 00000000000" pattern="\d{11}" onChange={handleChange} required />
+          </span>
+        </session>
         <p className="login-switch">Já possui conta? <a className="login-switch" href="/login">Faça login aqui</a></p>
-        <p className="login-switch">Deseja cadastrar um aluno? <a className="login-switch" href="/cadastro">Clique aqui</a></p>
         <BotaoPrincipal type="submit" content="Cadastrar" />
       </form>
     </div>
