@@ -17,8 +17,8 @@ export function Login() {
           <label htmlFor="senha">Senha:</label>
           <InputSenha/>
         </span>
-        <p className="login-switch">Não tem conta ainda? <a className="login-switch" href="/cadastro">Crie uma conta aqui</a></p>
         <BotaoPrincipal type="submit" content="Entrar" />
+        <p className="login-switch">Não possui conta? <a className="login-switch" href="/cadastro">Crie uma agora</a></p>
       </form>
     </div>
   )

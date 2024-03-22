@@ -134,8 +134,8 @@ export function CadastroEscola() {
               <input type="text" id="cpfResponsavel" name="cpfResponsavel" placeholder="Ex: 00000000000" pattern="\d{11}" onChange={handleChange} required />
             </span>
           </section>
-          <p className="login-switch">Já possui conta? <a className="login-switch" href="/login">Faça login aqui</a></p>
           <BotaoPrincipal type="submit" content="Cadastrar" />
+          <p className="login-switch">Já possui conta? <a className="login-switch" href="/login">Faça login aqui</a></p>
         </form>
       </section>
     </div>

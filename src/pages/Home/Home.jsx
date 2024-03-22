@@ -1,4 +1,5 @@
 import ImgBack from '../../assets/images/escola3.jpg'
+import { Footer } from '../../components/Footer/Footer';
 
 import './styles.css'
 
@@ -24,6 +25,7 @@ export function Home() {
         <h2>Quem pode participar?</h2>
         <p>Estudantes regularmente matriculados no ensino médio de escolas públicas localizadas no Território Sertão Produtivo</p>
       </session>
+      <Footer />
     </div>
   );
 }
