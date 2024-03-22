@@ -128,6 +128,8 @@ form hr {
   margin: 0;
   gap: .5rem;
   padding: .5rem;
+  background: transparent;
+  box-shadow: none;
 }
 
 .cadastro-alunos input {
@@ -142,10 +144,20 @@ form hr {
   align-items: center;
 }
 
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.img-cadastro {
+  display: none;
+}
+
 @media screen and (768px < width < 1024px) {
   .container-cadastro {
-    margin: 0 10%;
-    padding: 2rem 10%;
+    margin: 0;
+    padding: 2rem 15%;
   }
 
   .cadastro-alunos {
@@ -190,7 +202,29 @@ form hr {
   }
 
   .cadastro-alunos .btn-principal {
-    align-self: center;
-    margin: 0 auto;
+    margin: 0;
+  }
+
+  .form-container {
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .container-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container-login form {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 50%;
+  }
+
+  .container-login form span {
+    width: 100%;
   }
 }

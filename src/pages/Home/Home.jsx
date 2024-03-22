@@ -1,12 +1,21 @@
-import ImgBack from '../../assets/images/back2.jpg'
+import ImgBack from '../../assets/images/escola3.jpg'
+import { Footer } from '../../components/Footer/Footer';
 
 import './styles.css'
 
 export function Home() {
+  const handleClick = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    });
+  };
+  
   return (
     <div className="container">
       <session className="sessao-img">
         <img src={ImgBack} alt="Logo do evento I Olimpíadas Científicas" />
+        <i className="fa-solid fa-chevron-down icone-home" onClick={handleClick} />
       </session>
       <session className="container sessao-texto">
         <h2>O que são as Olimpíadas Científicas?</h2>
@@ -16,6 +25,7 @@ export function Home() {
         <h2>Quem pode participar?</h2>
         <p>Estudantes regularmente matriculados no ensino médio de escolas públicas localizadas no Território Sertão Produtivo</p>
       </session>
+      <Footer />
     </div>
   );
 }

@@ -9,5 +9,5 @@ export function BotaoPrincipal(props) {
 
 BotaoPrincipal.propTypes = {
   type: PropTypes.string.isRequired,
-  content: PropTypes.node.isRequired,
+  content: PropTypes.string.isRequired,
 };

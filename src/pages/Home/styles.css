@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  max-width: 100%;
 }
 
 .sessao-texto {
@@ -26,13 +27,48 @@
   width: 100%;
 }
 
-@media screen and (min-width: 768px) {
+.icone-home {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .sessao-img {
+    flex-direction: column;
+    position: relative;
+  }
+  
   .sessao-img img {
-    margin-top: 2rem;
-    padding: 0 15%;
+    width: 100%;
   }
 
   .sessao-texto {
     padding: 3rem 15%;
+  }
+
+  @keyframes hoverAnimation {
+    0% { transform: translateY(0); }
+    30% { transform: translateY(-10px); }
+    70% { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+  }
+  
+  .icone-home {
+    display: block;
+    color: var(--main-color);
+    font-size: 4rem;
+    z-index: 999;
+    cursor: pointer;
+    position: absolute;
+    bottom: 2rem;
+  }
+  
+  .icone-home:hover {
+    animation: hoverAnimation 1.5s ease-in-out infinite;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .icone-home {
+    bottom: 5rem;
   }
 }

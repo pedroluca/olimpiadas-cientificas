@@ -7,7 +7,7 @@
 }
 
 body {
-  width: 100vw;
+  width: 100%;
   height: auto;
   min-height: 100vh;
   background: var(--lightgray2-color);

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import './styles.css'
 
 export function AdminCard(props) {
@@ -10,4 +11,10 @@ export function AdminCard(props) {
       <i className={"fa-solid icone-card " + props.iconClass} />
     </div>
   )
+}
+
+AdminCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  iconClass: PropTypes.string.isRequired
 }

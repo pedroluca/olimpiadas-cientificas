@@ -10,34 +10,39 @@ export function Escola() {
         <li>Química</li>
         <li>Física</li>
       </ul>
-      <h2>Alunos</h2>
       <CadastroAluno />
+      <h2>Lista de Alunos</h2>
       <table>
-        <tr>
-          <th>Aluno</th>
-          <th>Pontuação</th>
-          <th>Email</th>
-        </tr>
-        <tr>
-          <td>Pedro</td>
-          <td>0/80</td>
-          <td>pedro@gmail.com</td>
-        </tr>
-        <tr>
-          <td>Pedro</td>
-          <td>0/80</td>
-          <td>pedro@gmail.com</td>
-        </tr>
-        <tr>
-          <td>Pedro Luca</td>
-          <td>0/80</td>
-          <td>pedro@gmail.com</td>
-        </tr>
-        <tr>
-          <td>Tharlis Fábio</td>
-          <td>0/80</td>
-          <td>tharlisfabio@gmail.com</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Aluno</th>
+            <th>Email</th>
+            <th>Pontuação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pedro</td>
+            <td>pedro@gmail.com</td>
+            <td>0/80</td>
+          </tr>
+          <tr>
+            <td>Pedro</td>
+            <td>pedro@gmail.com</td>
+            <td>0/80</td>
+          </tr>
+          <tr>
+            <td>Pedro</td>
+            <td>pedro@gmail.com</td>
+            <td>0/80</td>
+          </tr>
+          <tr>
+            <td>Pedro</td>
+            <td>pedro@gmail.com</td>
+            <td>0/80</td>
+          </tr>
+        </tbody>
+        
       </table>
     </div>
   )
