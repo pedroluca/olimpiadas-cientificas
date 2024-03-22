@@ -42,41 +42,45 @@ export function CadastroAluno() {
     <div className="container-cadastro cadastro-alunos">
       <h2>Cadastre um aluno</h2>
       <form onSubmit={handleSubmit}>
-        <span>
-          <label htmlFor="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" placeholder="Ex: João Pedro" onChange={handleChange} required />
-        </span>
-        <span>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" placeholder="Ex: joaopedro@gmail.com" onChange={handleChange} required />
-        </span>
-        <span>
-          <label htmlFor="cpf">CPF:</label>
-          <input type="text" id="cpf" name="cpf" placeholder="Ex: 00000000000" pattern="\d{11}" onChange={handleChange} required />
-        </span>
-        <div className="container-areas">
-          <label htmlFor="modalidade">Modalidade:</label>
-          <label>
-            <input type="radio" id="modalidade" name="modalidade" onChange={handleChange} value="a" />
-            <span className="custom-checkbox">1° Ano</span>
-          </label>
-          <label>
-            <input type="radio" id="modalidade" name="modalidade" onChange={handleChange} value="b" />
-            <span className="custom-checkbox">2° Ano</span>
-          </label>
-        </div>
-        <div className="container-areas">
-          <label htmlFor="area">Área:</label>
-          <label>
-            <input type="radio" id="area" name="area" onChange={handleChange} value="" />
-            <span className="custom-checkbox">Química</span>
-          </label>
-          <label>
-            <input type="radio" id="area" name="area" onChange={handleChange} value="" />
-            <span className="custom-checkbox">Física</span>
-          </label>
-        </div>
-        <BotaoPrincipal type="submit" content="Cadastrar" />
+        <section className="form-container">
+          <span>
+            <label htmlFor="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: João Pedro" onChange={handleChange} required />
+          </span>
+          <span>
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Ex: joaopedro@gmail.com" onChange={handleChange} required />
+          </span>
+          <span>
+            <label htmlFor="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf" placeholder="Ex: 00000000000" pattern="\d{11}" onChange={handleChange} required />
+          </span>
+        </section>
+        <section className="form-container">
+          <div className="container-areas">
+            <label htmlFor="modalidade">Modalidade:</label>
+            <label>
+              <input type="radio" id="modalidade" name="modalidade" onChange={handleChange} value="a" />
+              <span className="custom-checkbox">1° Ano</span>
+            </label>
+            <label>
+              <input type="radio" id="modalidade" name="modalidade" onChange={handleChange} value="b" />
+              <span className="custom-checkbox">2° Ano</span>
+            </label>
+          </div>
+          <div className="container-areas">
+            <label htmlFor="area">Área:</label>
+            <label>
+              <input type="radio" id="area" name="area" onChange={handleChange} value="" />
+              <span className="custom-checkbox">Química</span>
+            </label>
+            <label>
+              <input type="radio" id="area" name="area" onChange={handleChange} value="" />
+              <span className="custom-checkbox">Física</span>
+            </label>
+          </div>
+          <BotaoPrincipal type="submit" content="Cadastrar" />
+        </section>
       </form>
     </div>
   )

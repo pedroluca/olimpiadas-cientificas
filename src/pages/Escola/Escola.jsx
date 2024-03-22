@@ -10,8 +10,8 @@ export function Escola() {
         <li>Química</li>
         <li>Física</li>
       </ul>
-      <h2>Alunos</h2>
       <CadastroAluno />
+      <h2>Lista de Alunos</h2>
       <table>
         <tr>
           <th>Aluno</th>
