@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  max-width: 100%;
 }
 
 .sessao-texto {
@@ -32,11 +33,7 @@
 
 @media screen and (min-width: 1024px) {
   .sessao-img {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: calc(100vh - 5.25rem);
-    background-color: #fff;
     position: relative;
   }
   
@@ -67,5 +64,11 @@
   
   .icone-home:hover {
     animation: hoverAnimation 1.5s ease-in-out infinite;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .icone-home {
+    bottom: 5rem;
   }
 }
