@@ -150,10 +150,14 @@ form hr {
   gap: .5rem;
 }
 
+.img-cadastro {
+  display: none;
+}
+
 @media screen and (768px < width < 1024px) {
   .container-cadastro {
-    margin: 0 10%;
-    padding: 2rem 10%;
+    margin: 0;
+    padding: 2rem 15%;
   }
 
   .cadastro-alunos {

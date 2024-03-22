@@ -1,7 +1,7 @@
 .btn-principal {
   margin: 1rem auto;
   align-self: center;
-  width: 30%;
+  width: 50%;
   padding: 1rem;
   background: var(--white2-color);
   color: var(--black-color);
@@ -16,4 +16,10 @@
 .btn-principal:hover {
   background: linear-gradient(45deg, rgba(255,102,0,1) 0%, rgba(153,0,204,1) 100%);
   color: var(--white-color);
+}
+
+@media screen and (min-width: 768px) {
+  .btn-principal {
+    width: 30%;
+  }
 }

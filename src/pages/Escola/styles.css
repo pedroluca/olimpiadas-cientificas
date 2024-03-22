@@ -16,16 +16,16 @@
 
 .container-escola table {
   border-collapse: collapse;
-  background: var(--white2-color);
-  -webkit-box-shadow: 0px 0px 5px 0px #a9a9a9; 
-  box-shadow: 0px 0px 5px 0px #a9a9a9;
+  margin-bottom: 2rem;
 }
 
-.container-escola table,
-.container-escola table td,
-.container-escola table th {
-  border: 1px solid #000;
-  padding: .25rem;
+.container-escola table * {
+  height: 2rem;
+}
+
+.container-escola table tbody td {
+  border-top: 1px solid var(--lightgray-color);
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
