@@ -45,12 +45,10 @@ export function Header() {
         </button>
         <nav>
           <NavLink to="/">Início</NavLink>
-          <NavLink to="/cadastro">Cadastrar Aluno</NavLink>
           <NavLink to="/aluno">Sou Aluno</NavLink>
-          <NavLink to="/cadastroEscola">Cadastrar Escola</NavLink>
           <NavLink to="/escola">Área da Escola</NavLink>
-          <NavLink to="/admin">Admin</NavLink>
-          <NavLink to="/logout=1" className="logout-opt">Sair</NavLink>
+          <NavLink to="/cadastro">Inscrever Escola</NavLink>
+          {/* <NavLink to="/logout=1" className="logout-opt">Sair</NavLink> */}
         </nav>
       </div>
     </header>
