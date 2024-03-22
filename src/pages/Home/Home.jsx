@@ -1,12 +1,20 @@
-import ImgBack from '../../assets/images/back2.jpg'
+import ImgBack from '../../assets/images/escola3.jpg'
 
 import './styles.css'
 
 export function Home() {
+  const handleClick = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    });
+  };
+  
   return (
     <div className="container">
       <session className="sessao-img">
         <img src={ImgBack} alt="Logo do evento I Olimpíadas Científicas" />
+        <i className="fa-solid fa-chevron-down icone-home" onClick={handleClick} />
       </session>
       <session className="container sessao-texto">
         <h2>O que são as Olimpíadas Científicas?</h2>

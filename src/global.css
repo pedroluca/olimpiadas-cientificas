@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;700&display=swap');
 
 :root {
   --black-color: #242424;
@@ -11,5 +11,5 @@
   --second-color: #9900cc;
   --if-color: #369837;
 
-  font-family: "Roboto", sans-serif;
+  font-family: "Wix Madefor Display", sans-serif;
 }
