@@ -95,11 +95,15 @@ export function Home() {
       <session className="container sessao-texto sessao-bg">
         <h2>Cronograma</h2>
       </session>
-      <session className="container sessao-texto">
-        <h3>Realização:</h3>
-        <img src={ImgIF} className='logo-if' />
-        <h3>Apoio:</h3>
-        <img src={ImgCNPQ} />
+      <session className="container sessao-texto sessao-logos">
+        <div>
+          <h3>Realização:</h3>
+          <img src={ImgIF} className='logo-if' />
+        </div>
+        <div>
+          <h3>Apoio:</h3>
+          <img src={ImgCNPQ} />
+        </div>
       </session>
       <Footer />
     </div>

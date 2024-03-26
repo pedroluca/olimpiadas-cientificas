@@ -59,13 +59,30 @@
 
 .logo-if {
   padding: 0 2rem;
+  width: 100%;
 }
 
 .sessao-texto h3:not(:first-of-type) {
   margin-top: 3rem;
 }
 
+.sessao-logos div {
+  text-align: center;
+}
+
 @media screen and (min-width: 1024px) { 
+  .sessao-logos {
+    flex-direction: row;
+  }
+
+  .sessao-logos div {
+    width: 50%;
+  }
+
+  .sessao-logos div img {
+    margin-top: 1rem;
+    width: 70%;
+  }
 
   .sessao-texto {
     padding: 3rem 15%;
@@ -80,11 +97,5 @@
   
   .icone-home:hover {
     animation: hoverAnimation 1.5s ease-in-out infinite;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .icone-home {
-    bottom: 5rem;
   }
 }
