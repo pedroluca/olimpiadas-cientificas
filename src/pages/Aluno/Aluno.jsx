@@ -6,19 +6,26 @@ import './styles.css'
 
 export function Aluno() {
 
-  const [olimpiadas, setOlimpiadas] = useState([])
-  
+  const [user, setUser] = useState({})
+  const [olimpiada, setOlimpiada] = useState({})
+
   useEffect(() => {
-    axios.get('http://localhost/teste.php').then(function(res){
-      setOlimpiadas(res.data)
+    axios.get('http://localhost/aluno/login').then(function(res){
+      setUser(res.data)
     })
-  },[])
-  
+
+    axios.get('http://localhost/aluno/olimpiada').then(function(res){
+      setOlimpiada(res.data)
+    })
+  }, [])
+
   return (
     <div className="container-aluno">
-      <h1>Olá, João Pedro</h1>
-      <p>Email: joaopedro@gmail.com</p>
-      <p>Escola: Escola X</p>
+      <h1>Olá, {user.name}</h1>
+      <p>Email: {user.email}</p>
+      <p>Escola: {user.escola}</p>
+      <p>Turma: {user.turma}</p>
+      <p>Área: {user.area}</p>
       <h2>Sua olimpíada:</h2>
       <div className="olimp-container">
         {/* {
@@ -35,10 +42,10 @@ export function Aluno() {
           })
         } */}
         <div className="olimpiada">
-          <h3>Olimpíada de Química</h3>
-          <p>Data: 21/04/2024</p>
-          <p>Hora: 07:30 - 18:00</p>
-          <p>Pontuação: 0/80</p>
+          <h3>Olimpíada de {user.area}</h3>
+          <p>Data: {olimpiada.data} (dd/mm/yyyy)</p>
+          <p>Hora: {olimpiada.horarioInicio} - {olimpiada.horarioFim} (hh:MM - hh:MM)</p>
+          <p>Pontuação: {user.pontuacao} (x/80)</p>
           <BtnAcessar />
         </div>
       </div>
