@@ -9,8 +9,10 @@
   gap: .5rem;
 }
 
+.sessao-texto h2,
+.sessao-texto h3,
 .sessao-texto p {
-  text-align: justify;
+  text-align: center;
 }
 
 .sessao-texto > h2:not(:first-child) {
@@ -21,25 +23,50 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  position: relative;
 }
 
 .sessao-img img {
   width: 100%;
 }
-
+  
 .icone-home {
-  display: none;
+  display: block;
+  color: var(--main-color);
+  font-size: .5rem;
+  z-index: 2;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
 }
 
-@media screen and (min-width: 1024px) {
-  .sessao-img {
-    flex-direction: column;
-    position: relative;
-  }
-  
-  .sessao-img img {
-    width: 100%;
-  }
+.sessao-bg {
+  background: #ff8c00;
+  color: var(--white-color);
+  gap: 2rem;
+}
+
+.destaque {
+  color: #ff0000;
+  margin-top: .5rem;
+}
+
+.premiacao {
+  text-align: center;
+  margin: .25rem 0;
+  font-size: .9rem;
+}
+
+.logo-if {
+  padding: 0 2rem;
+}
+
+.sessao-texto h3:not(:first-of-type) {
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 1024px) { 
 
   .sessao-texto {
     padding: 3rem 15%;
@@ -50,16 +77,6 @@
     30% { transform: translateY(-10px); }
     70% { transform: translateY(10px); }
     100% { transform: translateY(0); }
-  }
-  
-  .icone-home {
-    display: block;
-    color: var(--main-color);
-    font-size: 4rem;
-    z-index: 999;
-    cursor: pointer;
-    position: absolute;
-    bottom: 2rem;
   }
   
   .icone-home:hover {

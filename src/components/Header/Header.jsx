@@ -37,7 +37,7 @@ export function Header() {
     <header>
       <span className="home-click" onClick={() => {window.location.href="/"}}>
         <img src={Logo3} alt="Logo" />
-        <p>I Olimpíadas<br/>Científicas</p>
+        <p>Olimpíadas<br/>Científicas</p>
       </span>
       <div className={`menu-mobile ${isMenuActive ? 'active' : ''}`} id="menu-mobile">
         <button className="botao-mobile" onClick={toggleMenu}>
@@ -46,14 +46,15 @@ export function Header() {
         <nav>
           <NavLink to="/">Início</NavLink>
           <div title="Em breve">
-            <NavLink className="nav-disabled" to="/aluno">Sou Aluno</NavLink>
+            <NavLink to="/aluno">Sou Aluno</NavLink>
           </div>
           <div title="Em breve">
-            <NavLink className="nav-disabled" to="/escola">Área da Escola</NavLink>
+            <NavLink to="/escola">Área da Escola</NavLink>
           </div>
           <div title="Em breve">
-            <NavLink className="nav-disabled" to="/cadastro">Inscrever Escola</NavLink>
+            <NavLink to="/cadastro">Inscrever Escola</NavLink>
           </div>
+          {/* className="nav-disabled" */}
           {/* <NavLink to="/logout=1" className="logout-opt">Sair</NavLink> */}
         </nav>
       </div>
