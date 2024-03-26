@@ -36,7 +36,6 @@
   color: var(--main-color);
   font-size: .5rem;
   z-index: 2;
-  cursor: pointer;
   position: absolute;
   bottom: 0;
 }

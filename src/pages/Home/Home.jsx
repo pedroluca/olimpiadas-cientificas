@@ -9,13 +9,6 @@ import axios from 'axios'
 import './styles.css'
 
 export function Home() {
-  const handleClick = () => {
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: 'smooth'
-    })
-  }
-
   const [olimpiadas, setOlimpiadas] = useState([])
 
   useEffect(() => {
@@ -28,7 +21,7 @@ export function Home() {
     <div className="container under-header-container">
       <session className="sessao-img">
         <img src={ImgBack} alt="Logo do evento I Olimpíadas Científicas" />
-        <i className="fa-solid fa-chevron-down icone-home" onClick={handleClick} />
+        <i className="fa-solid fa-chevron-down icone-home" />
       </session>
       <session className="container sessao-texto">
         <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={() => {window.location.href='/cadastro'}} content="INSCREVA-SE!" />
