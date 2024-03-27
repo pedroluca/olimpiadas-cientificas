@@ -20,7 +20,7 @@ export function Aluno() {
   }, [])
 
   return (
-    <div className="container-aluno">
+    <div className="container-aluno under-header-container">
       <h1>Olá, {user.name}</h1>
       <p>Email: {user.email}</p>
       <p>Escola: {user.escola}</p>

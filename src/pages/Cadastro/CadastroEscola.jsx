@@ -62,7 +62,7 @@ export function CadastroEscola() {
   };
 
   return (
-    <div className="container-cadastro">
+    <div className="container-cadastro under-header-container">
       <h1>Cadastro de Escolas</h1>
       <p>Por favor faça o cadastro para participar</p>
       <section className="form-img-container">

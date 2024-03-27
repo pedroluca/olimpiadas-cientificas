@@ -37,7 +37,7 @@ export function Header() {
     <header>
       <span className="home-click" onClick={() => {window.location.href="/"}}>
         <img src={Logo3} alt="Logo" />
-        <p>Olimpíadas<br/>Científicas</p>
+        <p>I Olimpíadas<br/>Científicas</p>
       </span>
       <div className={`menu-mobile ${isMenuActive ? 'active' : ''}`} id="menu-mobile">
         <button className="botao-mobile" onClick={toggleMenu}>

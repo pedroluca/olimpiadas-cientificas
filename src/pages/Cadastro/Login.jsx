@@ -5,7 +5,7 @@ import './styles.css'
 
 export function Login() {
   return (
-    <div className="container-cadastro container-login">
+    <div className="container-cadastro container-login under-header-container">
       <h1>Login</h1>
       <p>Por favor faça o login para continuar</p>
       <form>

@@ -18,7 +18,7 @@ export function Home() {
   }, [])
   
   return (
-    <div className="container under-header-container">
+    <div className="container">
       <session className="sessao-img">
         <img src={ImgBack} alt="Logo do evento I Olimpíadas Científicas" />
         <i className="fa-solid fa-chevron-down icone-home" />
@@ -94,6 +94,14 @@ export function Home() {
       </session>
       <session className="container sessao-texto sessao-bg">
         <h2>Cronograma</h2>
+        <div className='cronogram-holder'>
+          <ul>
+            <li>15/04/24 a 05/05/24 - Inscrição das escolas e estudantes</li>
+            <li>07/06/24 - Olimpíadas Científicas online</li>
+            <li>Agosto - Resultado da 1ª fase</li>
+            <li>Setembro - Envio dos vídeos e premiação da fase final</li>
+          </ul>
+        </div>
       </session>
       <session className="container sessao-texto sessao-logos">
         <div>

@@ -3,7 +3,7 @@ import "./styles.css"
 
 export function Escola() {
   return (
-    <div className="container-escola">
+    <div className="container-escola under-header-container">
       <h1>Escola X</h1>
       <h2>Áreas selecionadas:</h2>
       <ul>
