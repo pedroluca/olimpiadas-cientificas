@@ -28,19 +28,6 @@ export function Aluno() {
       <p>Área: {user.area}</p>
       <h2>Sua olimpíada:</h2>
       <div className="olimp-container">
-        {/* {
-          olimpiadas.map(function(val) {
-            return (
-              <div className="olimpiada">
-                <h3>Olimpíada de {val.titulo}</h3>
-                <p>Data: {val.data}</p>
-                <p>Hora: {val.hora}</p>
-                <p>Pontuação: {val.conteudo}</p>
-                <BtnAcessar />
-              </div>
-            )
-          })
-        } */}
         <div className="olimpiada">
           <h3>Olimpíada de {user.area}</h3>
           <p>Data: {olimpiada.data} (dd/mm/yyyy)</p>

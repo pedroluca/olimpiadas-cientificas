@@ -12,10 +12,8 @@ export function Login() {
   }
   
   const [formData, setFormData] = useState({
-    nome: '',
     email: '',
-    cpf: '',
-    codigoEscola: ''
+    senha: '',
   })
 
   const handleChange = (e) => {

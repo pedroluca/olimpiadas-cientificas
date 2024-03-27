@@ -1,13 +1,25 @@
 import { useState } from 'react';
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
+import PropTypes from 'prop-types'
 import './styles.css'
+import { useEffect } from 'react';
+import axios from 'axios';
 
-export function CadastroAluno() {
+export function CadastroAluno(props) {
+
+  const [escola, setEscola] = useState({})
+
+  useEffect(() => {
+    axios.get('http://localhost/aluno/login').then(function(res){
+      setEscola(res.data)
+    })
+  }, [])
+
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
     cpf: '',
-    codigoEscola: ''
+    codigoEscola: props.codigo,
   })
 
   const handleChange = (e) => {
@@ -55,6 +67,10 @@ export function CadastroAluno() {
             <label htmlFor="cpf">CPF:</label>
             <input type="text" id="cpf" name="cpf" placeholder="Ex: 00000000000" pattern="\d{11}" onChange={handleChange} required />
           </span>
+          <span>
+            <label htmlFor="codigo">Código da escola:</label>
+            <input type="text" id="codigo" name="codigo" onChange={handleChange} value={props.codigo} required disabled />
+          </span>
         </section>
         <section className="form-container">
           <div className="container-areas">
@@ -72,11 +88,11 @@ export function CadastroAluno() {
             <label htmlFor="area">Área:</label>
             <label>
               <input type="radio" id="area" name="area" onChange={handleChange} value="" />
-              <span className="custom-checkbox">Química</span>
+              <span className="custom-checkbox">{escola.area1}</span>
             </label>
             <label>
               <input type="radio" id="area" name="area" onChange={handleChange} value="" />
-              <span className="custom-checkbox">Física</span>
+              <span className="custom-checkbox">{escola.area2}</span>
             </label>
           </div>
           <BotaoPrincipal type="submit" content="Cadastrar" />
@@ -84,4 +100,8 @@ export function CadastroAluno() {
       </form>
     </div>
   )
+}
+
+CadastroAluno.propTypes = {
+  codigo: PropTypes.string
 }
