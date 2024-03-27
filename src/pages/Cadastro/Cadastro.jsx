@@ -8,14 +8,14 @@ export function CadastroAluno() {
     email: '',
     cpf: '',
     codigoEscola: ''
-  });
+  })
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
-    });
-  };
+    })
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,16 +27,16 @@ export function CadastroAluno() {
     }
 
     try {
-      const response = await fetch('http://localhost:8000/api/aluno', requisicao);
+      const response = await fetch('http://localhost:8000/api/aluno', requisicao)
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status}`)
       }
-      const data = await response.json();
-      return data.msg;
+      const data = await response.json()
+      return data.msg
     } catch (error) {
-      console.error('An error occurred while submitting the form:', error);
+      console.error('An error occurred while submitting the form:', error)
     }
-  };
+  }
 
   return (
     <div className="container-cadastro cadastro-alunos">

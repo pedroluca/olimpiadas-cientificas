@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { AdminCard } from '../../components/AdminCards/AdminCards'
-import { School, SchoolRequest } from '../../components/SchoolRequest/SchoolRequest'
+import { School } from '../../components/SchoolRequest/SchoolRequest'
 import Logo4 from '../../assets/images/logo4.png'
 import './styles.css'
 
@@ -62,13 +62,6 @@ export function Admin() {
           <AdminCard title="Total de alunos cadastrados" description="100" iconClass="fa-user" />
           <AdminCard title="Total de alunos que já responderam" description="45 / 100" iconClass="fa-list-check" />
           <AdminCard title="Solicitações pendentes" description="3" iconClass="fa-clock" />
-        </section>
-        <section className="school-requests">
-          <h2 className="sr-title">Solicitações pendentes</h2>
-          <div className="schools">
-            <SchoolRequest name="João Bastos" email="joaobastos@gmail.com" city="Guanambi" />
-            <SchoolRequest name="José Neves" email="joseneves@gmail.com" city="Guanambi" />
-          </div>
         </section>
         <section className="registered-schools">
           <h2 className="rs-title">Escolas cadastradas</h2>
