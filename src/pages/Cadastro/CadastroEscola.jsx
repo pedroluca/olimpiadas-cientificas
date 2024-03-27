@@ -50,7 +50,7 @@ export function CadastroEscola() {
     }
 
     try {
-      const response = await fetch('http://localhost:8000/api/escola', requisicao);
+      const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/escola/cadastro', requisicao);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

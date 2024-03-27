@@ -10,11 +10,11 @@ export function Aluno() {
   const [olimpiada, setOlimpiada] = useState({})
 
   useEffect(() => {
-    axios.get('http://localhost/aluno/login').then(function(res){
+    axios.get('https://api.olimpiadasdosertaoprodutivo.com/aluno/login').then(function(res){
       setUser(res.data)
     })
 
-    axios.get('http://localhost/aluno/olimpiada').then(function(res){
+    axios.get('https://api.olimpiadasdosertaoprodutivo.com/aluno/olimpiada').then(function(res){
       setOlimpiada(res.data)
     })
   }, [])
