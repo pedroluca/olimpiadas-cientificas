@@ -45,7 +45,7 @@ export function Home() {
       <session className="container sessao-texto">
         <h2>Áreas do conhecimento</h2>
         <p>Cada escola deverá escolher 2 dentre as seguintes áreas:</p>
-        <div className="olimp-container">
+        <div className="olimp-container olimp-container-desktop">
           {
             olimpiadas.map(function(val) {
               return (
@@ -57,6 +57,26 @@ export function Home() {
               )
             })
           }
+          <div className="olimpiada">
+            <h3>Olimpíada de {olimpiadas.nome}</h3>
+            <p>Data: {olimpiadas.data} (dd/mm/yyyy)</p>
+            <p>Hora: {olimpiadas.horarioInicio} - {olimpiadas.horarioFim} (hh:MM - hh:MM)</p>
+          </div>
+          <div className="olimpiada">
+            <h3>Olimpíada de {olimpiadas.nome}</h3>
+            <p>Data: {olimpiadas.data} (dd/mm/yyyy)</p>
+            <p>Hora: {olimpiadas.horarioInicio} - {olimpiadas.horarioFim} (hh:MM - hh:MM)</p>
+          </div>
+          <div className="olimpiada">
+            <h3>Olimpíada de {olimpiadas.nome}</h3>
+            <p>Data: {olimpiadas.data} (dd/mm/yyyy)</p>
+            <p>Hora: {olimpiadas.horarioInicio} - {olimpiadas.horarioFim} (hh:MM - hh:MM)</p>
+          </div>
+          <div className="olimpiada">
+            <h3>Olimpíada de {olimpiadas.nome}</h3>
+            <p>Data: {olimpiadas.data} (dd/mm/yyyy)</p>
+            <p>Hora: {olimpiadas.horarioInicio} - {olimpiadas.horarioFim} (hh:MM - hh:MM)</p>
+          </div>
           <div className="olimpiada">
             <h3>Olimpíada de {olimpiadas.nome}</h3>
             <p>Data: {olimpiadas.data} (dd/mm/yyyy)</p>

@@ -132,4 +132,9 @@
   .cronogram-holder ul {
     padding-left: 15rem;
   }
+
+  .olimp-container-desktop {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
