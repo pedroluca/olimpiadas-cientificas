@@ -12,7 +12,7 @@ export function Home() {
   const [olimpiadas, setOlimpiadas] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost/aluno/olimpiada').then(function(res){
+    axios.get('https://api.olimpiadasdosertaoprodutivo.com/api/olimpiada').then(function(res){
       setOlimpiadas(res.data)
     })
   }, [])

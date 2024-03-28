@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import './styles.css'
 import { useEffect } from 'react';
 import axios from 'axios';
+import InputMask from 'react-input-mask';
 
 export function CadastroAluno(props) {
 
@@ -65,7 +66,16 @@ export function CadastroAluno(props) {
           </span>
           <span>
             <label htmlFor="cpf">CPF:</label>
-            <input type="text" id="cpf" name="cpf" placeholder="Ex: 00000000000" pattern="\d{11}" onChange={handleChange} required />
+              <InputMask 
+                mask="999.999.999-99" 
+                type="text" 
+                id="cpf" 
+                name="cpf" 
+                placeholder="xxx.xxx.xxx-xx"
+                onChange={handleChange} 
+                required 
+              />
+            {/* <input type="text" id="cpf" name="cpf" placeholder="Ex: 00000000000" pattern="\d{11}" onChange={handleChange} required /> */}
           </span>
           <span>
             <label htmlFor="codigo">Código da escola:</label>

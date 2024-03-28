@@ -12,7 +12,7 @@ export function CadastroEscola() {
     telefone: '',
     nomeResponsavel: '',
     cpfResponsavel: '',
-    cidade: '',
+    municipio: '',
     areas: []
   })
 
@@ -109,8 +109,8 @@ export function CadastroEscola() {
               {/* <input type="text" id="telefone" name="telefone" placeholder="Ex: 77900000000" pattern="\d{11}" onChange={handleChange} required /> */}
             </span>
             <span>
-              <label htmlFor="cidade">Município:</label>
-              <select name="cidade" id="cidade" onChange={handleChange} required>
+              <label htmlFor="municipio">Município:</label>
+              <select name="municipio" id="municipio" onChange={handleChange} required>
                 <option value="Brumado">Brumado</option>
                 <option value="Caculé">Caculé</option>
                 <option value="Caetité">Caetité</option>
