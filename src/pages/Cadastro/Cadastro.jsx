@@ -10,7 +10,7 @@ export function CadastroAluno(props) {
   const [escola, setEscola] = useState({})
 
   useEffect(() => {
-    axios.get('http://localhost/aluno/login').then(function(res){
+    axios.get('https://api.olimpiadasdosertaoprodutivo.com/api/aluno/login').then(function(res){
       setEscola(res.data)
     })
   }, [])
@@ -39,7 +39,7 @@ export function CadastroAluno(props) {
     }
 
     try {
-      const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/aluno/cadastro', requisicao)
+      const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/aluno/cadastro', requisicao)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }

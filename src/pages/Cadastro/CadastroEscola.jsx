@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
 import ImgCadastro from '../../assets/images/cadastro.jpg'
+import InputMask from 'react-input-mask'
 import './styles.css'
 
 export function CadastroEscola() {  
@@ -17,27 +18,58 @@ export function CadastroEscola() {
 
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([])
 
-  const handleChange = (e) => {
-    if (e.target.type === 'checkbox') {
-      if (e.target.checked) {
-        setSelectedCheckboxes([...selectedCheckboxes, e.target.value])
-        setFormData({
-          ...formData,
-          areas: [...formData.areas, e.target.value]
-        })
-      } else {
-        setSelectedCheckboxes(selectedCheckboxes.filter(value => value !== e.target.value))
-        setFormData({
-          ...formData,
-          areas: formData.areas.filter(value => value !== e.target.value)
-        })
+  // const handleChange = (e) => {
+  //   if (e.target.type === 'checkbox') {
+  //     if (e.target.checked) {
+  //       setSelectedCheckboxes([...selectedCheckboxes, e.target.value])
+  //       setFormData({
+  //         ...formData,
+  //         areas: [...formData.areas, e.target.value]
+  //       })
+  //     } else {
+  //       setSelectedCheckboxes(selectedCheckboxes.filter(value => value !== e.target.value))
+  //       setFormData({
+  //         ...formData,
+  //         areas: formData.areas.filter(value => value !== e.target.value)
+  //       })
+  //     }
+  //   } else {
+  //     setFormData({
+  //       ...formData,
+  //       [e.target.name]: e.target.value
+  //     })
+  //   }
+  // }
+
+  // const [checkedCount, setCheckedCount] = useState(0)
+
+  function handleChange(event) {
+    const { name, type } = event.target
+    let value
+  
+    if (type === 'checkbox') {
+      value = event.target.checked
+  
+      // If the checkbox is being checked and we've already reached the limit, ignore this event
+      if (value && selectedCheckboxes.length >= 2) {
+        return
       }
-    } else {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value
+  
+      // Update the array of selected checkboxes
+      setSelectedCheckboxes(prevCheckboxes => {
+        if (value) {
+          // If the checkbox is being checked, add it to the array
+          return [...prevCheckboxes, event.target.value]
+        } else {
+          // If the checkbox is being unchecked, remove it from the array
+          return prevCheckboxes.filter(checkbox => checkbox !== event.target.value)
+        }
       })
+    } else {
+      value = event.target.value
     }
+  
+    setFormData(prevState => ({ ...prevState, [name]: value }))
   }
 
   const handleSubmit = async (e) => {
@@ -50,7 +82,7 @@ export function CadastroEscola() {
     }
 
     try {
-      const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/escola/cadastro', requisicao)
+      const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/escola/cadastro', requisicao)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
@@ -79,7 +111,16 @@ export function CadastroEscola() {
             </span>
             <span>
               <label htmlFor="cnpj">CNPJ:</label>
-              <input type="text" id="cnpj" name="cnpj" placeholder="Ex: 00000000000000" pattern="\d{14}" onChange={handleChange} required />
+              <InputMask 
+                mask="99.999.999/0001-99" 
+                type="text" 
+                id="cnpj" 
+                name="cnpj" 
+                placeholder="xx.xxx.xxx/0001-xx" 
+                onChange={handleChange} 
+                required 
+              />
+              {/* <input type="text" id="cnpj" name="cnpj" placeholder="Ex: 00000000000000" pattern="\d{14}" onChange={handleChange} required /> */}
             </span>
             <span>
               <label htmlFor="telefone">Telefone:</label>
@@ -151,7 +192,16 @@ export function CadastroEscola() {
             </span>
             <span>
               <label htmlFor="cpfResponsavel">CPF do(a) Responsável:</label>
-              <input type="text" id="cpfResponsavel" name="cpfResponsavel" placeholder="Ex: 00000000000" pattern="\d{11}" onChange={handleChange} required />
+              <InputMask 
+                mask="999.999.999-99" 
+                type="text" 
+                id="cpfResponsavel" 
+                name="cpfResponsavel" 
+                placeholder="xxx.xxx.xxx-xx"
+                onChange={handleChange} 
+                required 
+              />
+              {/* <input type="text" id="cpfResponsavel" name="cpfResponsavel" placeholder="Ex: 00000000000" pattern="\d{11}" onChange={handleChange} required /> */}
             </span>
           </section>
           <BotaoPrincipal type="submit" content="Cadastrar" />
