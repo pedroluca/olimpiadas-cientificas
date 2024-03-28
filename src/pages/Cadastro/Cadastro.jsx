@@ -53,7 +53,7 @@ export function CadastroAluno(props) {
   return (
     <div className="container-cadastro cadastro-alunos">
       <h2>Cadastre um aluno</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} method='POST'>
         <section className="form-container">
           <span>
             <label htmlFor="nome">Nome:</label>

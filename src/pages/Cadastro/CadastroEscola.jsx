@@ -99,7 +99,7 @@ export function CadastroEscola() {
       <p>Por favor faça o cadastro para participar</p>
       <section className="form-img-container">
         <img src={ImgCadastro} className="img-cadastro" />
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} method="POST">
           <section className="form-session">
             <span>
               <label htmlFor="nome">Nome:</label>
