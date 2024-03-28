@@ -111,6 +111,7 @@ export function CadastroEscola() {
             <span>
               <label htmlFor="municipio">Município:</label>
               <select name="municipio" id="municipio" onChange={handleChange} required>
+                <option value="" selected>-- Selecione --</option>
                 <option value="Brumado">Brumado</option>
                 <option value="Caculé">Caculé</option>
                 <option value="Caetité">Caetité</option>
