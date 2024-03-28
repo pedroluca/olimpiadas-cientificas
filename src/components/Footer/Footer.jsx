@@ -1,23 +1,26 @@
-import LogoIF from '../../assets/images/if2.png'
-import LogoCnpq from '../../assets/images/cnpq.png'
+import LogoIF from '../../assets/images/if-bw.png'
+import QRCode from '../../assets/images/qrcode-bw.svg'
 import './styles.css'
 
 export function Footer() {
   return (
     <footer className="footer">
       <section className="section1">
-        <h3>Contate-nos:</h3>
-        <p>Possui alguma dúvida? Envie-nos um <a href="mailto:contato@olimpiadasdosertaoprodutivo.com">e-mail</a></p>
+        <img src={LogoIF} className='img-if' />
+        <div>
+          <i className="fa-brands fa-facebook" onClick={() => window.location.href='https://www.facebook.com/pages/IFBaiano-Campus-Guanambi/189815274404447'}></i>
+          <i className="fa-brands fa-youtube" onClick={() => window.location.href='https://www.youtube.com/@campusguanambi'}></i>
+          <i className="fa-brands fa-instagram" onClick={() => window.location.href='https://www.instagram.com/ifbaianoguanambi/'}></i>
+        </div>
       </section>
       <section className="section2">
-        <span>
-          <h3>Realização:</h3>
-          <img src={LogoIF} className="img-if" />
-        </span>
-        <span>
-          <h3>Apoio:</h3>
-          <img src={LogoCnpq} className="img-cnpq" />
-        </span>
+        <h2>OLIMPÍADAS CIENTÍFICAS DO SERTÃO PRODUTIVO</h2>
+        <p>As Olimpíadas Científicas buscam mobilizar estudantes dos municípios que compõem o Território Sertão Produtivo, valorizando a criatividade, a atitude científica e a inovação, com objetivo de fomentar a pesquisa e a experiência tecnológica entre os jovens.</p>
+        <p>Desenvolvido com &hearts; por estudantes do curso de ADS do IF Baiano - <em>campus</em> Guanambi</p>
+      </section>
+      <section className="section3">
+        <h3>INSCREVA-SE</h3>
+        <img src={QRCode} className='qrcode' />
       </section>
     </footer>
   )

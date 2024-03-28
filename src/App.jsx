@@ -13,27 +13,17 @@ import './App.css'
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/*" element={<MainLayout />} />
-        <Route path="/admin" element={<Admin />} />
-      </Routes>
-    </BrowserRouter>
-  )
-}
-
-function MainLayout() {
-  return (
-    <>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} end />
-        <Route path="/aluno" element={<Aluno />} />
+        <Route path="/aluno" element={<Aluno />} end />
         <Route path="/cadastro" element={<CadastroEscola />} end  />
-        <Route path="/escola" element={<Escola />} />
+        <Route path="/escola" element={<Escola />} end />
         <Route path="/login" element={<Login />} end />
+        <Route path="/admin" element={<Admin />} end />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </BrowserRouter>
   )
 }
 

@@ -46,14 +46,15 @@ export function Header() {
         <nav>
           <NavLink to="/">Início</NavLink>
           <div title="Em breve">
-            <NavLink className="nav-disabled" to="/aluno">Sou Aluno</NavLink>
+            <NavLink to="/aluno">Sou Aluno</NavLink>
           </div>
           <div title="Em breve">
-            <NavLink className="nav-disabled" to="/escola">Área da Escola</NavLink>
+            <NavLink to="/escola">Área da Escola</NavLink>
           </div>
           <div title="Em breve">
-            <NavLink className="nav-disabled" to="/cadastro">Inscrever Escola</NavLink>
+            <NavLink to="/cadastro">Inscrever Escola</NavLink>
           </div>
+          {/* className="nav-disabled" */}
           {/* <NavLink to="/logout=1" className="logout-opt">Sair</NavLink> */}
         </nav>
       </div>

@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   max-width: 100%;
+  padding-top: 4rem;
 }
 
 .sessao-texto {
@@ -9,8 +10,10 @@
   gap: .5rem;
 }
 
+.sessao-texto h2,
+.sessao-texto h3,
 .sessao-texto p {
-  text-align: justify;
+  text-align: center;
 }
 
 .sessao-texto > h2:not(:first-child) {
@@ -21,24 +24,94 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  position: relative;
 }
 
 .sessao-img img {
   width: 100%;
 }
-
+  
 .icone-home {
-  display: none;
+  display: block;
+  color: var(--main-color);
+  font-size: .5rem;
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
 }
 
-@media screen and (min-width: 1024px) {
-  .sessao-img {
-    flex-direction: column;
-    position: relative;
+.sessao-bg {
+  background: #ff8c00;
+  color: var(--white-color);
+  gap: 2rem;
+}
+
+.destaque {
+  color: #ff0000;
+  margin-top: .5rem;
+}
+
+.premiacao {
+  text-align: center;
+  margin: .25rem 0;
+  font-size: .9rem;
+}
+
+.logo-if {
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.sessao-texto h3:not(:first-of-type) {
+  margin-top: 3rem;
+}
+
+.sessao-logos div {
+  text-align: center;
+}
+
+.icon-rotate {
+  transform: rotate(52deg);
+  width: 1%;
+}
+
+/* Cronograma */
+.cronogram-holder {
+  display: flex;
+  flex-direction: column;
+}
+
+.cronogram-holder ul {
+  padding-left: 3rem;
+}
+
+.cronogram-holder ul li:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+@media screen and (768px < width < 1024px) {
+  .cronogram-holder ul {
+    padding-left: 10rem;
+  }
+}
+
+@media screen and (min-width: 1024px) { 
+  .container {
+    padding-top: 5rem;
   }
   
-  .sessao-img img {
-    width: 100%;
+  .sessao-logos {
+    flex-direction: row;
+  }
+
+  .sessao-logos div {
+    width: 50%;
+  }
+
+  .sessao-logos div img {
+    margin-top: 1rem;
+    width: 70%;
   }
 
   .sessao-texto {
@@ -52,23 +125,16 @@
     100% { transform: translateY(0); }
   }
   
-  .icone-home {
-    display: block;
-    color: var(--main-color);
-    font-size: 4rem;
-    z-index: 999;
-    cursor: pointer;
-    position: absolute;
-    bottom: 2rem;
-  }
-  
   .icone-home:hover {
     animation: hoverAnimation 1.5s ease-in-out infinite;
   }
-}
 
-@media screen and (min-width: 1440px) {
-  .icone-home {
-    bottom: 5rem;
+  .cronogram-holder ul {
+    padding-left: 15rem;
+  }
+
+  .olimp-container-desktop {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
