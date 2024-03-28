@@ -58,7 +58,6 @@ form hr {
 
 .container-cadastro select {
   height: 2rem;
-  max
 }
 
 .container-cadastro input:not([type = "checkbox"]):focus,
