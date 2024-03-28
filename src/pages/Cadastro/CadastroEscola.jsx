@@ -3,7 +3,7 @@ import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
 import ImgCadastro from '../../assets/images/cadastro.jpg'
 import './styles.css'
 
-export function CadastroEscola() {
+export function CadastroEscola() {  
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
@@ -13,35 +13,35 @@ export function CadastroEscola() {
     cpfResponsavel: '',
     cidade: '',
     areas: []
-  });
+  })
 
-  const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
+  const [selectedCheckboxes, setSelectedCheckboxes] = useState([])
 
   const handleChange = (e) => {
     if (e.target.type === 'checkbox') {
       if (e.target.checked) {
-        setSelectedCheckboxes([...selectedCheckboxes, e.target.value]);
+        setSelectedCheckboxes([...selectedCheckboxes, e.target.value])
         setFormData({
           ...formData,
           areas: [...formData.areas, e.target.value]
-        });
+        })
       } else {
-        setSelectedCheckboxes(selectedCheckboxes.filter(value => value !== e.target.value));
+        setSelectedCheckboxes(selectedCheckboxes.filter(value => value !== e.target.value))
         setFormData({
           ...formData,
           areas: formData.areas.filter(value => value !== e.target.value)
-        });
+        })
       }
     } else {
       setFormData({
         ...formData,
         [e.target.name]: e.target.value
-      });
+      })
     }
-  };
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     let requisicao = {
       method: 'POST',
@@ -50,16 +50,16 @@ export function CadastroEscola() {
     }
 
     try {
-      const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/escola/cadastro', requisicao);
+      const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/escola/cadastro', requisicao)
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status}`)
       }
-      const data = await response.json();
-      return data.msg;
+      const data = await response.json()
+      return data.msg
     } catch (error) {
-      console.error('An error occurred while submitting the form:', error);
+      console.error('An error occurred while submitting the form:', error)
     }
-  };
+  }
 
   return (
     <div className="container-cadastro under-header-container">
@@ -87,7 +87,27 @@ export function CadastroEscola() {
             </span>
             <span>
               <label htmlFor="cidade">Município:</label>
-              <input type="text" id="cidade" name="cidade" placeholder="Ex: Guanambi" onChange={handleChange} required />
+              <select name="cidade" id="cidade" onChange={handleChange} required>
+                <option value="Guanambi">Guanambi</option>
+                <option value="Caitité">Caitité</option>
+                <option value="Caculé">Caculé</option>
+                <option value="Brumado">Brumado</option>
+                <option value="Contendas do Sincorá">Contendas do Sincorá</option>
+                <option value="Malhada de Pedras">Malhada de Pedras</option>
+                <option value="Iuiú">Iuiú</option>
+                <option value="Palmas de Monte Alto">Palmas de Monte Alto</option>
+                <option value="Urandi">Urandi</option>
+                <option value="Ituaçu">Ituaçu</option>
+                <option value="Tanhaçu">Tanhaçu</option>
+                <option value="Ibiassucê">Ibiassucê</option>
+                <option value="Candiba">Candiba</option>
+                <option value="Pindaí">Pindaí</option>
+                <option value="Rio do Antônio">Rio do Antônio</option>
+                <option value="Livramento de Nª Senhora">Livramento de Nª Senhora</option>
+                <option value="Dom Basílio">Dom Basílio</option>
+                <option value="Lagoa Real">Lagoa Real</option>
+                <option value="Sebastião Laranjeiras">Sebastião Laranjeiras</option>
+              </select>
             </span>
           </section>
           <hr/>

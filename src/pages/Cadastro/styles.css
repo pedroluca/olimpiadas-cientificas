@@ -44,7 +44,8 @@ form hr {
   flex-direction: column;
 }
 
-.container-cadastro input {
+.container-cadastro input,
+.container-cadastro select {
   border-radius: 10px;
   line-height: 2rem;
   padding: 0 .5rem;
@@ -55,7 +56,13 @@ form hr {
   width: 100%;
 }
 
-.container-cadastro input:not([type = "checkbox"]):focus {
+.container-cadastro select {
+  height: 2rem;
+  max
+}
+
+.container-cadastro input:not([type = "checkbox"]):focus,
+.container-cadastro select:focus {
   outline: none;
   -webkit-box-shadow: 0px 2px 3px 0px var(--black-color); 
   box-shadow: 0px 2px 3px 0px var(--black-color);
