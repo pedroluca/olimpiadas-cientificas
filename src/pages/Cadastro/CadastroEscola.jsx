@@ -19,52 +19,25 @@ export function CadastroEscola() {
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([])
 
   // const handleChange = (e) => {
-  //   if (e.target.type === 'checkbox') {
-  //     if (e.target.checked) {
-  //       setSelectedCheckboxes([...selectedCheckboxes, e.target.value])
-  //       setFormData({
-  //         ...formData,
-  //         areas: [...formData.areas, e.target.value]
-  //       })
-  //     } else {
-  //       setSelectedCheckboxes(selectedCheckboxes.filter(value => value !== e.target.value))
-  //       setFormData({
-  //         ...formData,
-  //         areas: formData.areas.filter(value => value !== e.target.value)
-  //       })
-  //     }
-  //   } else {
-  //     setFormData({
-  //       ...formData,
-  //       [e.target.name]: e.target.value
-  //     })
-  //   }
-  // }
-
-  // const [checkedCount, setCheckedCount] = useState(0)
 
   function handleChange(event) {
     const { name, type } = event.target
     let value
   
     if (type === 'checkbox') {
-      value = event.target.checked
-  
-      // If the checkbox is being checked and we've already reached the limit, ignore this event
-      if (value && selectedCheckboxes.length >= 2) {
-        return
+      if (event.target.checked) {
+        setSelectedCheckboxes([...selectedCheckboxes, event.target.value])
+        setFormData({
+          ...formData,
+          areas: [...formData.areas, event.target.value]
+        })
+      } else {
+        setSelectedCheckboxes(selectedCheckboxes.filter(value => value !== event.target.value))
+        setFormData({
+          ...formData,
+          areas: formData.areas.filter(value => value !== event.target.value)
+        })
       }
-  
-      // Update the array of selected checkboxes
-      setSelectedCheckboxes(prevCheckboxes => {
-        if (value) {
-          // If the checkbox is being checked, add it to the array
-          return [...prevCheckboxes, event.target.value]
-        } else {
-          // If the checkbox is being unchecked, remove it from the array
-          return prevCheckboxes.filter(checkbox => checkbox !== event.target.value)
-        }
-      })
     } else {
       value = event.target.value
     }
@@ -124,30 +97,39 @@ export function CadastroEscola() {
             </span>
             <span>
               <label htmlFor="telefone">Telefone:</label>
-              <input type="text" id="telefone" name="telefone" placeholder="Ex: 77900000000" pattern="\d{11}" onChange={handleChange} required />
+              <InputMask 
+                mask="99 99999-9999" 
+                type="text" 
+                id="telefone" 
+                name="telefone" 
+                placeholder="xx xxxxx-xxxx" 
+                onChange={handleChange} 
+                required 
+              />
+              {/* <input type="text" id="telefone" name="telefone" placeholder="Ex: 77900000000" pattern="\d{11}" onChange={handleChange} required /> */}
             </span>
             <span>
               <label htmlFor="cidade">Município:</label>
               <select name="cidade" id="cidade" onChange={handleChange} required>
-                <option value="Guanambi">Guanambi</option>
-                <option value="Caitité">Caitité</option>
-                <option value="Caculé">Caculé</option>
                 <option value="Brumado">Brumado</option>
-                <option value="Contendas do Sincorá">Contendas do Sincorá</option>
-                <option value="Malhada de Pedras">Malhada de Pedras</option>
-                <option value="Iuiú">Iuiú</option>
-                <option value="Palmas de Monte Alto">Palmas de Monte Alto</option>
-                <option value="Urandi">Urandi</option>
-                <option value="Ituaçu">Ituaçu</option>
-                <option value="Tanhaçu">Tanhaçu</option>
-                <option value="Ibiassucê">Ibiassucê</option>
+                <option value="Caculé">Caculé</option>
+                <option value="Caetité">Caetité</option>
                 <option value="Candiba">Candiba</option>
+                <option value="Contendas do Sincorá">Contendas do Sincorá</option>
+                <option value="Dom Basílio">Dom Basílio</option>
+                <option value="Guanambi">Guanambi</option>
+                <option value="Ibiassucê">Ibiassucê</option>
+                <option value="Ituaçu">Ituaçu</option>
+                <option value="Iuiú">Iuiú</option>
+                <option value="Lagoa Real">Lagoa Real</option>
+                <option value="Livramento de Nª Senhora">Livramento de Nª Senhora</option>
+                <option value="Malhada de Pedras">Malhada de Pedras</option>
+                <option value="Palmas de Monte Alto">Palmas de Monte Alto</option>
                 <option value="Pindaí">Pindaí</option>
                 <option value="Rio do Antônio">Rio do Antônio</option>
-                <option value="Livramento de Nª Senhora">Livramento de Nª Senhora</option>
-                <option value="Dom Basílio">Dom Basílio</option>
-                <option value="Lagoa Real">Lagoa Real</option>
                 <option value="Sebastião Laranjeiras">Sebastião Laranjeiras</option>
+                <option value="Tanhaçu">Tanhaçu</option>
+                <option value="Urandi">Urandi</option>
               </select>
             </span>
           </section>
