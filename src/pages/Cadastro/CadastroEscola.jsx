@@ -18,8 +18,6 @@ export function CadastroEscola() {
 
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([])
 
-  // const handleChange = (e) => {
-
   function handleChange(event) {
     const { name, type } = event.target
     let value
@@ -93,7 +91,6 @@ export function CadastroEscola() {
                 onChange={handleChange} 
                 required 
               />
-              {/* <input type="text" id="cnpj" name="cnpj" placeholder="Ex: 00000000000000" pattern="\d{14}" onChange={handleChange} required /> */}
             </span>
             <span>
               <label htmlFor="telefone">Telefone:</label>
@@ -106,7 +103,6 @@ export function CadastroEscola() {
                 onChange={handleChange} 
                 required 
               />
-              {/* <input type="text" id="telefone" name="telefone" placeholder="Ex: 77900000000" pattern="\d{11}" onChange={handleChange} required /> */}
             </span>
             <span>
               <label htmlFor="municipio">Município:</label>
@@ -184,7 +180,6 @@ export function CadastroEscola() {
                 onChange={handleChange} 
                 required 
               />
-              {/* <input type="text" id="cpfResponsavel" name="cpfResponsavel" placeholder="Ex: 00000000000" pattern="\d{11}" onChange={handleChange} required /> */}
             </span>
           </section>
           <BotaoPrincipal type="submit" content="Cadastrar" />

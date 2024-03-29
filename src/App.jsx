@@ -15,12 +15,12 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} end />
-        <Route path="/aluno" element={<Aluno />} end />
-        <Route path="/cadastro" element={<CadastroEscola />} end  />
-        <Route path="/escola" element={<Escola />} end />
-        <Route path="/login" element={<Login />} end />
-        <Route path="/admin" element={<Admin />} end />
+        <Route path="/" element={<Home />} />
+        <Route path="/aluno" element={<Aluno />} />
+        <Route path="/cadastro" element={<CadastroEscola />} />
+        <Route path="/escola" element={<Escola />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
