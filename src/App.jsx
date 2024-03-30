@@ -5,7 +5,7 @@ import { Home } from './pages/Home/Home'
 // import { Login } from './pages/Cadastro/Login'
 // import { Aluno } from './pages/Aluno/Aluno'
 // import { Escola } from './pages/Escola/Escola'
-// import { NotFound } from './pages/NotFound/NotFound'
+import { NotFound } from './pages/NotFound/NotFound'
 // import { Admin } from './pages/Administrador/Administrador'
 
 import './App.css'
@@ -20,8 +20,8 @@ function App() {
         <Route path="/cadastro" element={<CadastroEscola />} />
         <Route path="/escola" element={<Escola />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="*" element={<NotFound />} /> */}
+        <Route path="/admin" element={<Admin />} /> */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )
