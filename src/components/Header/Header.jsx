@@ -32,7 +32,10 @@ export function Header() {
     if (event.type === 'touchstart') event.preventDefault()
     setIsMenuActive((prevIsMenuActive) => !prevIsMenuActive)
   }
-  
+
+  const loggedInUser = false
+  const typeLoggedInUser = 'aluno'
+
   return (
     <header>
       <span className="home-click" onClick={() => {window.location.href="/"}}>
@@ -45,17 +48,18 @@ export function Header() {
         </button>
         <nav>
           <NavLink to="/">Início</NavLink>
-          <div title="Em breve">
-            <NavLink to="/aluno">Sou Aluno</NavLink>
-          </div>
-          <div title="Em breve">
-            <NavLink to="/escola">Área da Escola</NavLink>
-          </div>
-          <div title="Em breve">
-            <NavLink to="/cadastro">Inscrever Escola</NavLink>
-          </div>
+          { !loggedInUser && <NavLink to="/login" className="nav-disabled">Log in</NavLink> }
+          {/* <div title="Em breve"> */}
+            { loggedInUser && typeLoggedInUser == "aluno" && <NavLink to="/aluno" className="nav-disabled">Sou Aluno</NavLink> }
+          {/* </div> */}
+          {/* <div title="Em breve"> */}
+            { loggedInUser && typeLoggedInUser == "escola" && <NavLink to="/escola" className="nav-disabled">Área da Escola</NavLink> }
+          {/* </div> */}
+          {/* <div title="Em breve"> */}
+            { !loggedInUser && <NavLink to="/cadastro" className='btn-inscrever nav-disabled'>Inscrever Escola</NavLink> }
+          {/* </div> */}
           {/* className="nav-disabled" */}
-          {/* <NavLink to="/logout=1" className="logout-opt">Sair</NavLink> */}
+          { loggedInUser && <NavLink to="/login?logout=1" className="logout-opt nav-disabled">Sair</NavLink> }
         </nav>
       </div>
     </header>

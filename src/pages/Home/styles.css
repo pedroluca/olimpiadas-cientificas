@@ -83,7 +83,14 @@
 }
 
 .cronogram-holder ul {
-  padding-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: justify;
+}
+
+.cronogram-holder ul li {
+  width: 75%;
 }
 
 .cronogram-holder ul li:not(:last-child) {
@@ -115,22 +122,7 @@
   }
 
   .sessao-texto {
-    padding: 3rem 15%;
-  }
-
-  @keyframes hoverAnimation {
-    0% { transform: translateY(0); }
-    30% { transform: translateY(-10px); }
-    70% { transform: translateY(10px); }
-    100% { transform: translateY(0); }
-  }
-  
-  .icone-home:hover {
-    animation: hoverAnimation 1.5s ease-in-out infinite;
-  }
-
-  .cronogram-holder ul {
-    padding-left: 15rem;
+    padding: 3rem 20%;
   }
 
   .olimp-container-desktop {

@@ -14,6 +14,23 @@
   font-family: "Wix Madefor Display", sans-serif;
 }
 
+/* This will change the scrollbar track (background) */
+::-webkit-scrollbar-track {
+  /* background: linear-gradient(45deg, rgba(255,102,0,1) 0%, rgba(153,0,204,1) 100%); */
+  background: var(--second-color);
+}
+
+/* This will change the scrollbar handle (thumb) */
+::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 20px;
+}
+
+/* This will change the size of the scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
 .under-header-container {
   padding-top: 5rem;
 }

@@ -58,13 +58,16 @@ header span img {
 
 .menu-mobile nav a {
   text-decoration: none;
-  color: var(--white-color);
+  color: var(--lightgray-color);
+  padding: .2rem .5rem;
   border-bottom: 1px solid transparent;
 }
 
 .menu-mobile nav a:hover,
 .menu-mobile nav a.active {
-  color: var(--white2-color);
+  color: var(--white-color);
+}
+.menu-mobile nav a.active {
   border-color: var(--white-color);
 }
 
@@ -88,15 +91,15 @@ header span img {
 
 .menu-mobile nav a.logout-opt {
   color: #ff0000;
+  border: none;
 }
 
 .menu-mobile nav a.logout-opt:hover,
 .menu-mobile nav a.logout-opt.active {
-  border: none;
   color: #dd0000;
 }
 
-@media screen and (min-width: 1020px) {
+@media screen and (min-width: 1024px) {
   header {
     height: 5rem;
     padding: 0 2rem;
@@ -110,7 +113,7 @@ header span img {
     position: static;
     overflow-y: visible;
     overflow-x: visible;
-    gap: 1rem;
+    gap: .5rem;
     border-radius: 0;
     background: transparent;
   }
@@ -121,5 +124,14 @@ header span img {
 
   .botao-mobile {
     display: none;
+  }
+
+  /* background: linear-gradient(45deg, rgba(255,122,20,1) 0%, rgba(173,20,224,1) 100%); */
+  .btn-inscrever {
+    background: var(--main-color);
+    border-radius: 10px;
+    color: var(--white-color) !important;
+    -webkit-box-shadow: 0px 0px 5px 0px #808080; 
+    box-shadow: 0px 0px 5px 0px #808080;
   }
 }
