@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 import { useEffect, useState } from 'react'
-import { BtnAcessar } from '../../components/BotaoAcessar/BotaoAcessar'
+import { OlimpiadaCard } from '../../components/OlimpiadaCard/OlimpiadaCard'
 import axios from 'axios'
 import './styles.css'
 
@@ -28,13 +28,7 @@ export function Aluno() {
       <p>Área: {user.area}</p>
       <h2>Sua olimpíada:</h2>
       <div className="olimp-container">
-        <div className="olimpiada">
-          <h3>Olimpíada de {user.area}</h3>
-          <p>Data: {olimpiada.data} (dd/mm/yyyy)</p>
-          <p>Hora: {olimpiada.horarioInicio} - {olimpiada.horarioFim} (hh:MM - hh:MM)</p>
-          <p>Pontuação: {user.pontuacao} (x/80)</p>
-          <BtnAcessar />
-        </div>
+        <OlimpiadaCard area={user.area} data={olimpiada.data} horarioInicio={olimpiada.horarioInicio} horarioFim={olimpiada.horarioFim} accessEnabled />
       </div>
     </div>
   )

@@ -97,6 +97,40 @@
   margin-bottom: 1rem;
 }
 
+/* MODAL */
+.modal {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  font-size: 1rem;
+}
+
+.modal-content button {
+  margin: 0;
+  font-size: 1rem;
+}
+
 @media screen and (768px < width < 1024px) {
   .cronogram-holder ul {
     padding-left: 10rem;

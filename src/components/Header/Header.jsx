@@ -33,8 +33,8 @@ export function Header() {
     setIsMenuActive((prevIsMenuActive) => !prevIsMenuActive)
   }
 
-  const loggedInUser = false
-  const typeLoggedInUser = 'aluno'
+  // const loggedInUser = false
+  // const typeLoggedInUser = 'aluno'
 
   return (
     <header>
@@ -48,18 +48,11 @@ export function Header() {
         </button>
         <nav>
           <NavLink to="/">Início</NavLink>
-          { !loggedInUser && <NavLink to="/login" className="nav-disabled">Log in</NavLink> }
-          {/* <div title="Em breve"> */}
-            { loggedInUser && typeLoggedInUser == "aluno" && <NavLink to="/aluno" className="nav-disabled">Sou Aluno</NavLink> }
-          {/* </div> */}
-          {/* <div title="Em breve"> */}
-            { loggedInUser && typeLoggedInUser == "escola" && <NavLink to="/escola" className="nav-disabled">Área da Escola</NavLink> }
-          {/* </div> */}
-          {/* <div title="Em breve"> */}
-            { !loggedInUser && <NavLink to="/cadastro" className='btn-inscrever nav-disabled'>Inscrever Escola</NavLink> }
-          {/* </div> */}
-          {/* className="nav-disabled" */}
-          { loggedInUser && <NavLink to="/login?logout=1" className="logout-opt nav-disabled">Sair</NavLink> }
+          {/* { !loggedInUser && <NavLink to="/login" className="nav-disabled">Log in</NavLink> }
+          { loggedInUser && typeLoggedInUser == "aluno" && <NavLink to="/aluno" className="nav-disabled">Sou Aluno</NavLink> }
+          { loggedInUser && typeLoggedInUser == "escola" && <NavLink to="/escola" className="nav-disabled">Área da Escola</NavLink> }
+          { !loggedInUser && <NavLink to="/cadastro" className='btn-inscrever nav-disabled'>Inscrever Escola</NavLink> }
+          { loggedInUser && <NavLink to="/login?logout=1" className="logout-opt nav-disabled">Sair</NavLink> } */}
         </nav>
       </div>
     </header>

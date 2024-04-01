@@ -4,9 +4,10 @@ import ImgIF from '../../assets/images/if2.png'
 import ImgCNPQ from '../../assets/images/cnpq.svg'
 import { Footer } from '../../components/Footer/Footer'
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 import './styles.css'
+import { OlimpiadaCard } from '../../components/OlimpiadaCard/OlimpiadaCard'
 
 export function Home() {
   const [olimpiadas, setOlimpiadas] = useState([])
@@ -15,7 +16,42 @@ export function Home() {
     axios.get('https://api.olimpiadasdosertaoprodutivo.com/api/olimpiada').then(function(res){
       setOlimpiadas(res.data)
     })
+
+    var modal = document.getElementById('myModal')
+    var btn = document.getElementById('modalBtn')
+
+    btn.addEventListener('click', function() {
+      modal.style.display = 'none'
+    })
+
+    window.addEventListener('click', function(event) {
+      if (event.target == modal) {
+        modal.style.display = 'none'
+      }
+    })
   }, [])
+
+  const openModal = (e) => {
+    e.preventDefault()
+    var modal = document.getElementById('myModal')
+    modal.style.display = 'flex'
+    setTimeout(function() {
+      modal.style.display = 'none'
+    }, 10000)
+  }
+
+  const pdfLink = useRef(null);
+
+  const openPDF = (e) => {
+    e.preventDefault();
+    let link = document.createElement('a');
+    link.href = '/assets/files/regulamento.pdf';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
   
   return (
     <div className="container">
@@ -24,7 +60,7 @@ export function Home() {
         <i className="fa-solid fa-chevron-down icone-home" />
       </session>
       <session className="container sessao-texto">
-        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={() => {window.location.href='/cadastro'}} content="INSCREVA-SE!" />
+        <BotaoPrincipal type="button" classe="btn-wd-md btn-redirect-inscrever" btnClick={openModal} content="INSCREVA-SE!" />
         <h2>O que são as Olimpíadas Científicas?</h2>
         <p>As Olimpíadas Científicas do Sertão Produtivo - na Trilha da Ciência, trata- se de um projeto de extensão vinculado ao Instituto Federal de Ciência e Tecnologia Baiano - IF Baiano Campus Guanambi, aprovado junto  aprovado junto a Chamada CNPq/MCTI nº 03/2023 - Olimpíadas Científicas, que que incluirá ações que irão reunir trabalhos de natureza científica, em geral, que serão desenvolvidos por jovens estudantes do ensino médio e  técnico, nas mais diversas áreas do conhecimento, sob a orientação de professores responsáveis nas suas referidas escolas presentes no do Território Sertão Produtivo.</p>
         <h2>Quem pode se inscrever?</h2>
@@ -40,7 +76,8 @@ export function Home() {
         <p>Se você é estudante, converse com o representante da sua escola e apresente a proposta, peça para se inscrever no evento e participar</p>
         <p>Depois de inscrito, estude bastante e nos dias das provas, responda as perguntas de maneira correta para aumentar sua pontuação</p>
         <p>Os alunos com as maiores pontuações estarão concorrendo a premiações</p>
-        <BotaoPrincipal type="button" classe="btn-wd-md" content="Confira o regulamento" />
+        <a href='./assets/files/regulamento.pdf' target='_blank' rel='noopener noreferrer' ref={pdfLink} style={{display: 'none'}}></a>
+        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={openPDF} content="Confira o regulamento" />
       </session>
       <session className="container sessao-texto">
         <h2>Áreas do conhecimento</h2>
@@ -48,50 +85,20 @@ export function Home() {
         <div className="olimp-container olimp-container-desktop">
           {
             olimpiadas.map(function(val) {
-              return (
-                <div className="olimpiada">
-                  <h3>Olimpíada de {val.titulo}</h3>
-                  <p>Data: {val.data}</p>
-                  <p>Hora: {val.hora}</p>
-                </div>
-              )
+              return <OlimpiadaCard area={val.area} data={val.data} horarioInicio={val.horarioInicio} horarioFim={val.horarioFim} />
             })
           }
-          <div className="olimpiada">
-            <h3>Olimpíada de {olimpiadas.nome}</h3>
-            <p>Data: {olimpiadas.data} (dd/mm/yyyy)</p>
-            <p>Hora: {olimpiadas.horarioInicio} - {olimpiadas.horarioFim} (hh:MM - hh:MM)</p>
-          </div>
-          <div className="olimpiada">
-            <h3>Olimpíada de {olimpiadas.nome}</h3>
-            <p>Data: {olimpiadas.data} (dd/mm/yyyy)</p>
-            <p>Hora: {olimpiadas.horarioInicio} - {olimpiadas.horarioFim} (hh:MM - hh:MM)</p>
-          </div>
-          <div className="olimpiada">
-            <h3>Olimpíada de {olimpiadas.nome}</h3>
-            <p>Data: {olimpiadas.data} (dd/mm/yyyy)</p>
-            <p>Hora: {olimpiadas.horarioInicio} - {olimpiadas.horarioFim} (hh:MM - hh:MM)</p>
-          </div>
-          <div className="olimpiada">
-            <h3>Olimpíada de {olimpiadas.nome}</h3>
-            <p>Data: {olimpiadas.data} (dd/mm/yyyy)</p>
-            <p>Hora: {olimpiadas.horarioInicio} - {olimpiadas.horarioFim} (hh:MM - hh:MM)</p>
-          </div>
-          <div className="olimpiada">
-            <h3>Olimpíada de {olimpiadas.nome}</h3>
-            <p>Data: {olimpiadas.data} (dd/mm/yyyy)</p>
-            <p>Hora: {olimpiadas.horarioInicio} - {olimpiadas.horarioFim} (hh:MM - hh:MM)</p>
-          </div>
-          <div className="olimpiada">
-            <h3>Olimpíada de {olimpiadas.nome}</h3>
-            <p>Data: {olimpiadas.data} (dd/mm/yyyy)</p>
-            <p>Hora: {olimpiadas.horarioInicio} - {olimpiadas.horarioFim} (hh:MM - hh:MM)</p>
-          </div>
+          <OlimpiadaCard area={olimpiadas.area} />
+          <OlimpiadaCard area={olimpiadas.area} />
+          <OlimpiadaCard area={olimpiadas.area} />
+          <OlimpiadaCard area={olimpiadas.area} />
+          <OlimpiadaCard area={olimpiadas.area} />
+          <OlimpiadaCard area={olimpiadas.area} />
         </div>
       </session>
       <session className="container sessao-texto sessao-bg">
         <h2>O desafio está lançado! Venha para as Olimpíadas Científicas do Sertão Produtivo e aumente seu conhecimento.</h2>
-        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={() => {window.location.href='/cadastro'}} content="INSCREVA-SE!" />
+        <BotaoPrincipal type="button" classe="btn-wd-md btn-redirect-inscrever" btnClick={openModal} content="INSCREVA-SE!" /> {/* btnClick={() => {window.location.href='/cadastro'}} */}
       </session>
       <session className="container sessao-texto">
         <h2>Premiação</h2>
@@ -134,6 +141,12 @@ export function Home() {
         </div>
       </session>
       <Footer />
+      <div id="myModal" className="modal">
+        <div className="modal-content">
+          <p>Fora do período de inscrições, por favor aguarde</p>
+          <button id="modalBtn" className='btn-principal'>Entendi</button>
+        </div>
+      </div>
     </div>
   )
 }
