@@ -62,7 +62,7 @@ export function Home() {
       <session className="container sessao-texto">
         <BotaoPrincipal type="button" classe="btn-wd-md btn-redirect-inscrever" btnClick={openModal} content="INSCREVA-SE!" />
         <h2>O que são as Olimpíadas Científicas?</h2>
-        <p>As Olimpíadas Científicas do Sertão Produtivo - na Trilha da Ciência, trata- se de um projeto de extensão vinculado ao Instituto Federal de Ciência e Tecnologia Baiano - IF Baiano Campus Guanambi, aprovado junto  aprovado junto a Chamada CNPq/MCTI nº 03/2023 - Olimpíadas Científicas, que que incluirá ações que irão reunir trabalhos de natureza científica, em geral, que serão desenvolvidos por jovens estudantes do ensino médio e  técnico, nas mais diversas áreas do conhecimento, sob a orientação de professores responsáveis nas suas referidas escolas presentes no do Território Sertão Produtivo.</p>
+        <p>As Olimpíadas Científicas do Sertão Produtivo - na Trilha da Ciência, trata- se de um projeto de extensão vinculado ao Instituto Federal de Ciência e Tecnologia Baiano - IF Baiano Campus Guanambi, aprovado junto  aprovado junto a Chamada CNPq/MCTI nº 03/2023 - Olimpíadas Científicas, que que incluirá ações que irão reunir trabalhos de natureza científica, em geral, que serão desenvolvidos por jovens estudantes do ensino médio e  técnico, nas mais diversas áreas do conhecimento, sob a orientação de professores responsáveis nas suas referidas escolas presentes no Território Sertão Produtivo.</p>
         <h2>Quem pode se inscrever?</h2>
         <p>Escolas públicas que ofertam o ensino médio localizadas no Território Sertão Produtivo</p>
         <h2>Quem pode participar?</h2>
@@ -102,7 +102,7 @@ export function Home() {
       </session>
       <session className="container sessao-texto">
         <h2>Premiação</h2>
-        <p>As premiações são troféus, medalhas, menções honrosas e bolsas de iniciação científica, confira:</p>
+        <p>Troféus, medalhas, menções honrosas e bolsas de iniciação científica, confira:</p>
         <div className='premiacao'>
           <h3>Premiação para escola:</h3>
           <p>Trófeu para Escola Destaque</p>
