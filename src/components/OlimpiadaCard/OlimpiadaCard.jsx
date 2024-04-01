@@ -5,9 +5,9 @@ import { BtnAcessar } from '../BotaoAcessar/BotaoAcessar'
 export function OlimpiadaCard(props) {
   return (
     <div className="olimpiada">
-      <h3>Olimpíada de {props.area}</h3>
-      <p>Data: {props.data} (dd/mm/yyyy)</p>
-      <p>Hora: {props.horarioInicio} - {props.horarioFim} (hh:MM - hh:MM)</p>
+      <h3>{props.area}</h3>
+      { props.data && <p>Data: {props.data} (dd/mm/yyyy)</p> }
+      { props.horarioInicio && <p>Hora: {props.horarioInicio} - {props.horarioFim} (hh:MM - hh:MM)</p> }
       { props.accessEnabled && <BtnAcessar />}
     </div>
   )

@@ -40,17 +40,17 @@ export function Home() {
     }, 10000)
   }
 
-  const pdfLink = useRef(null);
+  const pdfLink = useRef(null)
 
   const openPDF = (e) => {
-    e.preventDefault();
-    let link = document.createElement('a');
-    link.href = '/assets/files/regulamento.pdf';
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    e.preventDefault()
+    let link = document.createElement('a')
+    link.href = '/assets/files/regulamento.pdf'
+    link.target = '_blank'
+    link.rel = 'noopener noreferrer'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
   
   return (
@@ -88,12 +88,12 @@ export function Home() {
               return <OlimpiadaCard area={val.area} data={val.data} horarioInicio={val.horarioInicio} horarioFim={val.horarioFim} />
             })
           }
-          <OlimpiadaCard area={olimpiadas.area} />
-          <OlimpiadaCard area={olimpiadas.area} />
-          <OlimpiadaCard area={olimpiadas.area} />
-          <OlimpiadaCard area={olimpiadas.area} />
-          <OlimpiadaCard area={olimpiadas.area} />
-          <OlimpiadaCard area={olimpiadas.area} />
+          <OlimpiadaCard area="Química" />
+          <OlimpiadaCard area="Física" />
+          <OlimpiadaCard area="História" />
+          <OlimpiadaCard area="Meio Ambiente e Sustentabilidade" />
+          <OlimpiadaCard area="Arte e Cultura" />
+          <OlimpiadaCard area="Empreendedorismo e Inovação" />
         </div>
       </session>
       <session className="container sessao-texto sessao-bg">
@@ -102,7 +102,7 @@ export function Home() {
       </session>
       <session className="container sessao-texto">
         <h2>Premiação</h2>
-        <p>As premiações vão desde troféus, medalhas, menções honrosas e bolsas de iniciação científica, confira:</p>
+        <p>As premiações são troféus, medalhas, menções honrosas e bolsas de iniciação científica, confira:</p>
         <div className='premiacao'>
           <h3>Premiação para escola:</h3>
           <p>Trófeu para Escola Destaque</p>
@@ -115,7 +115,7 @@ export function Home() {
         </div>
         <div className='premiacao'>
           <h3>Bolsas de iniciação científica:</h3>
-          <p>Serão concedidas um total de 39 bolsas de iniciação científica para os alunos vencedores dentro de cada modalidade.</p>
+          <p>Serão concedidas um total de 10 bolsas de iniciação científica para os alunos vencedores dentro de cada modalidade.</p>
           <p className='destaque'>OBS: Somente poderão concorrer à bolsas, estudantes do ensino fundamental, médio e técnico de escolas públicas, que atendam os seguintes perfis: estudantes mulheres, estudantes negros (homens e mulheres) e estudantes com deficiência (PCD).</p>
         </div>
       </session>
@@ -124,7 +124,7 @@ export function Home() {
         <div className='cronogram-holder'>
           <ul>
             <li>15/04/24 a 05/05/24 - Inscrição das escolas e estudantes</li>
-            <li>07/06/24 - Olimpíadas Científicas online</li>
+            <li>07/06/24 - 1ª Fase das Olimpíadas Científicas</li>
             <li>Agosto - Resultado da 1ª fase</li>
             <li>Setembro - Envio dos vídeos e premiação da fase final</li>
           </ul>
