@@ -71,7 +71,7 @@ export function Home() {
       <session className="container sessao-texto sessao-bg">
         <h2>Como funciona?</h2>
         <p>As Olimpíadas Científicas do Sertão Produtivo será online e a participação será gratuita.</p>
-        <p>O período de inscrições será entre os dias 15/04/24 até 05/05/24</p>
+        <p>O período de inscrições será entre os dias 15/04/24 até 10/05/24</p>
         <p>Se você é representante de uma escola, faça o cadastro de sua instituição para realizar a inscrição dos estudantes participantes</p>
         <p>Se você é estudante, converse com o representante da sua escola e apresente a proposta, peça para se inscrever no evento e participar</p>
         <p>Depois de inscrito, estude bastante e nos dias das provas, responda as perguntas de maneira correta para aumentar sua pontuação</p>
@@ -123,10 +123,13 @@ export function Home() {
         <h2>Cronograma</h2>
         <div className='cronogram-holder'>
           <ul>
-            <li>15/04/24 a 05/05/24 - Inscrição das escolas e estudantes</li>
+            <li>15/04/24 a 10/05/24 - Inscrição das escolas e estudantes</li>
             <li>07/06/24 - 1ª Fase das Olimpíadas Científicas</li>
-            <li>Agosto - Resultado da 1ª fase</li>
-            <li>Setembro - Envio dos vídeos e premiação da fase final</li>
+            <li>15/07/24 - Resultado da 1ª fase</li>
+            <li>01/09/24 - Prazo limite para envio dos vídeos (2ª fase)</li>
+            <li>15/09/24 - Resultado da 2ª fase</li>
+            <li>01/09/24 - Resultado final</li>
+            <li>11/10/24 - Cerimônia de encerramento e premiação</li>
           </ul>
         </div>
       </session>
