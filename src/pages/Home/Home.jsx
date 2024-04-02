@@ -62,7 +62,7 @@ export function Home() {
       <session className="container sessao-texto">
         <BotaoPrincipal type="button" classe="btn-wd-md btn-redirect-inscrever" btnClick={openModal} content="INSCREVA-SE!" />
         <h2>O que são as Olimpíadas Científicas?</h2>
-        <p>As Olimpíadas Científicas do Sertão Produtivo - na Trilha da Ciência, trata- se de um projeto de extensão vinculado ao Instituto Federal de Ciência e Tecnologia Baiano - IF Baiano Campus Guanambi, aprovado junto  aprovado junto a Chamada CNPq/MCTI nº 03/2023 - Olimpíadas Científicas, que que incluirá ações que irão reunir trabalhos de natureza científica, em geral, que serão desenvolvidos por jovens estudantes do ensino médio e  técnico, nas mais diversas áreas do conhecimento, sob a orientação de professores responsáveis nas suas referidas escolas presentes no do Território Sertão Produtivo.</p>
+        <p>As Olimpíadas Científicas do Sertão Produtivo - na Trilha da Ciência, trata- se de um projeto de extensão vinculado ao Instituto Federal de Ciência e Tecnologia Baiano - IF Baiano Campus Guanambi, aprovado junto a Chamada CNPq/MCTI nº 03/2023 - Olimpíadas Científicas, que incluirá ações que irão reunir trabalhos de natureza científica, em geral, que serão desenvolvidos por jovens estudantes do ensino médio e  técnico, nas mais diversas áreas do conhecimento, sob a orientação de professores responsáveis nas suas referidas escolas presentes no do Território Sertão Produtivo.</p>
         <h2>Quem pode se inscrever?</h2>
         <p>Escolas públicas que ofertam o ensino médio localizadas no Território Sertão Produtivo</p>
         <h2>Quem pode participar?</h2>
@@ -70,9 +70,9 @@ export function Home() {
       </session>
       <session className="container sessao-texto sessao-bg">
         <h2>Como funciona?</h2>
-        <p>As Olimpíadas Científicas do Sertão Produtivo serão online e gratuitas, e é muito fácil de participar.</p>
+        <p>As Olimpíadas Científicas do Sertão Produtivo será online e a participação será gratuita.</p>
         <p>O período de inscrições será entre os dias 15/04/24 até 05/05/24</p>
-        <p>Caso você seja o representante de uma escola, inscreva-a e cadastre os alunos que desejarem participar</p>
+        <p>Se você é representante de uma escola, faça o cadastro de sua instituição para realizar a inscrição dos estudantes participantes</p>
         <p>Se você é estudante, converse com o representante da sua escola e apresente a proposta, peça para se inscrever no evento e participar</p>
         <p>Depois de inscrito, estude bastante e nos dias das provas, responda as perguntas de maneira correta para aumentar sua pontuação</p>
         <p>Os alunos com as maiores pontuações estarão concorrendo a premiações</p>
