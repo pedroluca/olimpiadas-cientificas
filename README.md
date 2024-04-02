@@ -22,7 +22,7 @@ npm install npm@latest -g
 ```
 
 ### Instalação
-1. Primeiro clone o repositório
+1. Clone o repositório
 
 ```sh
 git clone https://github.com/pedroluca/olimpiadas-cientificas.git
