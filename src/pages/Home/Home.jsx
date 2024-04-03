@@ -7,8 +7,9 @@ import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
 import { useEffect } from 'react'
 import { OlimpiadaCard } from '../../components/OlimpiadaCard/OlimpiadaCard'
 import { Modal } from '../../components/Modal/modal-wait'
-import { ChevronDown } from 'lucide-react'
+import { ChevronsDown } from 'lucide-react'
 import './styles.css'
+import { Atom, Magnet, BookMarked, Recycle, LineChart, Brush } from 'lucide-react'
 
 export function Home() {
   useEffect(() => {
@@ -50,9 +51,9 @@ export function Home() {
     <div className="container">
       <session className="sessao-img">
         <img src={ImgBack} alt="Logo do evento I Olimpíadas Científicas" />
-        <ChevronDown className='icone-home' />
+        <ChevronsDown className='icone-home' />
       </session>
-      <session className="container sessao-texto">
+      <session className="container sessao-texto primeira-sessao">
         <BotaoPrincipal type="button" classe="btn-wd-md btn-redirect-inscrever" btnClick={openModal} content="INSCREVA-SE!" />
         <h2>O que são as Olimpíadas Científicas?</h2>
         <p>As Olimpíadas Científicas do Sertão Produtivo - na Trilha da Ciência, trata- se de um projeto de extensão vinculado ao Instituto Federal de Ciência e Tecnologia Baiano - IF Baiano Campus Guanambi, aprovado junto a Chamada CNPq/MCTI nº 03/2023 - Olimpíadas Científicas, que incluirá ações que irão reunir trabalhos de natureza científica, em geral, que serão desenvolvidos por jovens estudantes do ensino médio e  técnico, nas mais diversas áreas do conhecimento, sob a orientação de professores responsáveis nas suas referidas escolas presentes no do Território Sertão Produtivo.</p>
@@ -75,12 +76,24 @@ export function Home() {
         <h2>Áreas do conhecimento</h2>
         <p>Cada escola deverá escolher 2 dentre as seguintes áreas:</p>
         <div className="olimp-container olimp-container-desktop">
-          <OlimpiadaCard area="Química" />
-          <OlimpiadaCard area="Física" />
-          <OlimpiadaCard area="História" />
-          <OlimpiadaCard area="Meio Ambiente e Sustentabilidade" />
-          <OlimpiadaCard area="Arte e Cultura" />
-          <OlimpiadaCard area="Empreendedorismo e Inovação" />
+          <OlimpiadaCard area="Química">
+            <Atom className='olimp-img' />
+          </OlimpiadaCard>
+          <OlimpiadaCard area="Física">
+            <Magnet className='olimp-img' />
+          </OlimpiadaCard>
+          <OlimpiadaCard area="História">
+            <BookMarked className='olimp-img' />
+          </OlimpiadaCard>
+          <OlimpiadaCard area="Meio Ambiente e Sustentabilidade">
+            <Recycle className='olimp-img' />
+          </OlimpiadaCard>
+          <OlimpiadaCard area="Arte e Cultura">
+            <Brush className='olimp-img' />
+          </OlimpiadaCard>
+          <OlimpiadaCard area="Empreendedorismo e Inovação">
+            <LineChart className='olimp-img' />
+          </OlimpiadaCard>
         </div>
       </session>
       <session className="container sessao-texto sessao-bg">

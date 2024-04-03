@@ -4,6 +4,12 @@
   color: var(--lightgray);
 }
 
+.nav-header {
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 5px 0px #a9a9a9; 
+  box-shadow: 0px 0px 5px 0px #a9a9a9;
+}
+
 header {
   height: 4rem;
   display: flex;
@@ -12,9 +18,6 @@ header {
   padding: 0 .75rem;
   background: linear-gradient(45deg, rgba(255,102,0,1) 0%, rgba(153,0,204,1) 100%);
   color: var(--white-color);
-  -webkit-box-shadow: 0px 0px 5px 0px #a9a9a9; 
-  box-shadow: 0px 0px 5px 0px #a9a9a9;
-  position: fixed;
   width: 100%;
   z-index: 999;
 }
@@ -36,40 +39,30 @@ header a img {
   cursor: pointer;
 }
   
-.menu-mobile nav {
-  display: flex;
+.navbar {
   flex-direction: column;
-  padding: 1rem .5rem;
   gap: .75rem;
-  position: absolute;
-  margin-top: 15px;
   right: 2px;
   background: linear-gradient(45deg, rgba(255,102,0,1) 0%, rgba(153,0,204,1) 100%);
-  color: var(--font-color);
-  transition: ease-in-out .2s;
-  visibility: hidden;
-  overflow-y: hidden;
-  overflow-x: hidden;
-  border-radius: 15px;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  transition: height .1s ease-in-out;
+  display: flex;
 }
 
-.menu-mobile.active nav {
-  height: auto;
-  visibility: visible;
-}
-
-.menu-mobile nav a {
-  text-decoration: none;
+.navbar a {
   color: var(--lightgray-color);
-  padding: .2rem .5rem;
   border-bottom: 1px solid transparent;
+  text-decoration: none;
 }
 
-.menu-mobile nav a:hover,
-.menu-mobile nav a.active {
+.navbar a:hover,
+.navbar a.active {
   color: var(--white-color);
 }
-.menu-mobile nav a.active {
+
+.navbar a.active {
   border-color: var(--white-color);
 }
 
@@ -84,20 +77,21 @@ header a img {
 
 .icone-menu {
   color: var(--white-color);
-  font-size: 1.5rem;
+  height: 2rem;
+  width: 2rem;
 }
 
 .img1 { 
   width: 100%;
 }
 
-.menu-mobile nav a.logout-opt {
+.menu-mobile .navbar a.logout-opt {
   color: #ff0000;
   border: none;
 }
 
-.menu-mobile nav a.logout-opt:hover,
-.menu-mobile nav a.logout-opt.active {
+.menu-mobile .navbar a.logout-opt:hover,
+.menu-mobile .navbar a.logout-opt.active {
   color: #dd0000;
 }
 
@@ -111,7 +105,7 @@ header a img {
     height: 2.5rem;
   }
 
-  .menu-mobile nav {
+  .menu-mobile .navbar {
     display: flex;
     flex-direction: row;
     visibility: visible;
@@ -124,7 +118,7 @@ header a img {
     background: transparent;
   }
 
-  .menu-mobile nav a {
+  .menu-mobile .navbar a {
     transition: ease-in-out .2s;
   }
 
@@ -132,7 +126,6 @@ header a img {
     display: none;
   }
 
-  /* background: linear-gradient(45deg, rgba(255,122,20,1) 0%, rgba(173,20,224,1) 100%); */
   .btn-inscrever {
     background: var(--main-color);
     border-radius: 10px;
