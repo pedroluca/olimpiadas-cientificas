@@ -115,7 +115,7 @@ export function Home() {
         </div>
         <div className='premiacao'>
           <h3>Bolsas de iniciação científica:</h3>
-          <p>Serão concedidas um total de 10 bolsas de iniciação científica para os alunos vencedores dentro de cada modalidade.</p>
+          <p>Serão concedidas um total de 10 bolsas de iniciação científica.</p>
           <p className='destaque'>OBS: Somente poderão concorrer à bolsas, estudantes do ensino fundamental, médio e técnico de escolas públicas, que atendam os seguintes perfis: estudantes mulheres, estudantes negros (homens e mulheres) e estudantes com deficiência (PCD).</p>
         </div>
       </session>
