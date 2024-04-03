@@ -4,19 +4,13 @@ import ImgIF from '../../assets/images/if2.png'
 import ImgCNPQ from '../../assets/images/cnpq.svg'
 import { Footer } from '../../components/Footer/Footer'
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
-import { useEffect, useState, useRef } from 'react'
-import axios from 'axios'
-import './styles.css'
+import { useEffect } from 'react'
 import { OlimpiadaCard } from '../../components/OlimpiadaCard/OlimpiadaCard'
+import './styles.css'
 
 export function Home() {
-  const [olimpiadas, setOlimpiadas] = useState([])
 
   useEffect(() => {
-    axios.get('https://api.olimpiadasdosertaoprodutivo.com/api/olimpiada').then(function(res){
-      setOlimpiadas(res.data)
-    })
-
     var modal = document.getElementById('myModal')
     var btn = document.getElementById('modalBtn')
 
@@ -39,8 +33,6 @@ export function Home() {
       modal.style.display = 'none'
     }, 10000)
   }
-
-  const pdfLink = useRef(null)
 
   const openPDF = (e) => {
     e.preventDefault()
@@ -76,18 +68,12 @@ export function Home() {
         <p>Se você é estudante, converse com o representante da sua escola e apresente a proposta, peça para se inscrever no evento e participar</p>
         <p>Depois de inscrito, estude bastante e nos dias das provas, responda as perguntas de maneira correta para aumentar sua pontuação</p>
         <p>Os alunos com as maiores pontuações estarão concorrendo a premiações</p>
-        <a href='./assets/files/regulamento.pdf' target='_blank' rel='noopener noreferrer' ref={pdfLink} style={{display: 'none'}}></a>
         <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={openPDF} content="Confira o regulamento" />
       </session>
       <session className="container sessao-texto">
         <h2>Áreas do conhecimento</h2>
         <p>Cada escola deverá escolher 2 dentre as seguintes áreas:</p>
         <div className="olimp-container olimp-container-desktop">
-          {
-            olimpiadas.map(function(val) {
-              return <OlimpiadaCard area={val.area} data={val.data} horarioInicio={val.horarioInicio} horarioFim={val.horarioFim} />
-            })
-          }
           <OlimpiadaCard area="Química" />
           <OlimpiadaCard area="Física" />
           <OlimpiadaCard area="História" />
