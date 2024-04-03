@@ -1,15 +1,16 @@
 /* eslint-disable react/jsx-key */
-import ImgBack from '../../assets/images/escola3.jpg'
+import ImgBack from '../../assets/images/oc-icon-colored.png'
 import ImgIF from '../../assets/images/if2.png'
 import ImgCNPQ from '../../assets/images/cnpq.svg'
 import { Footer } from '../../components/Footer/Footer'
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
 import { useEffect } from 'react'
 import { OlimpiadaCard } from '../../components/OlimpiadaCard/OlimpiadaCard'
+import { Modal } from '../../components/Modal/modal-wait'
+import { ChevronDown } from 'lucide-react'
 import './styles.css'
 
 export function Home() {
-
   useEffect(() => {
     var modal = document.getElementById('myModal')
     var btn = document.getElementById('modalBtn')
@@ -37,7 +38,7 @@ export function Home() {
   const openPDF = (e) => {
     e.preventDefault()
     let link = document.createElement('a')
-    link.href = '/assets/files/regulamento.pdf'
+    link.href = '../src/assets/files/regulamento.pdf'
     link.target = '_blank'
     link.rel = 'noopener noreferrer'
     document.body.appendChild(link)
@@ -49,7 +50,7 @@ export function Home() {
     <div className="container">
       <session className="sessao-img">
         <img src={ImgBack} alt="Logo do evento I Olimpíadas Científicas" />
-        <i className="fa-solid fa-chevron-down icone-home" />
+        <ChevronDown className='icone-home' />
       </session>
       <session className="container sessao-texto">
         <BotaoPrincipal type="button" classe="btn-wd-md btn-redirect-inscrever" btnClick={openModal} content="INSCREVA-SE!" />
@@ -84,7 +85,7 @@ export function Home() {
       </session>
       <session className="container sessao-texto sessao-bg">
         <h2>O desafio está lançado! Venha para as Olimpíadas Científicas do Sertão Produtivo e aumente seu conhecimento.</h2>
-        <BotaoPrincipal type="button" classe="btn-wd-md btn-redirect-inscrever" btnClick={openModal} content="INSCREVA-SE!" /> {/* btnClick={() => {window.location.href='/cadastro'}} */}
+        <BotaoPrincipal type="button" classe="btn-wd-md btn-redirect-inscrever" btnClick={openModal} content="INSCREVA-SE!" />
       </session>
       <session className="container sessao-texto">
         <h2>Premiação</h2>
@@ -130,12 +131,7 @@ export function Home() {
         </div>
       </session>
       <Footer />
-      <div id="myModal" className="modal">
-        <div className="modal-content">
-          <p>Fora do período de inscrições, por favor aguarde</p>
-          <button id="modalBtn" className='btn-principal'>Entendi</button>
-        </div>
-      </div>
+      <Modal />
     </div>
   )
 }

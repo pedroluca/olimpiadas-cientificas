@@ -19,14 +19,16 @@ header {
   z-index: 999;
 }
 
-header span {
+header a {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: .5rem;
+  text-decoration: none;
+  color: inherit
 }
 
-header span img {
+header a img {
   height: 2rem;
 }
 
@@ -103,6 +105,10 @@ header span img {
   header {
     height: 5rem;
     padding: 0 2rem;
+  }
+
+  header a img {
+    height: 2.5rem;
   }
 
   .menu-mobile nav {

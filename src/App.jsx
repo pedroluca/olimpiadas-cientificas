@@ -4,7 +4,7 @@ import { Home } from './pages/Home/Home'
 import { NotFound } from './pages/NotFound/NotFound'
 // import { CadastroEscola } from './pages/Cadastro/CadastroEscola'
 // import { Login } from './pages/Cadastro/Login'
-// import { Aluno } from './pages/Aluno/Aluno'
+import { Aluno } from './pages/Aluno/Aluno'
 // import { Escola } from './pages/Escola/Escola'
 // import { Admin } from './pages/Administrador/Administrador'
 
@@ -16,8 +16,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/aluno" element={<Aluno />} />
-        <Route path="/cadastro" element={<CadastroEscola />} />
+        <Route path="/aluno" element={<Aluno />} />
+        {/* <Route path="/cadastro" element={<CadastroEscola />} />
         <Route path="/escola" element={<Escola />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Admin />} /> */}

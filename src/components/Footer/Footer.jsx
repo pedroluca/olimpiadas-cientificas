@@ -1,5 +1,8 @@
 import LogoIF from '../../assets/images/if-bw.png'
 import QRCode from '../../assets/images/qrcode.svg'
+import Facebook from '../../assets/images/facebook-color.svg'
+import Youtube from '../../assets/images/youtube-color.svg'
+import Instagram from '../../assets/images/instagram-color.svg'
 import './styles.css'
 
 export function Footer() {
@@ -8,9 +11,9 @@ export function Footer() {
       <section className="section1">
         <img src={LogoIF} className='img-if' />
         <div>
-          <i className="fa-brands fa-facebook" onClick={() => window.location.href='https://www.facebook.com/pages/IFBaiano-Campus-Guanambi/189815274404447'}></i>
-          <i className="fa-brands fa-youtube" onClick={() => window.location.href='https://www.youtube.com/@campusguanambi'}></i>
-          <i className="fa-brands fa-instagram" onClick={() => window.location.href='https://www.instagram.com/ifbaianoguanambi/'}></i>
+          <img src={Facebook} className="footer-icon" onClick={() => window.location.href='https://www.facebook.com/pages/IFBaiano-Campus-Guanambi/189815274404447'}></img>
+          <img src={Youtube} className="footer-icon" onClick={() => window.location.href='https://www.youtube.com/@campusguanambi'}></img>
+          <img src={Instagram} className="footer-icon" onClick={() => window.location.href='https://www.instagram.com/ifbaianoguanambi/'}></img>
         </div>
       </section>
       <section className="section2">

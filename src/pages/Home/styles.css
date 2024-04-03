@@ -25,7 +25,8 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  position: relative;
+  gap: .5rem;
+  padding: .5rem;
 }
 
 .sessao-img img {
@@ -36,9 +37,6 @@
   display: block;
   color: var(--main-color);
   font-size: .5rem;
-  z-index: 2;
-  position: absolute;
-  bottom: 0;
 }
 
 .sessao-bg {
@@ -97,40 +95,6 @@
   margin-bottom: 1rem;
 }
 
-/* MODAL */
-.modal {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  border: 1px solid #888;
-  width: 80%;
-  font-size: 1rem;
-}
-
-.modal-content button {
-  margin: 0;
-  font-size: 1rem;
-}
-
 @media screen and (min-width: 768px) {
   .cronogram-holder ul {
     padding-left: 10rem;
@@ -140,11 +104,23 @@
     gap: 2rem;
     width: 50%;
   }
+
+  .sessao-img img {
+    width: 60%;
+  }
 }
 
 @media screen and (min-width: 1024px) { 
   .container {
     padding-top: 5rem;
+  }
+
+  .sessao-img {
+    padding-top: 1.5rem;
+  }
+
+  .sessao-img img {
+    width: 50%;
   }
   
   .sessao-logos {

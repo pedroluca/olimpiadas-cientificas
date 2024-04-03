@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import './styles.css'
-import { BtnAcessar } from '../BotaoAcessar/BotaoAcessar'
+import { BotaoPrincipal } from '../BotaoPrincipal/BotaoPrincipal'
 
 export function OlimpiadaCard(props) {
   return (
@@ -8,7 +8,7 @@ export function OlimpiadaCard(props) {
       <h3>{props.area}</h3>
       { props.data && <p>Data: {props.data} (dd/mm/yyyy)</p> }
       { props.horarioInicio && <p>Hora: {props.horarioInicio} - {props.horarioFim} (hh:MM - hh:MM)</p> }
-      { props.accessEnabled && <BtnAcessar />}
+      { props.accessEnabled && <BotaoPrincipal content='Acessar' />}
     </div>
   )
 }

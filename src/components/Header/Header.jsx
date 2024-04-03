@@ -33,26 +33,20 @@ export function Header() {
     setIsMenuActive((prevIsMenuActive) => !prevIsMenuActive)
   }
 
-  // const loggedInUser = false
-  // const typeLoggedInUser = 'aluno'
-
   return (
     <header>
-      <span className="home-click" onClick={() => {window.location.href="/"}}>
-        <img src={Logo3} alt="Logo" />
-        <p>I Olimpíadas<br/>Científicas</p>
-      </span>
+      <a href="/" className="home-click">
+        <img src={Logo3} alt="Logo do evento I Olimpíadas Científicas do Território Sertão Produtivo, descrição: desenho do contorno de um cérebro na cor branca ao lado do título do evento citado anteriormente" />
+        <p>I Olimpíadas Científicas<br/>do Sertão Produtivo</p>
+      </a>
       <div className={`menu-mobile ${isMenuActive ? 'active' : ''}`} id="menu-mobile">
         <button className="botao-mobile" onClick={toggleMenu}>
           <i className="fa-solid fa-bars icone-menu"></i>
         </button>
         <nav>
           <NavLink to="/">Início</NavLink>
-          {/* { !loggedInUser && <NavLink to="/login" className="nav-disabled">Log in</NavLink> }
-          { loggedInUser && typeLoggedInUser == "aluno" && <NavLink to="/aluno" className="nav-disabled">Sou Aluno</NavLink> }
-          { loggedInUser && typeLoggedInUser == "escola" && <NavLink to="/escola" className="nav-disabled">Área da Escola</NavLink> }
-          { !loggedInUser && <NavLink to="/cadastro" className='btn-inscrever nav-disabled'>Inscrever Escola</NavLink> }
-          { loggedInUser && <NavLink to="/login?logout=1" className="logout-opt nav-disabled">Sair</NavLink> } */}
+          <NavLink to="/login" className="nav-disabled">Log in</NavLink>
+          <NavLink to="/cadastro" className='btn-inscrever nav-disabled'>Inscrever Escola</NavLink>
         </nav>
       </div>
     </header>
