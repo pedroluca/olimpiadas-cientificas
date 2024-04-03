@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Header } from './components/Header/Header'
 import { Home } from './pages/Home/Home'
+import { NotFound } from './pages/NotFound/NotFound'
 // import { CadastroEscola } from './pages/Cadastro/CadastroEscola'
 // import { Login } from './pages/Cadastro/Login'
 // import { Aluno } from './pages/Aluno/Aluno'
 // import { Escola } from './pages/Escola/Escola'
-import { NotFound } from './pages/NotFound/NotFound'
 // import { Admin } from './pages/Administrador/Administrador'
 
 import './App.css'
