@@ -2,15 +2,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Header } from './components/header/header'
 import { Home } from './pages/home/home'
 import { NotFound } from './pages/not-found/not-found'
-// import { CadastroEscola } from './pages/Cadastro/CadastroEscola'
-// import { Login } from './pages/Cadastro/Login'
-// import { Aluno } from './pages/Aluno/Aluno'
-// import { Escola } from './pages/Escola/Escola'
-// import { Admin } from './pages/Administrador/Administrador'
 
 import './app.css'
 
-function App() {
+export function App() {
   return (
     <BrowserRouter>
       <Header />
@@ -26,5 +21,3 @@ function App() {
     </BrowserRouter>
   )
 }
-
-export default App
