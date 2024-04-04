@@ -8,7 +8,7 @@ import { NotFound } from './pages/not-found/not-found'
 // import { Escola } from './pages/Escola/Escola'
 // import { Admin } from './pages/Administrador/Administrador'
 
-import './App.css'
+import './app.css'
 
 function App() {
   return (
