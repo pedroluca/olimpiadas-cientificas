@@ -2,7 +2,7 @@
 import ImgBack from '../../assets/images/oc-icon-colored.png'
 import ImgIF from '../../assets/images/if2.png'
 import ImgCNPQ from '../../assets/images/cnpq.svg'
-import { Footer } from '../../components/Footer/Footer'
+import { Footer } from '../../components/footer/footer'
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
 import { useEffect } from 'react'
 import { OlimpiadaCard } from '../../components/OlimpiadaCard/OlimpiadaCard'
