@@ -46,6 +46,11 @@ export function Header() {
           <button className="botao-mobile" onClick={handleActivation}>
             <Menu className="icone-menu"></Menu>
           </button>
+          <nav className='navbar'>
+            <NavLink to="/">Início</NavLink>
+            <NavLink to="/login" className="nav-disabled">Log in</NavLink>
+            <NavLink to="/cadastro" className='btn-inscrever nav-disabled'>Inscrever Escola</NavLink>
+          </nav>
         </div>
       </header>
       <nav ref={navbarRef} className={'navbar' + (isMenuActive ? ' active' : '')}>

@@ -1,7 +1,7 @@
 .nav-disabled {
   pointer-events: none;
   cursor: not-allowed;
-  color: var(--lightgray);
+  color: var(--lightgray-color);
 }
 
 .nav-header {
@@ -39,7 +39,7 @@ header a img {
   cursor: pointer;
 }
   
-.navbar {
+.nav-header > .navbar {
   flex-direction: column;
   gap: .75rem;
   right: 2px;
@@ -66,6 +66,10 @@ header a img {
   border-color: var(--white-color);
 }
 
+.menu-mobile > .navbar {
+  display: none;
+}
+
 .botao-mobile {
   display: flex;
   align-items: center;
@@ -85,13 +89,13 @@ header a img {
   width: 100%;
 }
 
-.menu-mobile .navbar a.logout-opt {
+.navbar a.logout-opt {
   color: #ff0000;
   border: none;
 }
 
-.menu-mobile .navbar a.logout-opt:hover,
-.menu-mobile .navbar a.logout-opt.active {
+.navbar a.logout-opt:hover,
+.navbar a.logout-opt.active {
   color: #dd0000;
 }
 
@@ -105,8 +109,13 @@ header a img {
     height: 2.5rem;
   }
 
-  .menu-mobile .navbar {
+  .navbar {
+    display: none;
+  }
+
+  .menu-mobile > .navbar {
     display: flex;
+    padding: 1rem;
     flex-direction: row;
     visibility: visible;
     margin-top: 0;
@@ -118,8 +127,9 @@ header a img {
     background: transparent;
   }
 
-  .menu-mobile .navbar a {
+  .menu-mobile > .navbar a {
     transition: ease-in-out .2s;
+    padding: .2rem .5rem;
   }
 
   .botao-mobile {
