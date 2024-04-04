@@ -1,5 +1,5 @@
 import { AdminCard } from '../../components/AdminCards/AdminCards'
-import { School } from '../../components/school-card/school-card'
+import { School } from '../../components/school-card/SchoolCard'
 import './styles.css'
 
 export function Admin() {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { CadastroAluno } from "../cadastro/cadastro"
+import { CadastroAluno } from "../cadastro/Cadastro"
 import "./styles.css"
 import axios from "axios"
 
