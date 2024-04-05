@@ -8,8 +8,8 @@ import { useEffect } from 'react'
 import { OlimpiadaCard } from '../../components/OlimpiadaCard/OlimpiadaCard'
 import { Modal } from '../../components/Modal/Modal'
 import { ChevronsDown } from 'lucide-react'
-import './styles.css'
 import { Atom, Magnet, BookMarked, LineChart } from 'lucide-react'
+import './styles.css'
 
 export function Home() {
   useEffect(() => {

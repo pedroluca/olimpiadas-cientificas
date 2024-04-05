@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import './styles.css'
 import { BotaoPrincipal } from '../BotaoPrincipal/BotaoPrincipal'
+import './styles.css'
 
 export function OlimpiadaCard(props) {
   return (
