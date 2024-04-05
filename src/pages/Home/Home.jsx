@@ -39,7 +39,7 @@ export function Home() {
   const openPDF = (e) => {
     e.preventDefault()
     let link = document.createElement('a')
-    link.href = '../src/assets/files/regulamento-ofc.pdf'
+    link.href = './assets/files/regulamento-ofc.pdf'
     link.target = '_blank'
     link.rel = 'noopener noreferrer'
     document.body.appendChild(link)
