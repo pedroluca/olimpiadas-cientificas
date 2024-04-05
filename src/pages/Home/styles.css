@@ -116,11 +116,12 @@
 
 @media screen and (min-width: 1024px) { 
   .container {
-    padding-top: 5rem;
+    padding-top: 0;
   }
 
   .sessao-img {
-    padding-top: 1.5rem;
+    padding-top: 0 !important;
+    height: calc(100vh - 5rem);
   }
 
   .sessao-img img {
