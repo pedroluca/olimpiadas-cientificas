@@ -18,8 +18,8 @@ export function Footer() {
       </section>
       <section className="section2">
         <h2>I OLIMPÍADAS CIENTÍFICAS DO SERTÃO PRODUTIVO</h2>
-        <p>As Olimpíadas Científicas buscam mobilizar estudantes dos municípios que compõem o Território Sertão Produtivo, valorizando a criatividade, a atitude científica e a inovação, com objetivo de fomentar a pesquisa e a experiência tecnológica entre os jovens.</p>
-        <p>Desenvolvido com &hearts; por estudantes do curso de ADS do IF Baiano - <em>Campus</em> Guanambi</p>
+        <p className='paragrafo-central'>As Olimpíadas Científicas buscam mobilizar estudantes dos municípios que compõem o Território Sertão Produtivo, valorizando a criatividade, a atitude científica e a inovação, com objetivo de fomentar a pesquisa e a experiência tecnológica entre os jovens.</p>
+        <p className='copyright'>Desenvolvido com &hearts; por estudantes do curso de ADS do IF Baiano - <em>Campus</em> Guanambi</p>
       </section>
       <section className="section3">
         <h3>INSCREVA-SE</h3>

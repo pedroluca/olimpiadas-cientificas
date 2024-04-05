@@ -43,8 +43,7 @@
   .footer {
     flex-direction: row;
     justify-content: space-evenly;
-    padding: .5rem 2rem;
-    height: 20rem;
+    padding: 1rem 2rem;
   }
 
   .footer section {
@@ -55,13 +54,26 @@
   .footer .section2 {
     width: 60%;
     text-align: justify;
+    gap: 0;
   }
 
   .footer .section2 :not(:last-child) {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer .section2 :first-child {
+    margin-bottom: .5rem;
   }
 
   .footer .img-if {
     width: 100%;
+  }
+
+  .footer .paragrafo-central {
+    margin: 0 5rem;
+  }
+
+  .footer .copyright {
+    color: var(--gray-color);
   }
 }

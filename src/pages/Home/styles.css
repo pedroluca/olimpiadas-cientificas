@@ -145,6 +145,10 @@
     padding: 3rem 20%;
   }
 
+  .sessao-texto p {
+    font-size: 1.2rem;
+  }
+
   .olimp-container-desktop {
     justify-content: center;
     flex-wrap: wrap;
