@@ -50,7 +50,7 @@ export function Home() {
   return (
     <div className="container">
       <session className="sessao-img">
-        <img src={ImgBack} alt="Logo do evento I Olimpíadas Científicas" />
+        <img src={ImgBack} fetchPriority="high" alt="Logo do evento I Olimpíadas Científicas" />
         <ChevronsDown className='icone-home' />
       </session>
       <session className="container sessao-texto primeira-sessao">
@@ -130,11 +130,11 @@ export function Home() {
       <session className="container sessao-texto sessao-logos">
         <div>
           <h3>Realização:</h3>
-          <img src={ImgIF} className='logo-if' />
+          <img src={ImgIF} className='logo-if' loading="lazy" />
         </div>
         <div>
           <h3>Apoio:</h3>
-          <img src={ImgCNPQ} />
+          <img src={ImgCNPQ} loading="lazy" />
         </div>
       </session>
       <Footer />
