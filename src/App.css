@@ -1,4 +1,42 @@
-@import "./global.css";
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;700&display=swap');
+
+:root {
+  --black-color: #242424;
+  --black2-color: #212529;
+  --white-color: #F1F1F1;
+  --white2-color: #F9F9F9;
+  --lightgray-color: #d1d1d1;
+  --lightgray2-color: #F3F3F3;
+  --gray-color: #a1a1a1;
+  --main-color: #ff6600;
+  --second-color: #9900cc;
+  --if-color: #369837;
+
+  font-family: "Wix Madefor Display", sans-serif;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--second-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+.under-header-container {
+  padding-top: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .under-header-container {
+    padding-top: 3rem;
+  }
+}
 
 * {
   padding: 0;
