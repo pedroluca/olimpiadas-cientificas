@@ -48,7 +48,7 @@ export function Home() {
   }
   
   return (
-    <div className="container">
+    <div className='container'>
       <session className="sessao-img">
         <img src={ImgBack} fetchPriority="high" alt="Logo do evento I Olimpíadas Científicas" />
         <ChevronsDown className='icone-home' />
