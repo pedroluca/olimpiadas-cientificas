@@ -77,16 +77,16 @@ export function Home() {
         <p>Cada escola deverá escolher 2 dentre as seguintes áreas:</p>
         <div className="olimp-container olimp-container-desktop">
           <OlimpiadaCard area="Química">
-            <Atom className='olimp-img' />
+            <Atom className='olimp-img' loading="lazy" />
           </OlimpiadaCard>
           <OlimpiadaCard area="Física">
-            <Magnet className='olimp-img' />
+            <Magnet className='olimp-img' loading="lazy" />
           </OlimpiadaCard>
           <OlimpiadaCard area="História">
-            <BookMarked className='olimp-img' />
+            <BookMarked className='olimp-img' loading="lazy" />
           </OlimpiadaCard>
           <OlimpiadaCard area="Empreendedorismo e Inovação">
-            <LineChart className='olimp-img' />
+            <LineChart className='olimp-img' loading="lazy" />
           </OlimpiadaCard>
         </div>
       </session>
