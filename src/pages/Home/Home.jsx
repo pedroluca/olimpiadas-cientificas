@@ -113,7 +113,7 @@ export function Home() {
           <p className='destaque'>OBS: Somente poderão concorrer à bolsas, estudantes do ensino fundamental, médio e técnico de escolas públicas, que atendam os seguintes perfis: estudantes mulheres, estudantes negros (homens e mulheres) e estudantes com deficiência (PCD).</p>
         </div>
       </session>
-      <session className="container sessao-texto sessao-bg">
+      <session className="container sessao-texto sessao-bg sessao-cronograma">
         <h2>Cronograma</h2>
         <div className='cronogram-holder'>
           <ul>

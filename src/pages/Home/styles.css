@@ -92,16 +92,20 @@
 }
 
 .cronogram-holder ul li {
-  width: 75%;
+  width: 90%;
 }
 
 .cronogram-holder ul li:not(:last-child) {
   margin-bottom: 1rem;
 }
 
+.sessao-cronograma {
+  align-items: center;
+}
+
 @media screen and (min-width: 768px) {
-  .cronogram-holder ul {
-    padding-left: 10rem;
+  .cronogram-holder {
+    width: 70%;
   }
 
   .modal-content {
