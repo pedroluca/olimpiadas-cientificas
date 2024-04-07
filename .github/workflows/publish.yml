@@ -1,4 +1,4 @@
-name: Generate a build and push to another branch
+name: Generate a build and push to main branch
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     name: Build and Push
     steps:
     - name: git-checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3.1
 
     - name: Install all dependencies
       run: pnpm install
