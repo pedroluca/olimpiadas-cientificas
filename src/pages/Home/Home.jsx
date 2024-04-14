@@ -6,7 +6,6 @@ import { Footer } from '../../components/Footer/Footer'
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
 import { useEffect } from 'react'
 import { OlimpiadaCard } from '../../components/OlimpiadaCard/OlimpiadaCard'
-import { Modal } from '../../components/Modal/Modal'
 import { ChevronsDown } from 'lucide-react'
 import { Atom, Magnet, BookMarked, LineChart } from 'lucide-react'
 import './styles.css'
@@ -130,7 +129,6 @@ export function Home() {
         </div>
       </session>
       <Footer />
-      <Modal />
     </div>
   )
 }
