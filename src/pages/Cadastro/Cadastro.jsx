@@ -2,13 +2,16 @@ import { useState } from 'react';
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
 import PropTypes from 'prop-types'
 import './styles.css'
-import { useEffect } from 'react';
-import axios from 'axios';
-import InputMask from 'react-input-mask';
+import { useEffect } from 'react'
+import { isValid as isCpfValid } from '@fnando/cpf'
+import axios from 'axios'
+import InputMask from 'react-input-mask'
 
 export function CadastroAluno(props) {
 
   const [escola, setEscola] = useState({})
+  const [cpfValid, setCpfValid] = useState(true)
+  const [cpfError, setCpfError] = useState('')
 
   useEffect(() => {
     axios.get('https://api.olimpiadasdosertaoprodutivo.com/api/aluno/login').then(function(res){
@@ -28,6 +31,18 @@ export function CadastroAluno(props) {
       ...formData,
       [e.target.name]: e.target.value
     })
+  }
+  
+  const handleCpfChange = (e) => {
+    const cpf = e.target.value;
+    if (!isCpfValid(cpf)) {
+      setCpfValid(false);
+      setCpfError('CPF inválido');
+    } else {
+      setCpfValid(true);
+      setCpfError('');
+    }
+    setFormData(prevState => ({ ...prevState, cpfResponsavel: cpf }));
   }
 
   const handleSubmit = async (e) => {
@@ -72,10 +87,11 @@ export function CadastroAluno(props) {
                 id="cpf" 
                 name="cpf" 
                 placeholder="xxx.xxx.xxx-xx"
-                onChange={handleChange} 
+                onChange={handleCpfChange}
+                className={!cpfValid ? 'error' : ''}
                 required 
               />
-            {/* <input type="text" id="cpf" name="cpf" placeholder="Ex: 00000000000" pattern="\d{11}" onChange={handleChange} required /> */}
+              {!cpfValid && <div className="error-message">{cpfError}</div>}
           </span>
           <span>
             <label htmlFor="codigo">Código da escola:</label>

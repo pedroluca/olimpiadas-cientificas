@@ -160,6 +160,15 @@ form hr {
   display: none;
 }
 
+.error {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 1rem;
+}
+
 @media screen and (768px < width < 1024px) {
   .container-cadastro {
     margin: 0;

@@ -1,10 +1,18 @@
 import { useState } from 'react'
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
+import { isValid as isCnpjValid } from '@fnando/cnpj'
+import { isValid as isCpfValid } from '@fnando/cpf'
 import ImgCadastro from '../../assets/images/cadastro.jpg'
 import InputMask from 'react-input-mask'
 import './styles.css'
 
 export function CadastroEscola() {  
+
+  const [cnpjValid, setCnpjValid] = useState(true)
+  const [cpfValid, setCpfValid] = useState(true)
+  const [cnpjError, setCnpjError] = useState('')
+  const [cpfError, setCpfError] = useState('')
+  
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
@@ -39,8 +47,31 @@ export function CadastroEscola() {
     } else {
       value = event.target.value
     }
-  
+
     setFormData(prevState => ({ ...prevState, [name]: value }))
+  }
+  const handleCnpjChange = (e) => {
+    const cnpj = e.target.value;
+    if (!isCnpjValid(cnpj)) {
+      setCnpjValid(false);
+      setCnpjError('CNPJ inválido');
+    } else {
+      setCnpjValid(true);
+      setCnpjError('');
+    }
+    setFormData(prevState => ({ ...prevState, cnpj: cnpj }));
+  }
+  
+  const handleCpfChange = (e) => {
+    const cpf = e.target.value;
+    if (!isCpfValid(cpf)) {
+      setCpfValid(false);
+      setCpfError('CPF inválido');
+    } else {
+      setCpfValid(true);
+      setCpfError('');
+    }
+    setFormData(prevState => ({ ...prevState, cpfResponsavel: cpf }));
   }
 
   const handleSubmit = async (e) => {
@@ -88,9 +119,11 @@ export function CadastroEscola() {
                 id="cnpj" 
                 name="cnpj" 
                 placeholder="xx.xxx.xxx/0001-xx" 
-                onChange={handleChange} 
+                onChange={handleCnpjChange} 
+                className={!cnpjValid ? 'error' : ''}
                 required 
               />
+              {!cnpjValid && <div className="error-message">{cnpjError}</div>}
             </span>
             <span>
               <label htmlFor="telefone">Telefone:</label>
@@ -177,9 +210,11 @@ export function CadastroEscola() {
                 id="cpfResponsavel" 
                 name="cpfResponsavel" 
                 placeholder="xxx.xxx.xxx-xx"
-                onChange={handleChange} 
+                onChange={handleCpfChange}
+                className={!cnpjValid ? 'error' : ''}
                 required 
               />
+              {!cpfValid && <div className="error-message">{cpfError}</div>}
             </span>
           </section>
           <BotaoPrincipal type="submit" content="Cadastrar" />
