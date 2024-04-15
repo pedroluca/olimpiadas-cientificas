@@ -182,14 +182,6 @@ export function CadastroEscola() {
                   <span className="custom-checkbox">História</span>
                 </label>
                 <label>
-                  <input type="checkbox" id="area" name="arte" onChange={handleChange} value="Arte e Cultura" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Arte e Cultura")} />
-                  <span className="custom-checkbox">Arte e Cultura</span>
-                </label>
-                <label>
-                  <input type="checkbox" id="area" name="ambiente" onChange={handleChange} value="Meio Ambiente e Sustentabilidade" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Meio Ambiente e Sustentabilidade")} />
-                  <span className="custom-checkbox">Meio Ambiente e Sustentabilidade</span>
-                </label>
-                <label>
                   <input type="checkbox" id="area" name="inovacao" onChange={handleChange} value="Empreendedorismo e Inovação" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Empreendedorismo e Inovação")} />
                   <span className="custom-checkbox">Empreendedorismo e Inovação</span>
                 </label>

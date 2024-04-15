@@ -1,5 +1,4 @@
 .modal {
-  display: none;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -24,6 +23,10 @@
   border: 1px solid #888;
   width: 80%;
   font-size: 1rem;
+}
+
+.modal-content p {
+  text-align: justify;
 }
 
 .modal-content button {

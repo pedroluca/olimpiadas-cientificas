@@ -4,7 +4,6 @@ import ImgIF from '../../assets/images/if2.png'
 import ImgCNPQ from '../../assets/images/cnpq.svg'
 import { Footer } from '../../components/Footer/Footer'
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
-import { useEffect } from 'react'
 import { OlimpiadaCard } from '../../components/OlimpiadaCard/OlimpiadaCard'
 import { ChevronsDown } from 'lucide-react'
 import { Atom, Magnet, BookMarked, LineChart } from 'lucide-react'
@@ -12,20 +11,6 @@ import './styles.css'
 import { BotaoRedirect } from '../../components/botao-redirect'
 
 export function Home() {
-  useEffect(() => {
-    var modal = document.getElementById('myModal')
-    var btn = document.getElementById('modalBtn')
-
-    btn.addEventListener('click', function() {
-      modal.style.display = 'none'
-    })
-
-    window.addEventListener('click', function(event) {
-      if (event.target == modal) {
-        modal.style.display = 'none'
-      }
-    })
-  }, [])
 
   const openPDF = (e) => {
     e.preventDefault()

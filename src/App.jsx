@@ -12,11 +12,8 @@ export function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/aluno" element={<Aluno />} /> */}
         <Route path="/cadastro" element={<CadastroEscola />} />
         <Route path="/escola" element={<Escola />} />
-        {/* <Route path="/login" element={<Login />} /> */}
-        {/* <Route path="/admin" element={<Admin />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
