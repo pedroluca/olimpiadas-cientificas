@@ -6,7 +6,7 @@ import { CadastroEscola } from './pages/Cadastro/CadastroEscola'
 import { Escola } from './pages/Escola/Escola'
 import { Login } from './pages/Cadastro/Login'
 import { Aluno } from './pages/Aluno/Aluno'
-import { Admin } from './pages/Admin/Admin'
+import { Admin } from './pages/admin/admin'
 import './App.css'
 
 export function App() {
