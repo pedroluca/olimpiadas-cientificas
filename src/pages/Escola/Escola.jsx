@@ -1,14 +1,37 @@
 import { useEffect, useState } from "react"
 import { CadastroAluno } from "../Cadastro/Cadastro"
+import { useNavigate } from "react-router-dom"
 import "./styles.css"
 import axios from "axios"
 
 export function Escola() {
-
   const [user, setUser] = useState({})
   const [alunos, setAlunos] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
+    
+      let requisicao = {
+        method: 'GET',
+        headers: {
+          'Content-Type' : 'application/json',
+          'Authorization' : `Bearer ${localStorage.getItem('token')}`
+        },
+      }
+    
+      async () => {
+        try {
+          const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/verify-login', requisicao)
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+          }
+          const data = await response.json()
+          if (!data.isAuthenticated) navigate('/login')
+        } catch (error) {
+          console.error('Houve um erro ao enviar a requisição:', error)
+        }
+      }
+    
     axios.get('https://api.olimpiadasdosertaoprodutivo.com/escola/login').then(function(res){
       setUser(res.data)
     })
@@ -16,7 +39,7 @@ export function Escola() {
     axios.get('https://api.olimpiadasdosertaoprodutivo.com/aluno').then(function(res){
       setAlunos(res.data)
     })
-  }, [])
+  }, [navigate])
 
   return (
     <div className="container-escola under-header-container">

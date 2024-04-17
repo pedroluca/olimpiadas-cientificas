@@ -12,6 +12,26 @@ export function CadastroEscola() {
   const [cpfValid, setCpfValid] = useState(true)
   const [cnpjError, setCnpjError] = useState('')
   const [cpfError, setCpfError] = useState('')
+  const [popupMessage, setPopupMessage] = useState('')
+  const [showPopup, setShowPopup] = useState(false)
+  const [progress, setProgress] = useState(0)
+
+  const showPopupWithProgress = (message) => {
+    setPopupMessage(message)
+    setShowPopup(true)
+    setProgress(0)
+  
+    const interval = setInterval(() => {
+      setProgress((oldProgress) => {
+        if (oldProgress >= 100) {
+          clearInterval(interval)
+          setShowPopup(false)
+          return 100
+        }
+        return Math.min(oldProgress + 1, 100)
+      })
+    }, 50)
+  }
   
   const [formData, setFormData] = useState({
     nome: '',
@@ -51,53 +71,63 @@ export function CadastroEscola() {
     setFormData(prevState => ({ ...prevState, [name]: value }))
   }
   const handleCnpjChange = (e) => {
-    const cnpj = e.target.value;
+    const cnpj = e.target.value
     if (!isCnpjValid(cnpj)) {
-      setCnpjValid(false);
-      setCnpjError('CNPJ inválido');
+      setCnpjValid(false)
+      setCnpjError('CNPJ inválido')
     } else {
-      setCnpjValid(true);
-      setCnpjError('');
+      setCnpjValid(true)
+      setCnpjError('')
     }
-    setFormData(prevState => ({ ...prevState, cnpj: cnpj }));
+    setFormData(prevState => ({ ...prevState, cnpj: cnpj }))
   }
   
   const handleCpfChange = (e) => {
-    const cpf = e.target.value;
+    const cpf = e.target.value
     if (!isCpfValid(cpf)) {
-      setCpfValid(false);
-      setCpfError('CPF inválido');
+      setCpfValid(false)
+      setCpfError('CPF inválido')
     } else {
-      setCpfValid(true);
-      setCpfError('');
+      setCpfValid(true)
+      setCpfError('')
     }
-    setFormData(prevState => ({ ...prevState, cpfResponsavel: cpf }));
+    setFormData(prevState => ({ ...prevState, cpfResponsavel: cpf }))
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+  
     let requisicao = {
       method: 'POST',
       headers: {'Content-Type' : 'application/json'},
       body: JSON.stringify(formData)
     }
-
+  
     try {
       const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/escola/cadastro', requisicao)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       const data = await response.json()
+      showPopupWithProgress('Cadastro realizado com sucesso!')
       return data.msg
     } catch (error) {
       console.error('An error occurred while submitting the form:', error)
+      showPopupWithProgress('Ocorreu um erro, por favor tente novamente.')
     }
   }
 
   return (
     <div className="container-cadastro under-header-container">
       <h1>Cadastro de Escolas</h1>
+      {showPopup && (
+        <div className={`popup ${showPopup ? 'show' : ''}`}>
+          <p>{popupMessage}</p>
+          <div className="progress-bar">
+            <div className="progress-bar-fill" style={{width: `${progress}%`}}></div>
+          </div>
+        </div>
+      )}
       <p>Por favor faça o cadastro para participar</p>
       <section className="form-img-container">
         <img src={ImgCadastro} className="img-cadastro" />
@@ -128,11 +158,11 @@ export function CadastroEscola() {
             <span>
               <label htmlFor="telefone">Telefone:</label>
               <InputMask 
-                mask="99 99999-9999" 
+                mask="(99) 99999-9999" 
                 type="text" 
                 id="telefone" 
                 name="telefone" 
-                placeholder="xx xxxxx-xxxx" 
+                placeholder="Ex: (77) 99999-9999" 
                 onChange={handleChange} 
                 required 
               />
@@ -166,8 +196,8 @@ export function CadastroEscola() {
           <hr/>
           <section className="form-session">
             <span className="areas">
-              <label htmlFor="area">Áreas:</label>
-              <p>* Escolha 2 opções</p>
+              <label>Áreas:</label>
+              <p>* No máximo 2 opções</p>
               <div className="container-areas">
                 <label>
                   <input type="checkbox" id="area" name="quimica" onChange={handleChange} value="Química" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Química")} />

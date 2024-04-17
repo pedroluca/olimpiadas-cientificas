@@ -169,6 +169,54 @@ form hr {
   font-size: 1rem;
 }
 
+.container-login-type {
+  display: flex;
+  align-items: center;
+}
+
+.popup {
+  position: fixed;
+  background: var(--white2-color);
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  top: 0;
+  gap: 1rem;
+  -webkit-box-shadow: 0px 2px 3px 0px var(--lightgray-color); 
+  box-shadow: 0px 2px 3px 0px var(--lightgray-color);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.popup.show {
+  opacity: 1;
+}
+
+.popup p {
+  padding: 0 1rem;
+}
+
+@keyframes progress {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+.progress-bar {
+  width: 100%;
+  height: .5rem;
+  background: var(--lightgray-color);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--main-color);
+  transition: width 0.2s;
+}
+
 @media screen and (768px < width < 1024px) {
   .container-cadastro {
     margin: 0;

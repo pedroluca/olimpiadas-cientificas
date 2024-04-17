@@ -5,6 +5,7 @@ import { NotFound } from './pages/NotFound/NotFound'
 import { CadastroEscola } from './pages/Cadastro/CadastroEscola'
 import { Escola } from './pages/Escola/Escola'
 import './App.css'
+import { Login } from './pages/Cadastro/Login'
 
 export function App() {
   return (
@@ -14,6 +15,7 @@ export function App() {
         <Route path="/" element={<Home />} />
         <Route path="/cadastro" element={<CadastroEscola />} />
         <Route path="/escola" element={<Escola />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
