@@ -316,7 +316,7 @@ form hr {
 
 .password-container input[type="password"],
 .password-container input[type="text"] {
-  padding-right:  30px; /* Espaço para o ícone */
+  padding-right:  30px;
   width: 100%;
 }
 
@@ -327,6 +327,10 @@ form hr {
   transform: translateY(-50%);
   cursor: pointer;
   color: var(--main-color);
+}
+
+.togglePassword-deactivated {
+  color: var(--lightgray-color) !important;
 }
 
 @media screen and (min-width: 1024px) {

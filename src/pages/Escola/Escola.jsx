@@ -10,27 +10,26 @@ export function Escola() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    
-      let requisicao = {
-        method: 'GET',
-        headers: {
-          'Content-Type' : 'application/json',
-          'Authorization' : `Bearer ${localStorage.getItem('token')}`
-        },
-      }
-    
-      async () => {
-        try {
-          const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/verify-login', requisicao)
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`)
-          }
-          const data = await response.json()
-          if (!data.isAuthenticated) navigate('/login')
-        } catch (error) {
-          console.error('Houve um erro ao enviar a requisição:', error)
+    let requisicao = {
+      method: 'GET',
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.getItem('token')}`
+      },
+    }
+  
+    async () => {
+      try {
+        const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/verify-login', requisicao)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
         }
+        const data = await response.json()
+        if (!data.isAuthenticated) navigate('/login')
+      } catch (error) {
+        console.error('Houve um erro ao enviar a requisição:', error)
       }
+    }
     
     axios.get('https://api.olimpiadasdosertaoprodutivo.com/escola/login').then(function(res){
       setUser(res.data)

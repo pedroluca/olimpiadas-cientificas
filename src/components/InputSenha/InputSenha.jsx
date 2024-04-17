@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { EyeIcon, EyeOffIcon } from 'lucide-react'
+import { PropTypes } from 'prop-types'
 import './styles.css'
 
-export function InputSenha() {
+export function InputSenha(props) {
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
@@ -11,8 +13,16 @@ export function InputSenha() {
   
   return (
     <div className="password-container pass-view-cadastro">
-      <input type={isPasswordVisible ? "text" : "password"} name="senha" id="senha" required placeholder="*******" />
-      <i className={"fa-solid " + (isPasswordVisible ? "fa-eye-slash" : "fa-eye") + " togglePassword"} id="togglePassword" onClick={togglePasswordVisibility} />            
+      <input type={isPasswordVisible ? "text" : "password"} name="password" id="password" required placeholder="*******" onChange={props.onChange} />
+      { 
+        isPasswordVisible 
+        ? <EyeOffIcon className='togglePassword' id="togglePassword" onClick={togglePasswordVisibility} />
+        : <EyeIcon className='togglePassword togglePassword-deactivated' id="togglePassword" onClick={togglePasswordVisibility} />
+      }
     </div>
   )
+}
+
+InputSenha.propTypes = {
+  onChange: PropTypes.func,
 }

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
 import { useNavigate } from 'react-router-dom'
 import './styles.css'
+import { InputSenha } from '../../components/InputSenha/InputSenha'
 
 
 export function Login() {
@@ -27,16 +28,10 @@ export function Login() {
       })
     }, 50)
   }
-
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-
-  const togglePasswordVisibility = () => {
-    setIsPasswordVisible(!isPasswordVisible)
-  }
   
   const [formData, setFormData] = useState({
-    usuario: '',
-    senha: '',
+    username: '',
+    password: '',
     userType: ''
   })
 
@@ -63,7 +58,7 @@ export function Login() {
     }
     
     try {
-      const response = await fetch(`http://localhost:8000/api/${urlEndpoint}`, requisicao)
+      const response = await fetch(`https://api.olimpiadasdosertaoprodutivo.com/api/${urlEndpoint}/login`, requisicao)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
@@ -101,14 +96,11 @@ export function Login() {
       <form onSubmit={handleSubmit}>
         <span>
           <label htmlFor="usuario">Usuário:</label>
-          <input type="text" name="usuario" id="usuario" placeholder="Ex: usuario" onChange={handleChange} required />
+          <input type="text" name="username" id="username" placeholder="Ex: usuario" onChange={handleChange} required />
         </span>
         <span>
           <label htmlFor="senha">Senha:</label>
-          <div className="password-container pass-view-cadastro">
-            <input type={isPasswordVisible ? "text" : "password"} name="senha" id="senha" onChange={handleChange} required placeholder="*******" />
-            <i className={"fa-solid " + (isPasswordVisible ? "fa-eye-slash" : "fa-eye") + " togglePassword"} id="togglePassword" onClick={togglePasswordVisibility} />            
-          </div>
+          <InputSenha onChange={handleChange} />
         </span>
         <span>
           <div className="container-areas container-login-type">

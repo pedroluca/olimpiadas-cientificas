@@ -6,8 +6,35 @@ import { Menu } from 'lucide-react'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { Modal } from '../Modal/Modal'
+import { useEffect } from 'react'
 
 export function Header() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    let requisicao = {
+      method: 'GET',
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.getItem('token')}`
+      },
+    }
+  
+    async () => {
+      try {
+        const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/verify-login', requisicao)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const data = await response.json()
+        if (data) setIsLoggedIn(true)
+        return data
+      } catch (error) {
+        console.error('Houve um erro ao enviar a requisição:', error)
+      }
+    }
+  }, [])
+  
   const [isMenuActive, setIsMenuActive] = useState(false)
   const navbarRef = useRef(null)
 
@@ -37,7 +64,7 @@ export function Header() {
     })
   }
 
-  const [isModalActive, setIsModalActive] = useState(false);
+  const [isModalActive, setIsModalActive] = useState(false)
 
   const openModal = (e) => {
     e.preventDefault()
@@ -59,6 +86,7 @@ export function Header() {
           </button>
           <nav className='navbar'>
             <NavLink exact to="/">Início</NavLink>
+            { isLoggedIn && <NavLink to="/escola" /> }
             <NavLink to="/login" title='Em breve' onClick={openModal} className="">Log in</NavLink>
             <NavLink to="/cadastro" className='btn-inscrever'>Inscrever Escola</NavLink>
           </nav>
