@@ -9,6 +9,7 @@ export function Login() {
   const [popupMessage, setPopupMessage] = useState('')
   const [showPopup, setShowPopup] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
 
   const showPopupWithProgress = (message) => {
     setPopupMessage(message)
@@ -48,6 +49,7 @@ export function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setIsLoading(true)
 
     let urlEndpoint
 
@@ -59,14 +61,14 @@ export function Login() {
       headers: {'Content-Type' : 'application/json'},
       body: JSON.stringify(formData)
     }
-
+    
     try {
       const response = await fetch(`http://localhost:8000/api/${urlEndpoint}`, requisicao)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       const data = await response.json()
-      if (data.msg.token) {
+      if (data) {
         localStorage.setItem('token', data.msg.token)
         if (urlEndpoint === 'escola') {
           navigate('/escola')
@@ -79,6 +81,8 @@ export function Login() {
     } catch (error) {
       console.error('An error occurred while submitting the form:', error)
       showPopupWithProgress('Ocorreu um erro ao tentar logar, por favor tente novamente')
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -119,7 +123,9 @@ export function Login() {
             </label>
           </div>
         </span>
-        <BotaoPrincipal type="submit" content="Entrar" />
+        <BotaoPrincipal type="submit" disabled={isLoading}>
+          {isLoading ? <div className="spinner"></div> : 'Entrar'}
+        </BotaoPrincipal>
         <p className="login-switch">Não possui conta? <a className="login-switch" href="/cadastro">Crie uma agora</a></p>
       </form>
     </div>

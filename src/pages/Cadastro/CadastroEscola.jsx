@@ -15,6 +15,7 @@ export function CadastroEscola() {
   const [popupMessage, setPopupMessage] = useState('')
   const [showPopup, setShowPopup] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
 
   const showPopupWithProgress = (message) => {
     setPopupMessage(message)
@@ -96,6 +97,7 @@ export function CadastroEscola() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setIsLoading(true)
   
     let requisicao = {
       method: 'POST',
@@ -114,6 +116,8 @@ export function CadastroEscola() {
     } catch (error) {
       console.error('An error occurred while submitting the form:', error)
       showPopupWithProgress('Ocorreu um erro, por favor tente novamente.')
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -239,7 +243,9 @@ export function CadastroEscola() {
               {!cpfValid && <div className="error-message">{cpfError}</div>}
             </span>
           </section>
-          <BotaoPrincipal type="submit" content="Cadastrar" />
+        <BotaoPrincipal type="submit" disabled={isLoading}>
+          {isLoading ? <div className="spinner"></div> : 'Cadastrar'}
+        </BotaoPrincipal>
           <p className="login-switch">Já possui conta? <a className="login-switch" href="/login">Faça login aqui</a></p>
         </form>
       </section>
