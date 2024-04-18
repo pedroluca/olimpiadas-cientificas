@@ -91,24 +91,24 @@ export function CadastroAluno(props) {
         </section>
         <section className="form-container">
           <div className="container-areas">
-            <label htmlFor="modalidade">Modalidade:</label>
+            <label>Modalidade:</label>
             <label>
-              <input type="radio" id="modalidade" name="modalidade" onChange={handleChange} value="a" />
+              <input type="radio" name="modalidade" onChange={handleChange} value="a" />
               <span className="custom-checkbox">1° Ano</span>
             </label>
             <label>
-              <input type="radio" id="modalidade" name="modalidade" onChange={handleChange} value="b" />
+              <input type="radio" name="modalidade" onChange={handleChange} value="b" />
               <span className="custom-checkbox">2° Ano</span>
             </label>
           </div>
           <div className="container-areas">
-            <label htmlFor="area">Área:</label>
+            <label>Área:</label>
             <label>
-              <input type="radio" id="area" name="area" onChange={handleChange} value="" />
+              <input type="radio" name="area" onChange={handleChange} value="" />
               <span className="custom-checkbox">Área 1</span>
             </label>
             <label>
-              <input type="radio" id="area" name="area" onChange={handleChange} value="" />
+              <input type="radio" name="area" onChange={handleChange} value="" />
               <span className="custom-checkbox">Área 2</span>
             </label>
           </div>

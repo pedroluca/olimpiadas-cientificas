@@ -17,8 +17,9 @@ export function Escola() {
         'Authorization' : `Bearer ${localStorage.getItem('token')}`
       },
     }
-    console.log('teste')
-    async () => {
+
+    const fetchData = async () => {
+      console.log('teste')
       try {
         const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/verify-login', requisicao)
         if (!response.ok) {
@@ -32,11 +33,13 @@ export function Escola() {
       }
     }
 
+    fetchData()
+
   }, [navigate])
 
   return (
     <div className="container-escola under-header-container">
-      <h1>Escola {user.nome}</h1>
+      <h1>{user.nome}</h1>
       <p>Usuário: {user.usuario}</p>
       <p>Email: {user.email}</p>
       <p>Município: {user.municipio}</p>
