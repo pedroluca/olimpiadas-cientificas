@@ -1,4 +1,4 @@
-import { AdminCard } from '../../components/AdminCards/AdminCards'
+import { AdminCard } from '../../components/AdminCard/AdminCard'
 import { School } from '../../components/SchoolCard/SchoolCard'
 import './styles.css'
 

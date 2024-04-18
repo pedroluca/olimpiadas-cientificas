@@ -2,10 +2,10 @@ import { useEffect, useState } from "react"
 import { CadastroAluno } from "../Cadastro/Cadastro"
 import { useNavigate } from "react-router-dom"
 import "./styles.css"
-import axios from "axios"
 
 export function Escola() {
   const [user, setUser] = useState({})
+  // eslint-disable-next-line no-unused-vars
   const [alunos, setAlunos] = useState([])
   const navigate = useNavigate()
 
@@ -17,7 +17,7 @@ export function Escola() {
         'Authorization' : `Bearer ${localStorage.getItem('token')}`
       },
     }
-  
+    console.log('teste')
     async () => {
       try {
         const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/verify-login', requisicao)
@@ -26,30 +26,27 @@ export function Escola() {
         }
         const data = await response.json()
         if (!data.isAuthenticated) navigate('/login')
+        setUser(JSON.parse(localStorage.getItem('user')))
       } catch (error) {
         console.error('Houve um erro ao enviar a requisição:', error)
       }
     }
-    
-    axios.get('https://api.olimpiadasdosertaoprodutivo.com/escola/login').then(function(res){
-      setUser(res.data)
-    })
 
-    axios.get('https://api.olimpiadasdosertaoprodutivo.com/aluno').then(function(res){
-      setAlunos(res.data)
-    })
   }, [navigate])
 
   return (
     <div className="container-escola under-header-container">
       <h1>Escola {user.nome}</h1>
+      <p>Usuário: {user.usuario}</p>
       <p>Email: {user.email}</p>
+      <p>Município: {user.municipio}</p>
+      <p>Responsável cadastrado: {user.nome_responsavel}</p>
       <h2>Áreas selecionadas:</h2>
       <ul>
-        <li>{user.area1}</li>
-        <li>{user.area2}</li>
+        <li>{user.id_area1}</li>
+        <li>{user.id_area2}</li>
       </ul>
-      <CadastroAluno codigo={user.codigo} />
+      <CadastroAluno codigo={user.codigo_escola} />
       <h2>Lista de Alunos</h2>
       <table>
         <thead>

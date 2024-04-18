@@ -5,6 +5,7 @@ import { isValid as isCpfValid } from '@fnando/cpf'
 import ImgCadastro from '../../assets/images/cadastro.jpg'
 import InputMask from 'react-input-mask'
 import './styles.css'
+import { useNavigate } from 'react-router-dom'
 
 export function CadastroEscola() {  
 
@@ -12,10 +13,11 @@ export function CadastroEscola() {
   const [cpfValid, setCpfValid] = useState(true)
   const [cnpjError, setCnpjError] = useState('')
   const [cpfError, setCpfError] = useState('')
-  const [popupMessage, setPopupMessage] = useState('')
-  const [showPopup, setShowPopup] = useState(false)
+  const [popupMessage, setPopupMessage] = useState('Mensagem de teste de envio de tamanho de popup')
+  const [showPopup, setShowPopup] = useState(true)
   const [progress, setProgress] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
 
   const showPopupWithProgress = (message) => {
     setPopupMessage(message)
@@ -31,7 +33,7 @@ export function CadastroEscola() {
         }
         return Math.min(oldProgress + 1, 100)
       })
-    }, 50)
+    }, 500)
   }
   
   const [formData, setFormData] = useState({
@@ -111,7 +113,10 @@ export function CadastroEscola() {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       const data = await response.json()
-      showPopupWithProgress('Cadastro realizado com sucesso!')
+      showPopupWithProgress(`${data.msg}. Um email de confirmação foi enviado para seu email cadastrado.`)
+      setTimeout(() => {
+        navigate('/login')
+      }, 5000)
       return data.msg
     } catch (error) {
       console.error('An error occurred while submitting the form:', error)
@@ -204,19 +209,19 @@ export function CadastroEscola() {
               <p>* No máximo 2 opções</p>
               <div className="container-areas">
                 <label>
-                  <input type="checkbox" id="area" name="quimica" onChange={handleChange} value="Química" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Química")} />
+                  <input type="checkbox" id="area" name="quimica" onChange={handleChange} value="x9YWmBSukETyXkAi" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("x9YWmBSukETyXkAi")} />
                   <span className="custom-checkbox">Química</span>
                 </label>
                 <label>
-                  <input type="checkbox" id="area" name="fisica" onChange={handleChange} value="Física" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Física")} />
+                  <input type="checkbox" id="area" name="fisica" onChange={handleChange} value="0MbMywq1rPh52QBJ" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("0MbMywq1rPh52QBJ")} />
                   <span className="custom-checkbox">Física</span>
                 </label>
                 <label>
-                  <input type="checkbox" id="area" name="historia" onChange={handleChange} value="História" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("História")} />
+                  <input type="checkbox" id="area" name="historia" onChange={handleChange} value="iNFpIjnwKfCxhRLN" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("iNFpIjnwKfCxhRLN")} />
                   <span className="custom-checkbox">História</span>
                 </label>
                 <label>
-                  <input type="checkbox" id="area" name="inovacao" onChange={handleChange} value="Empreendedorismo e Inovação" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("Empreendedorismo e Inovação")} />
+                  <input type="checkbox" id="area" name="inovacao" onChange={handleChange} value="IL933QzqrGA5eO4z" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("IL933QzqrGA5eO4z")} />
                   <span className="custom-checkbox">Empreendedorismo e Inovação</span>
                 </label>
               </div>

@@ -2,22 +2,13 @@ import { useState } from 'react';
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
 import PropTypes from 'prop-types'
 import './styles.css'
-import { useEffect } from 'react'
 import { isValid as isCpfValid } from '@fnando/cpf'
-import axios from 'axios'
 import InputMask from 'react-input-mask'
 
 export function CadastroAluno(props) {
 
-  const [escola, setEscola] = useState({})
   const [cpfValid, setCpfValid] = useState(true)
   const [cpfError, setCpfError] = useState('')
-
-  useEffect(() => {
-    axios.get('https://api.olimpiadasdosertaoprodutivo.com/api/aluno/login').then(function(res){
-      setEscola(res.data)
-    })
-  }, [])
 
   const [formData, setFormData] = useState({
     nome: '',
@@ -114,14 +105,14 @@ export function CadastroAluno(props) {
             <label htmlFor="area">Área:</label>
             <label>
               <input type="radio" id="area" name="area" onChange={handleChange} value="" />
-              <span className="custom-checkbox">{escola.area1}</span>
+              <span className="custom-checkbox">Área 1</span>
             </label>
             <label>
               <input type="radio" id="area" name="area" onChange={handleChange} value="" />
-              <span className="custom-checkbox">{escola.area2}</span>
+              <span className="custom-checkbox">Área 2</span>
             </label>
           </div>
-          <BotaoPrincipal type="submit" content="Cadastrar" />
+          <BotaoPrincipal type="submit">Cadastrar</BotaoPrincipal>
         </section>
       </form>
     </div>

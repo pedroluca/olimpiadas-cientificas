@@ -65,6 +65,7 @@ export function Login() {
       const data = await response.json()
       if (data) {
         localStorage.setItem('token', data.msg.token)
+        localStorage.setItem('user', JSON.stringify(data.msg.dadosEscola))
         if (urlEndpoint === 'escola') {
           navigate('/escola')
         } else if (urlEndpoint === 'aluno') {
@@ -106,11 +107,11 @@ export function Login() {
           <div className="container-areas container-login-type">
             <label htmlFor="userType">Logar como:</label>
             <label>
-              <input type="radio" id="userType" name="userType" onChange={handleChange} value="aluno" required />
+              <input type="radio" name="userType" onChange={handleChange} value="aluno" required />
               <span className="custom-checkbox">Aluno</span>
             </label>
             <label>
-              <input type="radio" id="userType" name="userType" onChange={handleChange} value="escola" required />
+              <input type="radio" name="userType" onChange={handleChange} value="escola" required />
               <span className="custom-checkbox">Escola</span>
             </label>
           </div>

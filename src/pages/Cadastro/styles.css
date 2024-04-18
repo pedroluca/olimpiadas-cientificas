@@ -175,6 +175,7 @@ form hr {
 }
 
 .popup {
+  width: 90%;
   position: fixed;
   background: var(--white2-color);
   padding-top: 1rem;
@@ -241,6 +242,10 @@ form hr {
     margin: 0;
     padding: 0;
   }
+
+  .popup {
+    width: 70%;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -303,6 +308,10 @@ form hr {
 
   .container-login form span {
     width: 100%;
+  }
+
+  .popup {
+    width: 70%;
   }
 }
 
