@@ -5,7 +5,6 @@ import './styles.css'
 import { Menu } from 'lucide-react'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { Modal } from '../Modal/Modal'
 import { useEffect } from 'react'
 
 export function Header() {
@@ -64,15 +63,6 @@ export function Header() {
     })
   }
 
-  const [isModalActive, setIsModalActive] = useState(false)
-
-  const openModal = (e) => {
-    e.preventDefault()
-    setIsModalActive(true)
-  }
-
-  const closeModal = () => setIsModalActive(false)
-
   return (
     <div className='nav-header'>
       <header>
@@ -86,18 +76,18 @@ export function Header() {
           </button>
           <nav className='navbar'>
             <NavLink exact to="/">Início</NavLink>
-            { isLoggedIn && <NavLink to="/escola" /> }
-            <NavLink to="/login" title='Em breve' onClick={openModal} className="">Log in</NavLink>
-            <NavLink to="/cadastro" className='btn-inscrever'>Inscrever Escola</NavLink>
+            { isLoggedIn && <NavLink to="/escola">Escola</NavLink> }
+            { !isLoggedIn && <NavLink to="/login">Log in</NavLink> }
+            { !isLoggedIn && <NavLink to="/cadastro" className='btn-inscrever'>Inscrever Escola</NavLink> }
           </nav>
         </div>
       </header>
       <nav ref={navbarRef} className={'navbar' + (isMenuActive ? ' active' : '')}>
-        <NavLink to="/">Início</NavLink>
-        <NavLink to="/login" title='Em breve' onClick={openModal} className="">Log in</NavLink>
-        <NavLink to="/cadastro" className='btn-inscrever'>Inscrever Escola</NavLink>
+        <NavLink exact to="/">Início</NavLink>
+        { isLoggedIn && <NavLink to="/escola">Escola</NavLink> }
+        { !isLoggedIn && <NavLink to="/login">Log in</NavLink> }
+        { !isLoggedIn && <NavLink to="/cadastro" className='btn-inscrever'>Inscrever Escola</NavLink> }
       </nav>
-      <Modal openClose={isModalActive} onClose={closeModal} />
     </div>
   )
 }

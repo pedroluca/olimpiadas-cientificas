@@ -13,8 +13,8 @@ export function CadastroEscola() {
   const [cpfValid, setCpfValid] = useState(true)
   const [cnpjError, setCnpjError] = useState('')
   const [cpfError, setCpfError] = useState('')
-  const [popupMessage, setPopupMessage] = useState('Mensagem de teste de envio de tamanho de popup')
-  const [showPopup, setShowPopup] = useState(true)
+  const [popupMessage, setPopupMessage] = useState('')
+  const [showPopup, setShowPopup] = useState(false)
   const [progress, setProgress] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
@@ -33,7 +33,7 @@ export function CadastroEscola() {
         }
         return Math.min(oldProgress + 1, 100)
       })
-    }, 500)
+    }, 50)
   }
   
   const [formData, setFormData] = useState({

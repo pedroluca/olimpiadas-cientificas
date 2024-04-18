@@ -49,7 +49,7 @@ export function Escola() {
         <li>{user.id_area1}</li>
         <li>{user.id_area2}</li>
       </ul>
-      <CadastroAluno codigo={user.codigo_escola} />
+      <CadastroAluno codigo={user.codigo_escola} area1={user.id_area1} area2={user.id_area2} />
       <h2>Lista de Alunos</h2>
       <table>
         <thead>

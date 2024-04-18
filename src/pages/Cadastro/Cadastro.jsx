@@ -33,7 +33,7 @@ export function CadastroAluno(props) {
       setCpfValid(true);
       setCpfError('');
     }
-    setFormData(prevState => ({ ...prevState, cpfResponsavel: cpf }));
+    setFormData(prevState => ({ ...prevState, cpf: cpf }));
   }
 
   const handleSubmit = async (e) => {
@@ -104,11 +104,11 @@ export function CadastroAluno(props) {
           <div className="container-areas">
             <label>Área:</label>
             <label>
-              <input type="radio" name="area" onChange={handleChange} value="" />
+              <input type="radio" name="area" onChange={handleChange} value={props.area1} />
               <span className="custom-checkbox">Área 1</span>
             </label>
             <label>
-              <input type="radio" name="area" onChange={handleChange} value="" />
+              <input type="radio" name="area" onChange={handleChange} value={props.area2} />
               <span className="custom-checkbox">Área 2</span>
             </label>
           </div>
@@ -120,5 +120,7 @@ export function CadastroAluno(props) {
 }
 
 CadastroAluno.propTypes = {
-  codigo: PropTypes.string
+  codigo: PropTypes.string,
+  area1: PropTypes.string,
+  area2: PropTypes.string,
 }
