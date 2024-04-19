@@ -9,6 +9,27 @@ export function CadastroAluno(props) {
 
   const [cpfValid, setCpfValid] = useState(true)
   const [cpfError, setCpfError] = useState('')
+  const [popupMessage, setPopupMessage] = useState('')
+  const [showPopup, setShowPopup] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const showPopupWithProgress = (message) => {
+    setPopupMessage(message)
+    setShowPopup(true)
+    setProgress(0)
+  
+    const interval = setInterval(() => {
+      setProgress((oldProgress) => {
+        if (oldProgress >= 100) {
+          clearInterval(interval)
+          setShowPopup(false)
+          return 100
+        }
+        return Math.min(oldProgress + 1, 100)
+      })
+    }, 50)
+  }
 
   const [formData, setFormData] = useState({
     nome: '',
@@ -37,7 +58,8 @@ export function CadastroAluno(props) {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    setIsLoading(true)
 
     let requisicao = {
       method: 'POST',
@@ -51,15 +73,27 @@ export function CadastroAluno(props) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       const data = await response.json()
+      showPopupWithProgress(`${data.msg}. Um email de confirmação foi enviado para seu email cadastrado.`)
       return data.msg
     } catch (error) {
       console.error('An error occurred while submitting the form:', error)
+      showPopupWithProgress('Ocorreu um erro, por favor tente novamente.')
+    } finally {
+      setIsLoading(false)
     }
   }
 
   return (
     <div className="container-cadastro cadastro-alunos">
       <h2>Cadastre um aluno</h2>
+      {showPopup && (
+        <div className={`popup ${showPopup ? 'show' : ''}`}>
+          <p>{popupMessage}</p>
+          <div className="progress-bar">
+            <div className="progress-bar-fill" style={{width: `${progress}%`}}></div>
+          </div>
+        </div>
+      )}
       <form onSubmit={handleSubmit} method='POST'>
         <section className="form-container">
           <span>
@@ -112,7 +146,9 @@ export function CadastroAluno(props) {
               <span className="custom-checkbox">Área 2</span>
             </label>
           </div>
-          <BotaoPrincipal type="submit">Cadastrar</BotaoPrincipal>
+          <BotaoPrincipal type="submit" disabled={isLoading}>
+            {isLoading ? <div className="spinner"></div> : 'Cadastrar'}
+          </BotaoPrincipal>
         </section>
       </form>
     </div>
