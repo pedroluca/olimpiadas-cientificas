@@ -27,8 +27,7 @@ export function Escola() {
         }
         const data = await response.json()
         if (!data.isAuthenticated) navigate('/login')
-        const user = JSON.parse(localStorage.getItem('user'))
-        setUser(user)
+        setUser(JSON.parse(localStorage.getItem('user')))
       } catch (error) {
         console.error('Houve um erro ao enviar a requisição:', error)
       }
@@ -75,6 +74,8 @@ export function Escola() {
           <tr>
             <th>Aluno</th>
             <th>Email</th>
+            <th>Nível</th>
+            <th>Área</th>
           </tr>
         </thead>
         <tbody>
@@ -83,6 +84,8 @@ export function Escola() {
               <tr key={aluno.codigo}>
                 <td>{aluno.nome}</td>
                 <td>{aluno.email}</td>
+                <td>{aluno.modalidade}</td>
+                <td>{aluno.area}</td>
               </tr>
             ))
           }

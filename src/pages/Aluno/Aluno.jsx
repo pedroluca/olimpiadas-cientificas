@@ -1,30 +1,48 @@
 /* eslint-disable react/jsx-key */
 import { useEffect, useState } from 'react'
 import { OlimpiadaCard } from '../../components/OlimpiadaCard/OlimpiadaCard'
-import axios from 'axios'
 import './styles.css'
+import { useNavigate } from 'react-router-dom'
 
 export function Aluno() {
-
   const [user, setUser] = useState({})
+  // eslint-disable-next-line no-unused-vars
   const [olimpiada, setOlimpiada] = useState({})
-
+  const navigate = useNavigate()
+  
   useEffect(() => {
-    axios.get('https://api.olimpiadasdosertaoprodutivo.com/aluno/login').then(function(res){
-      setUser(res.data)
-    })
+    let requisicao = {
+      method: 'GET',
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.getItem('token')}`
+      },
+    }
+  
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/verify-login', requisicao)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const data = await response.json()
+        if (!data.isAuthenticated) navigate('/login')
+        setUser(JSON.parse(localStorage.getItem('user')))
+        return data
+      } catch (error) {
+        console.error('Houve um erro ao enviar a requisição:', error)
+      }
+    }
 
-    axios.get('https://api.olimpiadasdosertaoprodutivo.com/aluno/olimpiada').then(function(res){
-      setOlimpiada(res.data)
-    })
-  }, [])
+    fetchData()
+  }, [navigate])
 
   return (
     <div className="container-aluno under-header-container">
-      <h1>Olá, {user.name}</h1>
+      <h1>Olá, {user.nome}</h1>
       <p>Email: {user.email}</p>
       <p>Escola: {user.escola}</p>
-      <p>Turma: {user.turma}</p>
+      <p>Nível: {user.modalidade}</p>
       <p>Área: {user.area}</p>
       <h2>Sua olimpíada:</h2>
       <div className="olimp-container">

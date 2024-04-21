@@ -3,7 +3,7 @@ import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
 import { useNavigate } from 'react-router-dom'
 import './styles.css'
 import { InputSenha } from '../../components/InputSenha/InputSenha'
-
+import { useEffect } from 'react'
 
 export function Login() {
   const navigate = useNavigate()
@@ -11,6 +11,32 @@ export function Login() {
   const [showPopup, setShowPopup] = useState(false)
   const [progress, setProgress] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+  
+  useEffect(() => {
+    let requisicao = {
+      method: 'GET',
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.getItem('token')}`
+      },
+    }
+  
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/verify-login', requisicao)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const data = await response.json()
+        if (data.isAuthenticated) navigate('/')
+        return data
+      } catch (error) {
+        console.error('Houve um erro ao enviar a requisição:', error)
+      }
+    }
+
+    fetchData()
+  }, [navigate])
 
   const showPopupWithProgress = (message) => {
     setPopupMessage(message)
@@ -65,12 +91,9 @@ export function Login() {
       const data = await response.json()
       if (data) {
         localStorage.setItem('token', data.msg.token)
-        localStorage.setItem('user', JSON.stringify(data.msg.dadosEscola))
-        if (urlEndpoint === 'escola') {
-          navigate('/escola')
-        } else if (urlEndpoint === 'aluno') {
-          navigate('/aluno')
-        }
+        if (formData.userType === 'aluno') localStorage.setItem('user', JSON.stringify(data.msg.dadosAluno))
+        else if (formData.userType === 'escola') localStorage.setItem('user', JSON.stringify(data.msg.dadosEscola))
+        navigate (`/${urlEndpoint}`)
       } else {
         throw new Error('Token not found')
       }

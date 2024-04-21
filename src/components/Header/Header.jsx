@@ -26,8 +26,6 @@ export function Header() {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
         const data = await response.json()
-        console.log(data)
-        console.log(data.isAuthenticated)
         if (data.isAuthenticated) setIsLoggedIn(true)
       } catch (error) {
         console.error('Houve um erro ao enviar a requisição:', error)
@@ -66,6 +64,8 @@ export function Header() {
     })
   }
 
+  const handleLogout = () => localStorage.clear()
+
   return (
     <div className='nav-header'>
       <header>
@@ -82,7 +82,7 @@ export function Header() {
             { isLoggedIn && <NavLink to="/escola">Escola</NavLink> }
             { !isLoggedIn && <NavLink to="/login">Log in</NavLink> }
             { !isLoggedIn && <NavLink to="/cadastro" className='btn-inscrever'>Inscrever Escola</NavLink> }
-            { isLoggedIn && <NavLink to="/logout" className='logout'>Sair</NavLink> }
+            { isLoggedIn && <NavLink to="/logout" className='logout' onClick={handleLogout}>Sair</NavLink> }
           </nav>
         </div>
       </header>
@@ -91,7 +91,7 @@ export function Header() {
         { isLoggedIn && <NavLink to="/escola">Escola</NavLink> }
         { !isLoggedIn && <NavLink to="/login">Log in</NavLink> }
         { !isLoggedIn && <NavLink to="/cadastro" className='btn-inscrever'>Inscrever Escola</NavLink> }
-        { isLoggedIn && <NavLink to="/logout" className='logout'>Sair</NavLink> }
+        { isLoggedIn && <NavLink to="/logout" className='logout' onClick={handleLogout}>Sair</NavLink> }
       </nav>
     </div>
   )

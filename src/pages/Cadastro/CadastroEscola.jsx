@@ -6,6 +6,7 @@ import ImgCadastro from '../../assets/images/cadastro.jpg'
 import InputMask from 'react-input-mask'
 import './styles.css'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 export function CadastroEscola() {  
 
@@ -18,6 +19,32 @@ export function CadastroEscola() {
   const [progress, setProgress] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
+
+  useEffect(() => {
+    let requisicao = {
+      method: 'GET',
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.getItem('token')}`
+      },
+    }
+  
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/verify-login', requisicao)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const data = await response.json()
+        if (data.isAuthenticated) navigate('/')
+        return data
+      } catch (error) {
+        console.error('Houve um erro ao enviar a requisição:', error)
+      }
+    }
+
+    fetchData()
+  }, [navigate])
 
   const showPopupWithProgress = (message) => {
     setPopupMessage(message)
