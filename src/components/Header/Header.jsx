@@ -1,11 +1,11 @@
 import { useState }  from 'react'
-import { NavLink } from 'react-router-dom'
 import Logo3 from '../../assets/images/logo3.png'
-import './styles.css'
 import { Menu } from 'lucide-react'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
+import './styles.css'
+import { HeaderOptions } from './header-options'
 
 export function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -64,7 +64,10 @@ export function Header() {
     })
   }
 
-  const handleLogout = () => localStorage.clear()
+  const handleLogout = () => {
+    localStorage.clear()
+    setIsLoggedIn(false)
+  }
 
   return (
     <div className='nav-header'>
@@ -78,20 +81,12 @@ export function Header() {
             <Menu className="icone-menu"></Menu>
           </button>
           <nav className='navbar'>
-            <NavLink exact to="/">Início</NavLink>
-            { isLoggedIn && <NavLink to="/escola">Escola</NavLink> }
-            { !isLoggedIn && <NavLink to="/login">Log in</NavLink> }
-            { !isLoggedIn && <NavLink to="/cadastro" className='btn-inscrever'>Inscrever Escola</NavLink> }
-            { isLoggedIn && <NavLink to="/logout" className='logout' onClick={handleLogout}>Sair</NavLink> }
+            <HeaderOptions isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
           </nav>
         </div>
       </header>
       <nav ref={navbarRef} className={'navbar' + (isMenuActive ? ' active' : '')}>
-        <NavLink exact to="/">Início</NavLink>
-        { isLoggedIn && <NavLink to="/escola">Escola</NavLink> }
-        { !isLoggedIn && <NavLink to="/login">Log in</NavLink> }
-        { !isLoggedIn && <NavLink to="/cadastro" className='btn-inscrever'>Inscrever Escola</NavLink> }
-        { isLoggedIn && <NavLink to="/logout" className='logout' onClick={handleLogout}>Sair</NavLink> }
+        <HeaderOptions isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
       </nav>
     </div>
   )

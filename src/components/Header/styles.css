@@ -90,8 +90,10 @@ header a img {
 }
 
 .navbar a.logout-opt {
-  color: #ff0000;
   border: none;
+  display: inline-flex;
+  gap: .2rem;
+  align-items: center;
 }
 
 .navbar a.logout-opt:hover,
@@ -111,6 +113,10 @@ header a img {
 
   .navbar {
     display: none;
+  }
+
+  .navbar.active {
+    display: none !important;
   }
 
   .menu-mobile > .navbar {
