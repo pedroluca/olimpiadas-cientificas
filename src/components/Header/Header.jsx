@@ -19,7 +19,7 @@ export function Header() {
       },
     }
   
-    async () => {
+    const fetchData = async () => {
       try {
         const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/verify-login', requisicao)
         if (!response.ok) {
@@ -33,6 +33,8 @@ export function Header() {
         console.error('Houve um erro ao enviar a requisição:', error)
       }
     }
+
+    fetchData()
   }, [])
   
   const [isMenuActive, setIsMenuActive] = useState(false)
