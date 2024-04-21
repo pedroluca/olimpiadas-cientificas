@@ -1,18 +1,25 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
 import PropTypes from 'prop-types'
 import './styles.css'
 import { isValid as isCpfValid } from '@fnando/cpf'
 import InputMask from 'react-input-mask'
+import { useEffect } from 'react'
 
 export function CadastroAluno(props) {
-
   const [cpfValid, setCpfValid] = useState(true)
   const [cpfError, setCpfError] = useState('')
   const [popupMessage, setPopupMessage] = useState('')
   const [showPopup, setShowPopup] = useState(false)
   const [progress, setProgress] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    setFormData(prevState => ({
+      ...prevState,
+      codigoEscola: props.codigo,
+    }))
+  }, [props.codigo])
 
   const showPopupWithProgress = (message) => {
     setPopupMessage(message)
@@ -35,7 +42,7 @@ export function CadastroAluno(props) {
     nome: '',
     email: '',
     cpf: '',
-    codigoEscola: props.codigo,
+    codigoEscola: '',
   })
 
   const handleChange = (e) => {
@@ -74,6 +81,7 @@ export function CadastroAluno(props) {
       }
       const data = await response.json()
       showPopupWithProgress(`${data.msg}. Um email de confirmação foi enviado para seu email cadastrado.`)
+      props.onNewAluno()
       return data.msg
     } catch (error) {
       console.error('An error occurred while submitting the form:', error)
@@ -119,13 +127,13 @@ export function CadastroAluno(props) {
               {!cpfValid && <div className="error-message">{cpfError}</div>}
           </span>
           <span>
-            <label htmlFor="codigo">Código da escola:</label>
-            <input type="text" id="codigo" name="codigo" onChange={handleChange} value={props.codigo} required disabled />
+            <label htmlFor="codigoEscola">Código da escola:</label>
+            <input type="text" id="codigoEscola" name="codigoEscola" value={props.codigo} required disabled />
           </span>
         </section>
         <section className="form-container">
           <div className="container-areas">
-            <label>Modalidade:</label>
+            <p>Nível:</p>
             <label>
               <input type="radio" name="modalidade" onChange={handleChange} value="a" />
               <span className="custom-checkbox">1° Ano</span>
@@ -136,14 +144,14 @@ export function CadastroAluno(props) {
             </label>
           </div>
           <div className="container-areas">
-            <label>Área:</label>
+            <p>Área:</p>
             <label>
-              <input type="radio" name="area" onChange={handleChange} value={props.area1} />
-              <span className="custom-checkbox">Área 1</span>
+              <input type="radio" name="area" onChange={handleChange} value={props.idArea1} />
+              <span className="custom-checkbox">{props.area1}</span>
             </label>
             <label>
-              <input type="radio" name="area" onChange={handleChange} value={props.area2} />
-              <span className="custom-checkbox">Área 2</span>
+              <input type="radio" name="area" onChange={handleChange} value={props.idArea2} />
+              <span className="custom-checkbox">{props.area2}</span>
             </label>
           </div>
           <BotaoPrincipal type="submit" disabled={isLoading}>
@@ -159,4 +167,7 @@ CadastroAluno.propTypes = {
   codigo: PropTypes.string,
   area1: PropTypes.string,
   area2: PropTypes.string,
+  idArea1: PropTypes.string,
+  idArea2: PropTypes.string,
+  onNewAluno: PropTypes.func,
 }

@@ -46,7 +46,7 @@ export function Home() {
         <p>Se você é estudante, converse com o representante da sua escola e apresente a proposta, peça para se inscrever no evento e participar</p>
         <p>Depois de inscrito, estude bastante e nos dias das provas, responda as perguntas de maneira correta para aumentar sua pontuação</p>
         <p>Os alunos com as maiores pontuações estarão concorrendo a premiações</p>
-        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={openPDF} content="Confira o regulamento" />
+        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={openPDF}>Confira o regulamento</BotaoPrincipal>
       </session>
       <session className="container sessao-texto">
         <h2>Áreas do conhecimento</h2>

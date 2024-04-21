@@ -96,16 +96,16 @@ export function Login() {
       <p>Por favor faça o login para continuar</p>
       <form onSubmit={handleSubmit}>
         <span>
-          <label htmlFor="usuario">Usuário:</label>
-          <input type="text" name="username" id="username" placeholder="Ex: usuario" onChange={handleChange} required />
+          <label htmlFor="username">Usuário:</label>
+          <input type="text" name="username" id="username" placeholder="Ex: usuario" onChange={handleChange} required autoComplete="username" />
         </span>
         <span>
-          <label htmlFor="senha">Senha:</label>
+          <label htmlFor="password">Senha:</label>
           <InputSenha onChange={handleChange} />
         </span>
         <span>
           <div className="container-areas container-login-type">
-            <label htmlFor="userType">Logar como:</label>
+            <p>Logar como:</p>
             <label>
               <input type="radio" name="userType" onChange={handleChange} value="aluno" required />
               <span className="custom-checkbox">Aluno</span>
