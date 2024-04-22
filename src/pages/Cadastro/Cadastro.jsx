@@ -152,10 +152,13 @@ export function CadastroAluno(props) {
               <input type="radio" name="area" onChange={handleChange} value={props.idArea1} />
               <span className="custom-checkbox">{props.area1}</span>
             </label>
-            <label>
-              <input type="radio" name="area" onChange={handleChange} value={props.idArea2} />
-              <span className="custom-checkbox">{props.area2}</span>
-            </label>
+            { 
+              props.area2 &&
+              <label>
+                <input type="radio" name="area" onChange={handleChange} value={props.idArea2} />
+                <span className="custom-checkbox">{props.area2}</span>
+              </label> 
+            }
           </div>
           <BotaoPrincipal type="submit" disabled={isLoading}>
             {isLoading ? <div className="spinner"></div> : 'Cadastrar'}
