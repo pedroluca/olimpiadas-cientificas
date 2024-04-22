@@ -11,7 +11,7 @@ export function HeaderOptions(props) {
       { props.isLoggedIn && <NavLink to="/escola">Escola</NavLink> }
       { !props.isLoggedIn && <NavLink to="/login">Log in</NavLink> }
       { !props.isLoggedIn && <NavLink to="/cadastro" className='btn-inscrever'>Inscrever Escola</NavLink> }
-      { !props.isLoggedIn && <NavLink to="/login" className='logout-opt' onClick={props.handleLogout}><LogOut />Sair</NavLink> }
+      { props.isLoggedIn && <NavLink to="/login" className='logout-opt' onClick={props.handleLogout}><LogOut />Sair</NavLink> }
     </>
     )
 }

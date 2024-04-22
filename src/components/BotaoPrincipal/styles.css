@@ -21,6 +21,13 @@
   background: linear-gradient(45deg, rgba(204,85,0,1) 0%, rgba(102,0,153,1) 100%);
 }
 
+.disabled,
+.disabled:hover {
+  background: var(--lightgray2-color);
+  color: var(--gray-color);
+  cursor: not-allowed;
+}
+
 @media screen and (min-width: 768px) {
   .btn-principal {
     width: 30%;

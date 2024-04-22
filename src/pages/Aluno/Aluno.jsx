@@ -46,7 +46,7 @@ export function Aluno() {
       <p>Área: {user.area}</p>
       <h2>Sua olimpíada:</h2>
       <div className="olimp-container">
-        <OlimpiadaCard area={user.area} data={olimpiada.data} horarioInicio={olimpiada.horarioInicio} horarioFim={olimpiada.horarioFim} accessEnabled />
+        <OlimpiadaCard area={user.area} data="07/06/2024" horario="07:30 - 17:30" horarioFim={olimpiada.horarioFim} allowAccess={false} classe='olimpiada-aluno' />
       </div>
     </div>
   )

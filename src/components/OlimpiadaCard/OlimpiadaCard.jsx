@@ -4,12 +4,11 @@ import './styles.css'
 
 export function OlimpiadaCard(props) {
   return (
-    <div className="olimpiada">
-      {props.children}
+    <div className={"olimpiada " + props.classe}>
       <h3>{props.area}</h3>
-      { props.data && <p>Data: {props.data} (dd/mm/yyyy)</p> }
-      { props.horarioInicio && <p>Hora: {props.horarioInicio} - {props.horarioFim} (hh:MM - hh:MM)</p> }
-      { props.accessEnabled && <BotaoPrincipal content='Acessar' />}
+      <p>Data: {props.data}</p>
+      <p>Horário: {props.horario}</p>
+      <BotaoPrincipal classe={props.allowAccess ? '' : 'disabled'} disabled={!props.allowAccess}>Acessar</BotaoPrincipal>
     </div>
   )
 }
@@ -17,8 +16,7 @@ export function OlimpiadaCard(props) {
 OlimpiadaCard.propTypes = {
   area: PropTypes.string.isRequired,
   data: PropTypes.string.isRequired,
-  horarioInicio: PropTypes.string.isRequired,
-  horarioFim: PropTypes.string.isRequired,
-  accessEnabled: PropTypes.bool.isRequired,
-  children: PropTypes.node
+  horario: PropTypes.string.isRequired,
+  allowAccess: PropTypes.bool,
+  classe: PropTypes.string
 }
