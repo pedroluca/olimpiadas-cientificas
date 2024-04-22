@@ -2,13 +2,14 @@ import { useState }  from 'react'
 import Logo3 from '../../assets/images/logo3.png'
 import { Menu } from 'lucide-react'
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import './styles.css'
 import { HeaderOptions } from './header-options'
 
 export function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
     let requisicao = {
@@ -33,7 +34,7 @@ export function Header() {
     }
 
     fetchData()
-  }, [])
+  }, [location])
   
   const [isMenuActive, setIsMenuActive] = useState(false)
   const navbarRef = useRef(null)

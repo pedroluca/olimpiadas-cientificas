@@ -39,7 +39,7 @@ export function Escola() {
   useEffect(() => {
     const fetchAlunos = async () => {
       try {
-        const responseAlunos = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/escola/alunos-cadastrados', requisicao)
+        const responseAlunos = await fetch(`https://api.olimpiadasdosertaoprodutivo.com/api/escola/alunos-cadastrados?codigo_escola=${user.codigo_escola}`, requisicao)
         if (!responseAlunos.ok) {
           throw new Error(`HTTP error! status: ${responseAlunos.status}`)
         }
@@ -84,7 +84,7 @@ export function Escola() {
               <tr key={aluno.codigo}>
                 <td>{aluno.nome}</td>
                 <td>{aluno.email}</td>
-                <td>{aluno.modalidade}</td>
+                <td>{ aluno.modalidade === 'a' ? '1° Ano' : '2° Ano' }</td>
                 <td>{aluno.area}</td>
               </tr>
             ))
