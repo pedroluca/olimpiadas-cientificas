@@ -123,6 +123,23 @@ export function CadastroEscola() {
     }
     setFormData(prevState => ({ ...prevState, cpfResponsavel: cpf }))
   }
+  
+  const [isOther, setIsOther] = useState(false)
+  const [otherValue, setOtherValue] = useState('')
+  
+  const handleSelectChange = (e) => {
+    if (e.target.value === 'Outro') {
+      setIsOther(true)
+    } else {
+      setIsOther(false)
+      handleChange(e)
+    }
+  }
+  
+  const handleInputChange = (e) => {
+    setOtherValue(e.target.value)
+    setFormData(prevState => ({ ...prevState, municipio: e.target.value }))
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -146,8 +163,9 @@ export function CadastroEscola() {
       }, 5000)
       return data.msg
     } catch (error) {
+      console.log(error)
       console.error('An error occurred while submitting the form:', error)
-      showPopupWithProgress('Ocorreu um erro, por favor tente novamente.')
+      showPopupWithProgress(`Erro ${error.status}. ${error.message}`)
     } finally {
       setIsLoading(false)
     }
@@ -205,7 +223,7 @@ export function CadastroEscola() {
             </span>
             <span>
               <label htmlFor="municipio">Município:</label>
-              <select name="municipio" id="municipio" onChange={handleChange} required>
+              <select name="municipio" id="municipio" onChange={handleSelectChange} required>
                 <option value="" selected>-- Selecione --</option>
                 <option value="Brumado">Brumado</option>
                 <option value="Caculé">Caculé</option>
@@ -226,7 +244,11 @@ export function CadastroEscola() {
                 <option value="Sebastião Laranjeiras">Sebastião Laranjeiras</option>
                 <option value="Tanhaçu">Tanhaçu</option>
                 <option value="Urandi">Urandi</option>
+                <option value="Outro">Outro</option>
               </select>
+              {isOther && (
+                <input type="text" name="municipio" id="municipio" onChange={handleInputChange} value={otherValue} placeholder='Informe aqui qual o município' required />
+              )}
             </span>
           </section>
           <hr/>
@@ -236,19 +258,19 @@ export function CadastroEscola() {
               <p>* No máximo 2 opções</p>
               <div className="container-areas">
                 <label>
-                  <input type="checkbox" id="area" name="quimica" onChange={handleChange} value="x9YWmBSukETyXkAi" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("x9YWmBSukETyXkAi")} />
+                  <input type="checkbox" id="quimica" name="quimica" onChange={handleChange} value="x9YWmBSukETyXkAi" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("x9YWmBSukETyXkAi")} />
                   <span className="custom-checkbox">Química</span>
                 </label>
                 <label>
-                  <input type="checkbox" id="area" name="fisica" onChange={handleChange} value="0MbMywq1rPh52QBJ" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("0MbMywq1rPh52QBJ")} />
+                  <input type="checkbox" id="fisica" name="fisica" onChange={handleChange} value="0MbMywq1rPh52QBJ" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("0MbMywq1rPh52QBJ")} />
                   <span className="custom-checkbox">Física</span>
                 </label>
                 <label>
-                  <input type="checkbox" id="area" name="historia" onChange={handleChange} value="iNFpIjnwKfCxhRLN" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("iNFpIjnwKfCxhRLN")} />
+                  <input type="checkbox" id="historia" name="historia" onChange={handleChange} value="iNFpIjnwKfCxhRLN" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("iNFpIjnwKfCxhRLN")} />
                   <span className="custom-checkbox">História</span>
                 </label>
                 <label>
-                  <input type="checkbox" id="area" name="inovacao" onChange={handleChange} value="IL933QzqrGA5eO4z" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("IL933QzqrGA5eO4z")} />
+                  <input type="checkbox" id="inovacao" name="inovacao" onChange={handleChange} value="IL933QzqrGA5eO4z" disabled={selectedCheckboxes.length >= 2 && !selectedCheckboxes.includes("IL933QzqrGA5eO4z")} />
                   <span className="custom-checkbox">Empreendedorismo e Inovação</span>
                 </label>
               </div>

@@ -9,6 +9,7 @@ import { HeaderOptions } from './header-options'
 
 export function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [userType, setUserType] = useState('')
   const location = useLocation()
 
   useEffect(() => {
@@ -27,7 +28,12 @@ export function Header() {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
         const data = await response.json()
-        if (data.isAuthenticated) setIsLoggedIn(true)
+        if (data.isAuthenticated) {
+          setIsLoggedIn(true)
+          const user = JSON.parse(localStorage.getItem('user'))
+          if (user.dadosEscola) setUserType('escola')
+          else setUserType('aluno')
+        }
       } catch (error) {
         console.error('Houve um erro ao enviar a requisição:', error)
       }
@@ -82,7 +88,7 @@ export function Header() {
             <Menu className="icone-menu"></Menu>
           </button>
           <nav className='navbar'>
-            <HeaderOptions isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+            <HeaderOptions isLoggedIn={isLoggedIn} userType={userType} handleLogout={handleLogout} />
           </nav>
         </div>
       </header>

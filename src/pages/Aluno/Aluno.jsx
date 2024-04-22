@@ -41,8 +41,8 @@ export function Aluno() {
     <div className="container-aluno under-header-container">
       <h1>Olá, {user.nome}</h1>
       <p>Email: {user.email}</p>
-      <p>Escola: {user.escola}</p>
-      <p>Nível: {user.modalidade}</p>
+      <p>Escola: {user.nomeEscola}</p>
+      <p>Nível: { user.modalidade === 'a' ? '1° Ano' : '2° Ano' }</p>
       <p>Área: {user.area}</p>
       <h2>Sua olimpíada:</h2>
       <div className="olimp-container">

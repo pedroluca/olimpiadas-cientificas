@@ -65,7 +65,7 @@ export function Escola() {
       <h2>Áreas selecionadas:</h2>
       <ul>
         <li>{user.area1}</li>
-        <li>{user.area2}</li>
+        { user.area2 && <li>{user.area2}</li> }
       </ul>
       <CadastroAluno codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
       <h2>Lista de Alunos</h2>
