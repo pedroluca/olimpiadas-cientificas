@@ -19,13 +19,40 @@
   margin-bottom: 2rem;
 }
 
-.container-escola table * {
+.container-escola table > * {
   height: 2rem;
 }
 
 .container-escola table tbody td {
   border-top: 1px solid var(--lightgray-color);
   text-align: center;
+  padding: .5rem 0;
+}
+
+.alunos-opcoes {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+  justify-content: center;
+}
+.alunos-opcoes > * {
+  cursor: pointer;
+}
+
+.edit-option {
+  color: var(--gray-color);
+  transition: ease-in-out .2s;
+}
+.edit-option:hover {
+  color: var(--lightgray-color);
+}
+
+.delete-option {
+  color: #f00;
+  transition: ease-in-out .2s;
+}
+.delete-option:hover {
+  color: #f99;
 }
 
 @media screen and (min-width: 768px) {

@@ -3,6 +3,8 @@ import { CadastroAluno } from "../Cadastro/Cadastro"
 import { useNavigate } from "react-router-dom"
 import { useMemo } from "react"
 import "./styles.css"
+import { Trash2 } from "lucide-react"
+import { Pencil } from "lucide-react"
 
 export function Escola() {
   const [user, setUser] = useState({})
@@ -76,6 +78,7 @@ export function Escola() {
             <th>Email</th>
             <th>Nível</th>
             <th>Área</th>
+            <th>Opções</th>
           </tr>
         </thead>
         <tbody>
@@ -86,6 +89,10 @@ export function Escola() {
                 <td>{aluno.email}</td>
                 <td>{ aluno.modalidade === 'a' ? '1° Ano' : '2° Ano' }</td>
                 <td>{aluno.area}</td>
+                <td className="alunos-opcoes">
+                  <Pencil className="edit-option" />
+                  <Trash2 className="delete-option" />
+                </td>
               </tr>
             ))
           }

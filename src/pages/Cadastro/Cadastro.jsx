@@ -138,24 +138,24 @@ export function CadastroAluno(props) {
           <div className="container-areas">
             <p>Nível:</p>
             <label>
-              <input type="radio" name="modalidade" onChange={handleChange} value="a" />
+              <input type="radio" name="modalidade" onChange={handleChange} value="a" required />
               <span className="custom-checkbox">1° Ano</span>
             </label>
             <label>
-              <input type="radio" name="modalidade" onChange={handleChange} value="b" />
+              <input type="radio" name="modalidade" onChange={handleChange} value="b" required />
               <span className="custom-checkbox">2° Ano</span>
             </label>
           </div>
           <div className="container-areas">
             <p>Área:</p>
             <label>
-              <input type="radio" name="area" onChange={handleChange} value={props.idArea1} />
+              <input type="checkbox" name="area" onChange={handleChange} value={props.idArea1} required />
               <span className="custom-checkbox">{props.area1}</span>
             </label>
             { 
               props.area2 &&
               <label>
-                <input type="radio" name="area" onChange={handleChange} value={props.idArea2} />
+                <input type="checkbox" name="area" onChange={handleChange} value={props.idArea2} required />
                 <span className="custom-checkbox">{props.area2}</span>
               </label> 
             }
