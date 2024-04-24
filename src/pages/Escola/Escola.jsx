@@ -109,7 +109,6 @@ export function Escola() {
       </table>
       <Modal openClose={openClose} onClose={handleCloseModal}>
         <CadastroAluno codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
-        <p>teste</p>
       </Modal>
     </div>
   )
