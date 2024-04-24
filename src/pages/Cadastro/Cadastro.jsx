@@ -153,7 +153,7 @@ export function CadastroAluno(props, {aluno}) {
         <section className="form-container">
           <span>
             <label htmlFor="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" placeholder="Ex: João Pedro" onChange={handleChange} value={props.isEdit ? aluno.nome : ''} required />
+            <input type="text" id="nome" name="nome" placeholder="Ex: João Pedro" onChange={handleChange} value={props.isEdit ? aluno.name : ''} required />
           </span>
           <span>
             <label htmlFor="email">Email:</label>
