@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { PropTypes } from 'prop-types'
 import './styles.css'
 
-export function Modal({ openClose, onClose }, props) {
+export function Modal({ openClose, onClose, children }) {
   const modalRef = useRef()
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export function Modal({ openClose, onClose }, props) {
   return (
     <div id="myModal" className="modal" ref={modalRef}>
       <div className="modal-content">
-        {props.children}
+        {children}
         <button id="modalBtn" onClick={handleClose} className='btn-principal'>Cancelar</button>
       </div>
     </div>
