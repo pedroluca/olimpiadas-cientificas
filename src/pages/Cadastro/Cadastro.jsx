@@ -6,7 +6,7 @@ import { isValid as isCpfValid } from '@fnando/cpf'
 import InputMask from 'react-input-mask'
 import { useEffect } from 'react'
 
-export function CadastroAluno(props) {
+export function CadastroAluno(props, {aluno}) {
   const [cpfValid, setCpfValid] = useState(true)
   const [cpfError, setCpfError] = useState('')
   const [popupMessage, setPopupMessage] = useState('')
@@ -102,7 +102,8 @@ export function CadastroAluno(props) {
       if (props.isEdit) {
         requisicao = {
          ...requisicao,
-          method: 'PUT'
+          method: 'PUT',
+          body: JSON.stringify({...aluno, ...formData})
         }
 
         try {
@@ -222,5 +223,6 @@ CadastroAluno.propTypes = {
   idArea2: PropTypes.string,
   onNewAluno: PropTypes.func,
   isEdit: PropTypes.bool,
-  id: PropTypes.string
+  id: PropTypes.string,
+  aluno: PropTypes.object
 }

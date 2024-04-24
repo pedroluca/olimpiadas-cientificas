@@ -102,14 +102,14 @@ export function Escola() {
                   <Pencil className="edit-option" onClick={handleEdit} />
                   <Trash2 className="delete-option" onClick={handleDelete} />
                 </td>
+                <Modal openClose={openClose} onClose={handleCloseModal}>
+                  <CadastroAluno aluno={aluno} codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
+                </Modal>
               </tr>
             ))
           }
         </tbody>
       </table>
-      <Modal openClose={openClose} onClose={handleCloseModal}>
-        <CadastroAluno codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
-      </Modal>
     </div>
   )
 }
