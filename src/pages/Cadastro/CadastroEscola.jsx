@@ -100,6 +100,7 @@ export function CadastroEscola() {
 
     setFormData(prevState => ({ ...prevState, [name]: value }))
   }
+  
   const handleCnpjChange = (e) => {
     const cnpj = e.target.value
     if (!isCnpjValid(cnpj)) {

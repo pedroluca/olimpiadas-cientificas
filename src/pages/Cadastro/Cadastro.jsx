@@ -43,13 +43,34 @@ export function CadastroAluno(props) {
     email: '',
     cpf: '',
     codigoEscola: '',
+    areas: []
   })
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
+  const [selectedCheckboxes, setSelectedCheckboxes] = useState([])
+
+  function handleChange(event) {
+    const { name, type } = event.target
+    let value
+  
+    if (type === 'checkbox') {
+      if (event.target.checked) {
+        setSelectedCheckboxes([...selectedCheckboxes, event.target.value])
+        setFormData({
+          ...formData,
+          areas: [...formData.areas, event.target.value]
+        })
+      } else {
+        setSelectedCheckboxes(selectedCheckboxes.filter(value => value !== event.target.value))
+        setFormData({
+          ...formData,
+          areas: formData.areas.filter(value => value !== event.target.value)
+        })
+      }
+    } else {
+      value = event.target.value
+    }
+
+    setFormData(prevState => ({ ...prevState, [name]: value }))
   }
   
   const handleCpfChange = (e) => {
@@ -66,31 +87,52 @@ export function CadastroAluno(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setIsLoading(true)
-
-    let requisicao = {
-      method: 'POST',
-      headers: {
-        'Content-Type' : 'application/json',
-        'Authorization' : `Bearer ${localStorage.getItem('token')}`
-      },
-      body: JSON.stringify(formData)
-    }
-
-    try {
-      const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/aluno/cadastro', requisicao)
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+    
+    if (formData.areas.length > 0) {
+      setIsLoading(true)
+      let requisicao = {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+          'Authorization' : `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(formData)
       }
-      const data = await response.json()
-      showPopupWithProgress(`${data.msg}. Um email de confirmação foi enviado para seu email cadastrado.`)
-      props.onNewAluno()
-      return data.msg
-    } catch (error) {
-      console.error('An error occurred while submitting the form:', error)
-      showPopupWithProgress('Ocorreu um erro, por favor tente novamente.')
-    } finally {
-      setIsLoading(false)
+
+      // if (props.isEdit) {
+      //   requisicao = {
+      //    ...requisicao,
+      //     method: 'PUT'
+      //   }
+
+      //   try {
+      //     const response = await fetch(`https://api.olimpiadasdosertaoprodutivo.com/api/aluno/${props.id}`, requisicao)
+      //     if (!response.ok) {
+      //       throw new Error(`HTTP error! status: ${response.status}`)
+      //     }
+      //     props.onNewAluno()
+      //     showPopupWithProgress('Aluno atualizado com sucesso!')
+      //   } catch (error) {
+      //     console.log(error)
+      //     showPopupWithProgress('Ocorreu um erro ao atualizar o aluno.')
+      //   }
+      // }
+  
+      try {
+        const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/aluno/cadastro', requisicao)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const data = await response.json()
+        showPopupWithProgress(`${data.msg}. Um email de confirmação foi enviado para seu email cadastrado.`)
+        props.onNewAluno()
+        return data.msg
+      } catch (error) {
+        console.error('An error occurred while submitting the form:', error)
+        showPopupWithProgress('Ocorreu um erro, por favor tente novamente.')
+      } finally {
+          setIsLoading(false)
+      }
     }
   }
 
@@ -149,13 +191,13 @@ export function CadastroAluno(props) {
           <div className="container-areas">
             <p>Área:</p>
             <label>
-              <input type="checkbox" name="area" onChange={handleChange} value={props.idArea1} required />
+              <input type="checkbox" id={props.idArea1} name={props.idArea1} onChange={handleChange} value={props.idArea1} />
               <span className="custom-checkbox">{props.area1}</span>
             </label>
             { 
               props.area2 &&
               <label>
-                <input type="checkbox" name="area" onChange={handleChange} value={props.idArea2} required />
+                <input type="checkbox" id={props.idArea2} name={props.idArea2} onChange={handleChange} value={props.idArea2} />
                 <span className="custom-checkbox">{props.area2}</span>
               </label> 
             }
@@ -176,4 +218,6 @@ CadastroAluno.propTypes = {
   idArea1: PropTypes.string,
   idArea2: PropTypes.string,
   onNewAluno: PropTypes.func,
+  isEdit: PropTypes.bool,
+  id: PropTypes.string
 }

@@ -43,7 +43,7 @@ export function Aluno() {
       <p>Email: {user.email}</p>
       <p>Escola: {user.nomeEscola}</p>
       <p>Nível: { user.modalidade === 'a' ? '1° Ano' : '2° Ano' }</p>
-      <p>Área: {user.area}</p>
+      <p>Área(s): {user.area1}{ user.area2 ? ` / ${user.area2}` : ''}</p>
       <h2>Sua olimpíada:</h2>
       <div className="olimp-container">
         <OlimpiadaCard area={user.area} data="07/06/2024" horario="07:30 - 17:30" horarioFim={olimpiada.horarioFim} allowAccess={false} classe='olimpiada-aluno' />

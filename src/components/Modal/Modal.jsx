@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { PropTypes } from 'prop-types'
 import './styles.css'
 
-export function Modal({ openClose, onClose }) {
+export function Modal({ openClose, onClose }, props) {
   const modalRef = useRef()
 
   useEffect(() => {
@@ -18,8 +18,8 @@ export function Modal({ openClose, onClose }) {
   return (
     <div id="myModal" className="modal" ref={modalRef}>
       <div className="modal-content">
-        <p>O login ainda não está disponível, mas estamos trabalhando nisso, por favor aguarde</p>
-        <button id="modalBtn" onClick={handleClose} className='btn-principal'>Entendi</button>
+        {props.children}
+        <button id="modalBtn" onClick={handleClose} className='btn-principal'>Cancelar</button>
       </div>
     </div>
   )
@@ -28,4 +28,5 @@ export function Modal({ openClose, onClose }) {
 Modal.propTypes = {
   openClose: PropTypes.bool,
   onClose: PropTypes.func,
+  children: PropTypes.node,
 }

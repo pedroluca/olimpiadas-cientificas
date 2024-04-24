@@ -31,7 +31,7 @@ export function Header() {
         if (data.isAuthenticated) {
           setIsLoggedIn(true)
           const user = JSON.parse(localStorage.getItem('user'))
-          if (user.dadosEscola) setUserType('escola')
+          if (user.municipio) setUserType('escola')
           else setUserType('aluno')
         }
       } catch (error) {
@@ -93,7 +93,7 @@ export function Header() {
         </div>
       </header>
       <nav ref={navbarRef} className={'navbar' + (isMenuActive ? ' active' : '')}>
-        <HeaderOptions isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+        <HeaderOptions isLoggedIn={isLoggedIn} userType={userType} handleLogout={handleLogout} />
       </nav>
     </div>
   )

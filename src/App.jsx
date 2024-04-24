@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Header } from './components/Header/Header'
-import { Home } from './pages/Home/Home'
 import { NotFound } from './pages/NotFound/NotFound'
+import { Home } from './pages/Home/Home'
 import { CadastroEscola } from './pages/Cadastro/CadastroEscola'
 import { Escola } from './pages/Escola/Escola'
 import { Login } from './pages/Cadastro/Login'

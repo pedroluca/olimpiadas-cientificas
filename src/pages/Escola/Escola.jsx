@@ -5,6 +5,7 @@ import { useMemo } from "react"
 import "./styles.css"
 import { Trash2 } from "lucide-react"
 import { Pencil } from "lucide-react"
+import { Modal } from "../../components/Modal/Modal"
 
 export function Escola() {
   const [user, setUser] = useState({})
@@ -57,6 +58,14 @@ export function Escola() {
 
   const refreshAlunos = () => setNewAluno(!newAluno)
 
+  const [openClose, setOpenClose] = useState(false)
+  const handleEdit = () => setOpenClose(true)
+  const handleCloseModal = () => setOpenClose(false)
+
+  const handleDelete = () => {
+    console.log('delete')
+  }
+
   return (
     <div className="container-escola under-header-container">
       <h1>{user.nome}</h1>
@@ -88,16 +97,20 @@ export function Escola() {
                 <td>{aluno.nome}</td>
                 <td>{aluno.email}</td>
                 <td>{ aluno.modalidade === 'a' ? '1° Ano' : '2° Ano' }</td>
-                <td>{aluno.area}</td>
+                <td>{aluno.area1}<br/>{aluno.area2}</td>
                 <td className="alunos-opcoes">
-                  <Pencil className="edit-option" />
-                  <Trash2 className="delete-option" />
+                  <Pencil className="edit-option" onClick={handleEdit} />
+                  <Trash2 className="delete-option" onClick={handleDelete} />
                 </td>
               </tr>
             ))
           }
         </tbody>
       </table>
+      <Modal openClose={openClose} onClose={handleCloseModal}>
+        <CadastroAluno codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
+        <p>teste</p>
+      </Modal>
     </div>
   )
 }
