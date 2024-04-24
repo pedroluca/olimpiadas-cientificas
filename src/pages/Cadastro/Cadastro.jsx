@@ -153,11 +153,11 @@ export function CadastroAluno(props, {aluno}) {
         <section className="form-container">
           <span>
             <label htmlFor="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" placeholder="Ex: João Pedro" onChange={handleChange} value={props.isEdit ? formData.nome : ''} required />
+            <input type="text" id="nome" name="nome" placeholder="Ex: João Pedro" onChange={handleChange} value={props.isEdit ? aluno.nome : ''} required />
           </span>
           <span>
             <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Ex: joaopedro@gmail.com" onChange={handleChange} value={props.isEdit ? formData.email : ''} required />
+            <input type="email" id="email" name="email" placeholder="Ex: joaopedro@gmail.com" onChange={handleChange} value={props.isEdit ? aluno.email : ''} required />
           </span>
           <span>
             <label htmlFor="cpf">CPF:</label>
@@ -169,7 +169,7 @@ export function CadastroAluno(props, {aluno}) {
                 placeholder="xxx.xxx.xxx-xx"
                 onChange={handleCpfChange}
                 className={!cpfValid ? 'error' : ''}
-                value={props.isEdit ? formData.nome : ''}
+                value={props.isEdit ? aluno.cpf : ''}
                 disabled={props.isEdit}
                 required 
               />
@@ -177,31 +177,31 @@ export function CadastroAluno(props, {aluno}) {
           </span>
           <span>
             <label htmlFor="codigoEscola">Código da escola:</label>
-            <input type="text" id="codigoEscola" name="codigoEscola"  value={props.isEdit ? formData.nome : props.codigo} required disabled />
+            <input type="text" id="codigoEscola" name="codigoEscola"  value={props.codigo} required disabled />
           </span>
         </section>
         <section className="form-container">
           <div className="container-areas">
             <p>Nível:</p>
             <label>
-              <input type="radio" name="modalidade" onChange={handleChange}  value={props.isEdit ? formData.nome : 'a'} required />
+              <input type="radio" name="modalidade" onChange={handleChange}  value='a' required />
               <span className="custom-checkbox">1° Ano</span>
             </label>
             <label>
-              <input type="radio" name="modalidade" onChange={handleChange}  value={props.isEdit ? formData.nome : 'b'} required />
+              <input type="radio" name="modalidade" onChange={handleChange}  value='b' required />
               <span className="custom-checkbox">2° Ano</span>
             </label>
           </div>
           <div className="container-areas">
             <p>Área:</p>
             <label>
-              <input type="checkbox" id={props.idArea1} name={props.idArea1} onChange={handleChange}  value={props.isEdit ? formData.nome : props.idArea1} />
+              <input type="checkbox" id={props.idArea1} name={props.idArea1} onChange={handleChange}  value={props.isEdit ? aluno.idArea1 : props.idArea1} />
               <span className="custom-checkbox">{props.area1}</span>
             </label>
             { 
               props.area2 &&
               <label>
-                <input type="checkbox" id={props.idArea2} name={props.idArea2} onChange={handleChange}  value={props.isEdit ? formData.nome : props.idArea2} />
+                <input type="checkbox" id={props.idArea2} name={props.idArea2} onChange={handleChange}  value={props.isEdit ? aluno.idArea2 : props.idArea2} />
                 <span className="custom-checkbox">{props.area2}</span>
               </label> 
             }
