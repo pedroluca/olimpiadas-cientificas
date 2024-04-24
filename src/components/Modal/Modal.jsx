@@ -26,7 +26,7 @@ export function Modal({ openClose, onClose }, props) {
 }
 
 Modal.propTypes = {
+  children: PropTypes.node,
   openClose: PropTypes.bool,
   onClose: PropTypes.func,
-  children: PropTypes.node,
 }
