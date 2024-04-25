@@ -12,6 +12,27 @@ export function Escola() {
   const [alunos, setAlunos] = useState([])
   const [newAluno, setNewAluno] = useState(false)
   const navigate = useNavigate()
+  const [popupMessage, setPopupMessage] = useState('')
+  const [showPopup, setShowPopup] = useState(false)
+  const [progress, setProgress] = useState(0)
+
+
+  const showPopupWithProgress = (message) => {
+    setPopupMessage(message)
+    setShowPopup(true)
+    setProgress(0)
+  
+    const interval = setInterval(() => {
+      setProgress((oldProgress) => {
+        if (oldProgress >= 100) {
+          clearInterval(interval)
+          setShowPopup(false)
+          return 100
+        }
+        return Math.min(oldProgress + 1, 100)
+      })
+    }, 50)
+  }
 
   const requisicao = useMemo(() => ({
     method: 'GET',
@@ -70,12 +91,47 @@ export function Escola() {
     setIsModalOpen(false)
   }
 
-  const handleDelete = () => {
-    console.log('delete')
+  const handleDelete = async (aluno) => {
+    // setCurrentAluno(aluno)
+    let requisicao = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.getItem('token')}`
+      },
+      body: {
+        'cpf' : aluno.cpf
+      }
+    }
+
+    const url = 'https://api.olimpiadasdosertaoprodutivo.com/api/aluno/delete'
+
+    try {
+      const response = await fetch(url, requisicao)
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      const data = await response.json()
+      showPopupWithProgress(data.msg)
+      return data.msg
+    } catch (error) {
+      console.error('An error occurred while submitting the form:', error)
+      showPopupWithProgress('Ocorreu um erro, por favor tente novamente.')
+    } finally {
+        // setIsLoading(false)
+    }
   }
 
   return (
     <div className="container-escola under-header-container">
+      {showPopup && (
+        <div className={`popup ${showPopup ? 'show' : ''}`}>
+          <p>{popupMessage}</p>
+          <div className="progress-bar">
+            <div className="progress-bar-fill" style={{width: `${progress}%`}}></div>
+          </div>
+        </div>
+      )}
       <h1>{user.nome}</h1>
       <p>Usuário: {user.usuario}</p>
       <p>Email: {user.email}</p>
@@ -116,8 +172,15 @@ export function Escola() {
         </tbody>
       </table>
       <Modal openClose={isModalOpen} onClose={handleCloseModal}>
-        <CadastroAluno aluno={currentAluno} isEdit codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
+        <CadastroAluno onClose={handleCloseModal} aluno={currentAluno} isEdit codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
       </Modal>
+      {/* <Modal openClose={isConfirmModalOpen} noButton onClose={handleCloseConfirmModal}>
+          <h2>Tem certeza que deseja excluir o aluno?</h2>
+          <div className="deleteConfirmButtons">
+            <button onClick={handleDeleteConfirm}>Sim</button>
+            <button onClick={handleCloseConfirmModal}>Não</button>
+          </div>
+      </Modal> */}
     </div>
   )
 }
