@@ -55,7 +55,7 @@ export function CadastroAluno(props) {
         cpf: props.aluno.cpf || '',
         codigoEscola: props.codigo,
         modalidade: props.aluno.modalidade || '',
-        areas: props.aluno.areas || [],
+        areas: [props.aluno.idArea1, props.aluno.idArea2] || [],
       })
     }
   }, [props.isEdit, props.aluno, props.codigo])
@@ -120,7 +120,7 @@ export function CadastroAluno(props) {
 
       let url
 
-      if (props.isEdit) url = 'https://api.olimpiadasdosertaoprodutivo.com/api/aluno/editar'
+      if (props.isEdit) url = 'https://api.olimpiadasdosertaoprodutivo.com/api/aluno/update'
       else url = 'https://api.olimpiadasdosertaoprodutivo.com/api/aluno/cadastro'
   
       try {
