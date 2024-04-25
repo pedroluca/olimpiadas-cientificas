@@ -147,16 +147,6 @@ export function CadastroEscola() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
-
-    if (!isCpfValid(formData.cpf)) {
-      showPopupWithProgress('CPF inválido, por favor tente novamente.')
-      return
-    }
-
-    if (!isCnpjValid(formData.cnpj)) {
-      showPopupWithProgress('CNPJ inválido, por favor tente novamente.')
-      return
-    }
   
     let requisicao = {
       method: 'POST',
