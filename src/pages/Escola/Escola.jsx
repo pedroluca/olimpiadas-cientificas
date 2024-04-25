@@ -58,14 +58,17 @@ export function Escola() {
 
   const refreshAlunos = () => setNewAluno(!newAluno)
 
-  const [openClose, setOpenClose] = useState(false)
-  const [currentAluno, setCurrentAluno] = useState(null);
+  const [currentAluno, setCurrentAluno] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleEdit = (aluno) => {
     setCurrentAluno(aluno)
-    openClose(true)
+    setIsModalOpen(true)
   }
-  const handleCloseModal = () => setOpenClose(false)
+  
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+  }
 
   const handleDelete = () => {
     console.log('delete')
@@ -112,7 +115,7 @@ export function Escola() {
           }
         </tbody>
       </table>
-      <Modal openClose={openClose} onClose={handleCloseModal}>
+      <Modal open={isModalOpen} onClose={handleCloseModal}>
         <CadastroAluno aluno={currentAluno} isEdit codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
       </Modal>
     </div>
