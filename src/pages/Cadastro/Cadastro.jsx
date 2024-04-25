@@ -78,7 +78,6 @@ export function CadastroAluno(props) {
     if (!isCpfValid(cpf)) {
       setCpfValid(false)
       setCpfError('CPF inválido')
-      return
     } else {
       setCpfValid(true)
       setCpfError('')
