@@ -38,6 +38,10 @@ export function CadastroAluno(props) {
     }, 50)
   }
 
+  useEffect(() => {
+    console.log(props.aluno)
+  }, [props.aluno])
+
   const [formData, setFormData] = useState(
     props.isEdit && props.aluno
     ? {
