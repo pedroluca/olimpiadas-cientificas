@@ -47,8 +47,7 @@ export function CadastroAluno(props) {
         cpf: props.aluno.cpf || '',
         codigoEscola: props.codigo,
         modalidade: props.aluno.modalidade || '',
-        idArea1: props.aluno.idArea1 || '',
-        idArea2: props.aluno.idArea2 || '',
+        areas: [props.aluno.idArea1, props.aluno.idArea2] || []
       })
     } else {
       setFormData({
@@ -57,8 +56,7 @@ export function CadastroAluno(props) {
         cpf: '',
         codigoEscola: props.codigo,
         modalidade: '',
-        idArea1: '',
-        idArea2: '',
+        areas: []
       })
     }
   }, [props.isEdit, props.aluno, props.codigo])
