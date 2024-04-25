@@ -115,7 +115,7 @@ export function Escola() {
           }
         </tbody>
       </table>
-      <Modal open={isModalOpen} onClose={handleCloseModal}>
+      <Modal openClose={isModalOpen} onClose={handleCloseModal}>
         <CadastroAluno aluno={currentAluno} isEdit codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
       </Modal>
     </div>
