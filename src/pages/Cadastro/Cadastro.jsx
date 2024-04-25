@@ -60,7 +60,7 @@ export function CadastroAluno(props) {
         cpf: props.aluno.cpf || '',
         codigoEscola: props.codigo,
         modalidade: props.aluno.modalidade || '',
-        id_area1: props.aluno.id_area1 || '',
+        id_area1: props.aluno.id_area || '',
         id_area2: props.aluno.id_area2 || '',
         areas: areas || []
       })
