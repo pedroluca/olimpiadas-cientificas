@@ -59,7 +59,12 @@ export function Escola() {
   const refreshAlunos = () => setNewAluno(!newAluno)
 
   const [openClose, setOpenClose] = useState(false)
-  const handleEdit = () => setOpenClose(true)
+  const [currentAluno, setCurrentAluno] = useState(null);
+
+  const handleEdit = (aluno) => {
+    setCurrentAluno(aluno)
+    openClose(true)
+  }
   const handleCloseModal = () => setOpenClose(false)
 
   const handleDelete = () => {
@@ -99,17 +104,17 @@ export function Escola() {
                 <td>{ aluno.modalidade === 'a' ? '1° Ano' : '2° Ano' }</td>
                 <td>{aluno.area1}<br/>{aluno.area2}</td>
                 <td className="alunos-opcoes">
-                  <Pencil className="edit-option" onClick={handleEdit} />
+                  <Pencil className="edit-option" onClick={() => handleEdit(aluno)} />
                   <Trash2 className="delete-option" onClick={handleDelete} />
                 </td>
-                <Modal openClose={openClose} onClose={handleCloseModal}>
-                  <CadastroAluno aluno={aluno} isEdit codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
-                </Modal>
               </tr>
             ))
           }
         </tbody>
       </table>
+      <Modal openClose={openClose} onClose={handleCloseModal}>
+        <CadastroAluno aluno={currentAluno} isEdit codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
+      </Modal>
     </div>
   )
 }
