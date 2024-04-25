@@ -76,11 +76,12 @@ export function CadastroAluno(props) {
   const handleCpfChange = (e) => {
     const cpf = e.target.value;
     if (!isCpfValid(cpf)) {
-      setCpfValid(false);
-      setCpfError('CPF inválido');
+      setCpfValid(false)
+      setCpfError('CPF inválido')
+      return
     } else {
-      setCpfValid(true);
-      setCpfError('');
+      setCpfValid(true)
+      setCpfError('')
     }
     setFormData(prevState => ({ ...prevState, cpf: cpf }));
   }
@@ -168,6 +169,7 @@ export function CadastroAluno(props) {
                 placeholder="xxx.xxx.xxx-xx"
                 onChange={handleCpfChange}
                 className={!cpfValid ? 'error' : ''}
+                isStrict
                 required 
               />
               {!cpfValid && <div className="error-message">{cpfError}</div>}

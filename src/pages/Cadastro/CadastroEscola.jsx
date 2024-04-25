@@ -100,12 +100,13 @@ export function CadastroEscola() {
 
     setFormData(prevState => ({ ...prevState, [name]: value }))
   }
-  
+
   const handleCnpjChange = (e) => {
     const cnpj = e.target.value
     if (!isCnpjValid(cnpj)) {
       setCnpjValid(false)
       setCnpjError('CNPJ inválido')
+      return
     } else {
       setCnpjValid(true)
       setCnpjError('')
@@ -118,6 +119,7 @@ export function CadastroEscola() {
     if (!isCpfValid(cpf)) {
       setCpfValid(false)
       setCpfError('CPF inválido')
+      return
     } else {
       setCpfValid(true)
       setCpfError('')
