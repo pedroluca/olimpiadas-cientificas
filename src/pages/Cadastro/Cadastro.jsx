@@ -44,22 +44,20 @@ export function CadastroAluno(props) {
     cpf: '',
     codigoEscola: props.codigo,
     modalidade: '',
-    areas: [],
+    id_area1: '',
+    id_area2: '',
   })
   
   useEffect(() => {
     if (props.isEdit && props.aluno) {
-      
-      let areas = [props.aluno.id_area]
-      if (props.aluno.id_area2) areas.push(props.aluno.id_area2)
-
       setFormData({
         nome: props.aluno.nome || '',
         email: props.aluno.email || '',
         cpf: props.aluno.cpf || '',
         codigoEscola: props.codigo,
         modalidade: props.aluno.modalidade || '',
-        areas: areas || [],
+        id_area1: props.aluno.id_area1 || '',
+        id_area2: props.aluno.id_area2 || '',
       })
     }
   }, [props.isEdit, props.aluno, props.codigo])
@@ -73,16 +71,45 @@ export function CadastroAluno(props) {
     if (type === 'checkbox') {
       if (event.target.checked) {
         setSelectedCheckboxes([...selectedCheckboxes, event.target.value])
-        setFormData({
-          ...formData,
-          areas: [...formData.areas, event.target.value]
-        })
+        if (!props.isEdit) {
+          setFormData({
+            ...formData,
+            areas: [...formData.areas, event.target.value]
+          })
+        } else {
+          if (formData.id_area1) {
+            setFormData({
+              ...formData,
+              id_area2: event.target.value
+            })
+          } else {
+            setFormData({
+              ...formData,
+              id_area1: event.target.value
+            })
+          }
+        }
       } else {
         setSelectedCheckboxes(selectedCheckboxes.filter(value => value !== event.target.value))
-        setFormData({
-          ...formData,
-          areas: formData.areas.filter(value => value !== event.target.value)
-        })
+        if (!props.isEdit) {
+          setFormData({
+            ...formData,
+            areas: formData.areas.filter(value => value !== event.target.value)
+          })
+        } else {
+          if (formData.id_area1 === event.target.value) {
+            setFormData({
+              ...formData,
+              id_area1: formData.id_area2,
+              id_area2: ''
+            })
+          } else if (formData.id_area2 === event.target.value) {
+            setFormData({
+              ...formData,
+              id_area2: ''
+            })
+          }
+        }
       }
     } else {
       value = event.target.value
