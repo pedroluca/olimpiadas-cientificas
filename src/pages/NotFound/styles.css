@@ -12,6 +12,14 @@
   box-shadow: 0px 0px 5px 0px #a9a9a9;
 }
 
+.under-header-container {
+  padding-top: 2rem !important;
+}
+
+.under-header-container h1 {
+  text-align: center;
+}
+
 @media screen and (min-width: 768px) {
   .container-not-found {
     padding: 2rem 15%;
