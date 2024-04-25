@@ -172,9 +172,9 @@ export function CadastroAluno(props) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
         const data = await response.json()
-        showPopupWithProgress(data.msg)
         props.onNewAluno()
         if (props.isEdit) props.toClose()
+        showPopupWithProgress(data.msg)
         return data.msg
       } catch (error) {
         console.error('An error occurred while submitting the form:', error)

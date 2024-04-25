@@ -15,6 +15,7 @@ export function Escola() {
   const [popupMessage, setPopupMessage] = useState('')
   const [showPopup, setShowPopup] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
 
   const showPopupWithProgress = (message) => {
     setPopupMessage(message)
@@ -80,15 +81,23 @@ export function Escola() {
 
   const [currentAluno, setCurrentAluno] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
 
   const handleEdit = (aluno) => {
     setCurrentAluno(aluno)
     setIsModalOpen(true)
   }
+
+  const handleDelete = (aluno) => {
+    setCurrentAluno(aluno)
+    setIsConfirmModalOpen(true)
+  }
   
   const handleCloseModal = () => setIsModalOpen(false)
+  const handleCloseConfirmModal = () => setIsConfirmModalOpen(false)
 
-  const handleDelete = async (aluno) => {
+  const handleDeleteConfirm = async (aluno) => {
+    setIsLoading(true)
     setCurrentAluno(aluno)
     let requisicao = {
       method: 'DELETE',
@@ -114,7 +123,7 @@ export function Escola() {
       console.error('An error occurred while submitting the form:', error)
       showPopupWithProgress('Ocorreu um erro, por favor tente novamente.')
     } finally {
-      // setIsLoading(false)
+      setIsLoading(false)
     }
   }
 
@@ -170,13 +179,15 @@ export function Escola() {
       <Modal openClose={isModalOpen} onClose={handleCloseModal}>
         <CadastroAluno toClose={() => handleCloseModal()} aluno={currentAluno} isEdit codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
       </Modal>
-      {/* <Modal openClose={isConfirmModalOpen} noButton onClose={handleCloseConfirmModal}>
+      <Modal openClose={isConfirmModalOpen} noButton onClose={handleCloseConfirmModal}>
           <h2>Tem certeza que deseja excluir o aluno?</h2>
           <div className="deleteConfirmButtons">
-            <button onClick={handleDeleteConfirm}>Sim</button>
-            <button onClick={handleCloseConfirmModal}>Não</button>
+            <button onClick={() => handleDeleteConfirm(currentAluno)} disabled={isLoading}>
+              {isLoading? <div className="spinner"></div> : 'Excluir'}
+            </button>
+            <button onClick={handleCloseConfirmModal}>Cancelar</button>
           </div>
-      </Modal> */}
+      </Modal>
     </div>
   )
 }
