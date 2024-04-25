@@ -120,8 +120,13 @@ export function CadastroAluno(props) {
 
       let url
 
-      if (props.isEdit) url = 'https://api.olimpiadasdosertaoprodutivo.com/api/aluno/update'
-      else url = 'https://api.olimpiadasdosertaoprodutivo.com/api/aluno/cadastro'
+      if (props.isEdit) {
+        url = 'https://api.olimpiadasdosertaoprodutivo.com/api/aluno/update'
+        requisicao = {
+          ...requisicao,
+          method: 'PUT'
+        }
+      } else url = 'https://api.olimpiadasdosertaoprodutivo.com/api/aluno/cadastro'
   
       try {
         const response = await fetch(url, requisicao)
