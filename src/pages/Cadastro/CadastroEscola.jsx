@@ -152,6 +152,11 @@ export function CadastroEscola() {
       showPopupWithProgress('CPF inválido, por favor tente novamente.')
       return
     }
+
+    if (!isCnpjValid(formData.cnpj)) {
+      showPopupWithProgress('CNPJ inválido, por favor tente novamente.')
+      return
+    }
   
     let requisicao = {
       method: 'POST',
@@ -165,7 +170,7 @@ export function CadastroEscola() {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       const data = await response.json()
-      showPopupWithProgress(`${data.msg}. Um email de confirmação foi enviado para seu email cadastrado.`)
+      showPopupWithProgress(`${data.msg}.`)
       setTimeout(() => {
         navigate('/login')
       }, 5000)

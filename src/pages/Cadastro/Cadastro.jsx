@@ -88,6 +88,11 @@ export function CadastroAluno(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    if (!isCpfValid(formData.cpf)) {
+      showPopupWithProgress('CPF inválido, por favor tente novamente.')
+      return
+    }
     
     if (formData.areas.length > 0) {
       setIsLoading(true)
