@@ -173,6 +173,7 @@ export function CadastroAluno(props) {
         }
         const data = await response.json()
         showPopupWithProgress(data.msg)
+        props.onNewAluno()
         props.onClose()
         return data.msg
       } catch (error) {

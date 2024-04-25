@@ -16,7 +16,6 @@ export function Escola() {
   const [showPopup, setShowPopup] = useState(false)
   const [progress, setProgress] = useState(0)
 
-
   const showPopupWithProgress = (message) => {
     setPopupMessage(message)
     setShowPopup(true)
@@ -92,7 +91,7 @@ export function Escola() {
   }
 
   const handleDelete = async (aluno) => {
-    // setCurrentAluno(aluno)
+    setCurrentAluno(aluno)
     let requisicao = {
       method: 'DELETE',
       headers: {
@@ -111,12 +110,13 @@ export function Escola() {
       }
       const data = await response.json()
       showPopupWithProgress(data.msg)
+      refreshAlunos()
       return data.msg
     } catch (error) {
       console.error('An error occurred while submitting the form:', error)
       showPopupWithProgress('Ocorreu um erro, por favor tente novamente.')
     } finally {
-        // setIsLoading(false)
+      // setIsLoading(false)
     }
   }
 
