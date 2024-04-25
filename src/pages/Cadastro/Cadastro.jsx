@@ -234,13 +234,13 @@ export function CadastroAluno(props) {
           <div className="container-areas">
             <p>Área:</p>
             <label>
-              <input type="checkbox" id={props.idArea1} name={props.idArea1} onChange={handleChange} value={props.idArea1} checked={formData.areas.includes(props.idArea1)} />
+              <input type="checkbox" id={props.idArea1} name={props.idArea1} onChange={handleChange} value={props.idArea1} checked={props.isEdit && formData.areas.includes(props.idArea1)} />
               <span className="custom-checkbox">{props.area1}</span>
             </label>
             { 
               props.area2 &&
               <label>
-                <input type="checkbox" id={props.idArea2} name={props.idArea2} onChange={handleChange} value={props.idArea2} checked={formData.areas.includes(props.idArea2)} />
+                <input type="checkbox" id={props.idArea2} name={props.idArea2} onChange={handleChange} value={props.idArea2} checked={props.isEdit && formData.areas.includes(props.idArea2)} />
                 <span className="custom-checkbox">{props.area2}</span>
               </label> 
             }
