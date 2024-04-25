@@ -41,7 +41,7 @@ export function CadastroAluno(props) {
   const [formData, setFormData] = useState(
     props.isEdit && props.aluno
     ? {
-      nome: props.aluno.nome,
+      nome: 'Geraldo',
       email: props.aluno.email,
       cpf: props.aluno.cpf,
       codigoEscola: props.codigo,
@@ -115,28 +115,13 @@ export function CadastroAluno(props) {
         body: JSON.stringify(formData)
       }
 
-      if (props.isEdit) {
-        requisicao = {
-         ...requisicao,
-          method: 'PUT'
-        }
+      let url
 
-        try {
-          const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/aluno/editar', requisicao)
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`)
-          }
-          const data = response.json()
-          props.onNewAluno()
-          showPopupWithProgress(data.msg)
-        } catch (error) {
-          console.log(error)
-          showPopupWithProgress('Ocorreu um erro ao atualizar o aluno.')
-        }
-      }
+      if (props.isEdit) url = 'https://api.olimpiadasdosertaoprodutivo.com/api/aluno/editar'
+      else url = 'https://api.olimpiadasdosertaoprodutivo.com/api/aluno/cadastro'
   
       try {
-        const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/aluno/cadastro', requisicao)
+        const response = await fetch(url, requisicao)
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
