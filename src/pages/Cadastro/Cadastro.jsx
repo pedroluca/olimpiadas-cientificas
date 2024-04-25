@@ -38,13 +38,24 @@ export function CadastroAluno(props) {
     }, 50)
   }
 
-  const [formData, setFormData] = useState({
-    nome: '',
-    email: '',
-    cpf: '',
-    codigoEscola: '',
-    areas: []
-  })
+  const [formData, setFormData] = useState(
+    props.isEdit && props.aluno
+    ? {
+      nome: props.aluno.nome,
+      email: props.aluno.email,
+      cpf: props.aluno.cpf,
+      codigoEscola: props.codigo,
+      modalidade: props.aluno.modalidade,
+      areas: props.aluno.areas,
+    }
+    : {
+      nome: '',
+      email: '',
+      cpf: '',
+      codigoEscola: '',
+      areas: []
+    }
+  )
 
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([])
 
@@ -157,11 +168,11 @@ export function CadastroAluno(props) {
         <section className="form-container">
           <span>
             <label htmlFor="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" placeholder="Ex: João Pedro" onChange={handleChange} required />
+            <input type="text" id="nome" name="nome" placeholder="Ex: João Pedro" onChange={handleChange} value={formData.nome} required />
           </span>
           <span>
             <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Ex: joaopedro@gmail.com" onChange={handleChange} required />
+            <input type="email" id="email" name="email" placeholder="Ex: joaopedro@gmail.com" onChange={handleChange} value={formData.email} required />
           </span>
           <span>
             <label htmlFor="cpf">CPF:</label>
@@ -173,6 +184,7 @@ export function CadastroAluno(props) {
                 placeholder="xxx.xxx.xxx-xx"
                 onChange={handleCpfChange}
                 className={!cpfValid ? 'error' : ''}
+                value={formData.cpf}
                 isStrict
                 required 
               />
@@ -187,24 +199,24 @@ export function CadastroAluno(props) {
           <div className="container-areas">
             <p>Nível:</p>
             <label>
-              <input type="radio" name="modalidade" onChange={handleChange} value="a" required />
+              <input type="radio" name="modalidade" onChange={handleChange} value="a" checked={formData.modalidade == 'a' ? true : false} required />
               <span className="custom-checkbox">1° Ano</span>
             </label>
             <label>
-              <input type="radio" name="modalidade" onChange={handleChange} value="b" required />
+              <input type="radio" name="modalidade" onChange={handleChange} value="b" checked={formData.modalidade == 'b' ? true : false} required />
               <span className="custom-checkbox">2° Ano</span>
             </label>
           </div>
           <div className="container-areas">
             <p>Área:</p>
             <label>
-              <input type="checkbox" id={props.idArea1} name={props.idArea1} onChange={handleChange} value={props.idArea1} />
+              <input type="checkbox" id={props.idArea1} name={props.idArea1} onChange={handleChange} value={props.idArea1} checked={formData.areas == props.idArea1 ? true : false} />
               <span className="custom-checkbox">{props.area1}</span>
             </label>
             { 
               props.area2 &&
               <label>
-                <input type="checkbox" id={props.idArea2} name={props.idArea2} onChange={handleChange} value={props.idArea2} />
+                <input type="checkbox" id={props.idArea2} name={props.idArea2} onChange={handleChange} value={props.idArea2} checked={formData.areas == props.idArea2 ? true : false} />
                 <span className="custom-checkbox">{props.area2}</span>
               </label> 
             }
@@ -226,5 +238,6 @@ CadastroAluno.propTypes = {
   idArea2: PropTypes.string,
   onNewAluno: PropTypes.func,
   isEdit: PropTypes.bool,
-  id: PropTypes.string
+  id: PropTypes.string,
+  aluno: PropTypes.object
 }
