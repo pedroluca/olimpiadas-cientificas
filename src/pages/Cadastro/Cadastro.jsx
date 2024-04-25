@@ -135,7 +135,6 @@ export function CadastroAluno(props) {
         return data.msg
       } catch (error) {
         console.error('An error occurred while submitting the form:', error)
-        showPopupWithProgress('Ocorreu um erro, por favor tente novamente.')
       } finally {
           setIsLoading(false)
       }
