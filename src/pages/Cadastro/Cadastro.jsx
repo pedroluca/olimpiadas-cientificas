@@ -38,7 +38,15 @@ export function CadastroAluno(props) {
     }, 50)
   }
 
-  const [formData, setFormData] = useState({})
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    cpf: '',
+    codigoEscola: props.codigo,
+    modalidade: '',
+    areas: [],
+  })
+  
   useEffect(() => {
     if (props.isEdit && props.aluno) {
       setFormData({
@@ -47,16 +55,7 @@ export function CadastroAluno(props) {
         cpf: props.aluno.cpf || '',
         codigoEscola: props.codigo,
         modalidade: props.aluno.modalidade || '',
-        areas: [props.aluno.idArea1, props.aluno.idArea2] || []
-      })
-    } else {
-      setFormData({
-        nome: '',
-        email: '',
-        cpf: '',
-        codigoEscola: props.codigo,
-        modalidade: '',
-        areas: []
+        areas: props.aluno.areas || [],
       })
     }
   }, [props.isEdit, props.aluno, props.codigo])
