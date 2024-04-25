@@ -38,28 +38,28 @@ export function CadastroAluno(props) {
     }, 50)
   }
 
+  const [formData, setFormData] = useState({})
   useEffect(() => {
-    console.log(props.aluno)
-  }, [props.aluno])
-
-  const [formData, setFormData] = useState(
-    props.isEdit && props.aluno
-    ? {
-      nome: 'Geraldo',
-      email: props.aluno.email,
-      cpf: props.aluno.cpf,
-      codigoEscola: props.codigo,
-      modalidade: props.aluno.modalidade,
-      areas: props.aluno.areas,
+    if (props.isEdit && props.aluno) {
+      setFormData({
+        nome: props.aluno.nome || '',
+        email: props.aluno.email || '',
+        cpf: props.aluno.cpf || '',
+        codigoEscola: props.codigo,
+        modalidade: props.aluno.modalidade || '',
+        areas: props.aluno.areas || [],
+      })
+    } else {
+      setFormData({
+        nome: '',
+        email: '',
+        cpf: '',
+        codigoEscola: props.codigo,
+        modalidade: '',
+        areas: [],
+      })
     }
-    : {
-      nome: '',
-      email: '',
-      cpf: '',
-      codigoEscola: '',
-      areas: []
-    }
-  )
+  }, [props.isEdit, props.aluno, props.codigo])
 
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([])
 
