@@ -99,7 +99,7 @@ export function Escola() {
         'Content-Type' : 'application/json',
         'Authorization' : `Bearer ${localStorage.getItem('token')}`
       },
-      body: JSON.stringify(aluno)
+      body: JSON.stringify({ cpf: aluno.cpf })
     }
 
     const url = 'https://api.olimpiadasdosertaoprodutivo.com/api/aluno/delete'
