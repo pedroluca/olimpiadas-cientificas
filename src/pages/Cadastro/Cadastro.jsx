@@ -13,6 +13,7 @@ export function CadastroAluno(props) {
   const [showPopup, setShowPopup] = useState(false)
   const [progress, setProgress] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+  const [selectedCheckboxes, setSelectedCheckboxes] = useState([])
 
   useEffect(() => {
     setFormData(prevState => ({
@@ -64,10 +65,11 @@ export function CadastroAluno(props) {
         id_area2: props.aluno.id_area2 || '',
         areas: areas || []
       })
+
+      setSelectedCheckboxes(areas)
     }
   }, [props.isEdit, props.aluno, props.codigo])
 
-  const [selectedCheckboxes, setSelectedCheckboxes] = useState([])
 
   function handleChange(event) {
     const { name, type } = event.target
