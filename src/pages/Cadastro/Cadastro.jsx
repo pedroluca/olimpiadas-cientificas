@@ -47,7 +47,8 @@ export function CadastroAluno(props) {
         cpf: props.aluno.cpf || '',
         codigoEscola: props.codigo,
         modalidade: props.aluno.modalidade || '',
-        areas: props.aluno.areas || [],
+        idArea1: props.aluno.idArea1 || '',
+        idArea2: props.aluno.idArea2 || '',
       })
     } else {
       setFormData({
@@ -56,7 +57,8 @@ export function CadastroAluno(props) {
         cpf: '',
         codigoEscola: props.codigo,
         modalidade: '',
-        areas: [],
+        idArea1: '',
+        idArea2: '',
       })
     }
   }, [props.isEdit, props.aluno, props.codigo])
@@ -199,13 +201,13 @@ export function CadastroAluno(props) {
           <div className="container-areas">
             <p>Área:</p>
             <label>
-              <input type="checkbox" id={props.idArea1} name={props.idArea1} onChange={handleChange} value={props.idArea1} checked={formData.areas == props.idArea1 ? true : false} />
+              <input type="checkbox" id={props.idArea1} name={props.idArea1} onChange={handleChange} value={props.idArea1} checked={formData.idArea1 === props.idArea1 ? true : false} />
               <span className="custom-checkbox">{props.area1}</span>
             </label>
             { 
               props.area2 &&
               <label>
-                <input type="checkbox" id={props.idArea2} name={props.idArea2} onChange={handleChange} value={props.idArea2} checked={formData.areas == props.idArea2 ? true : false} />
+                <input type="checkbox" id={props.idArea2} name={props.idArea2} onChange={handleChange} value={props.idArea2} checked={formData.idArea2 === props.idArea2 ? true : false} />
                 <span className="custom-checkbox">{props.area2}</span>
               </label> 
             }
