@@ -170,7 +170,7 @@ export function CadastroEscola() {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       const data = await response.json()
-      showPopupWithProgress(`${data.msg}.`)
+      showPopupWithProgress(data.msg)
       setTimeout(() => {
         navigate('/login')
       }, 5000)

@@ -131,7 +131,7 @@ export function CadastroAluno(props) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
         const data = await response.json()
-        showPopupWithProgress(`${data.msg}. Um email de confirmação foi enviado para seu email cadastrado.`)
+        showPopupWithProgress(data.msg)
         props.onNewAluno()
         return data.msg
       } catch (error) {
