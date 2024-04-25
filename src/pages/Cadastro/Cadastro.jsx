@@ -174,7 +174,7 @@ export function CadastroAluno(props) {
         const data = await response.json()
         showPopupWithProgress(data.msg)
         props.onNewAluno()
-        props.onClose()
+        props.toClose()
         return data.msg
       } catch (error) {
         console.error('An error occurred while submitting the form:', error)
@@ -272,5 +272,5 @@ CadastroAluno.propTypes = {
   isEdit: PropTypes.bool,
   id: PropTypes.string,
   aluno: PropTypes.object,
-  onClose: PropTypes.func
+  toClose: PropTypes.func
 }

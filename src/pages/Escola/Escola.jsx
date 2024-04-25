@@ -86,9 +86,7 @@ export function Escola() {
     setIsModalOpen(true)
   }
   
-  const handleCloseModal = () => {
-    setIsModalOpen(false)
-  }
+  const handleCloseModal = () => setIsModalOpen(false)
 
   const handleDelete = async (aluno) => {
     setCurrentAluno(aluno)
@@ -170,7 +168,7 @@ export function Escola() {
         </tbody>
       </table>
       <Modal openClose={isModalOpen} onClose={handleCloseModal}>
-        <CadastroAluno onClose={handleCloseModal} aluno={currentAluno} isEdit codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
+        <CadastroAluno toClose={() => handleCloseModal()} aluno={currentAluno} isEdit codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
       </Modal>
       {/* <Modal openClose={isConfirmModalOpen} noButton onClose={handleCloseConfirmModal}>
           <h2>Tem certeza que deseja excluir o aluno?</h2>
