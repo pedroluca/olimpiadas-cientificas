@@ -162,7 +162,7 @@ export function Escola() {
                 <td>{aluno.area1}<br/>{aluno.area2}</td>
                 <td className="alunos-opcoes">
                   <Pencil className="edit-option" onClick={() => handleEdit(aluno)} />
-                  <Trash2 className="delete-option" onClick={handleDelete} />
+                  <Trash2 className="delete-option" onClick={() => handleDelete(aluno)} />
                 </td>
               </tr>
             ))
