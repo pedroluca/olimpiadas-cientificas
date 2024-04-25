@@ -46,10 +46,14 @@ export function CadastroAluno(props) {
     modalidade: '',
     id_area1: '',
     id_area2: '',
+    areas: []
   })
   
   useEffect(() => {
     if (props.isEdit && props.aluno) {
+      let areas = [props.aluno.id_area]
+      if (props.aluno.id_area2) areas.push(props.aluno.id_area2)
+
       setFormData({
         nome: props.aluno.nome || '',
         email: props.aluno.email || '',
@@ -58,6 +62,7 @@ export function CadastroAluno(props) {
         modalidade: props.aluno.modalidade || '',
         id_area1: props.aluno.id_area1 || '',
         id_area2: props.aluno.id_area2 || '',
+        areas: areas || []
       })
     }
   }, [props.isEdit, props.aluno, props.codigo])
