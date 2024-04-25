@@ -118,6 +118,7 @@ export function Escola() {
       const data = await response.json()
       showPopupWithProgress(data.msg)
       refreshAlunos()
+      handleCloseConfirmModal()
       return data.msg
     } catch (error) {
       console.error('An error occurred while submitting the form:', error)
@@ -179,13 +180,13 @@ export function Escola() {
       <Modal openClose={isModalOpen} onClose={handleCloseModal}>
         <CadastroAluno toClose={() => handleCloseModal()} aluno={currentAluno} isEdit codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
       </Modal>
-      <Modal openClose={isConfirmModalOpen} noButton onClose={handleCloseConfirmModal}>
+      <Modal openClose={isConfirmModalOpen} noButton>
           <h2>Tem certeza que deseja excluir o aluno?</h2>
           <div className="deleteConfirmButtons">
-            <button onClick={() => handleDeleteConfirm(currentAluno)} disabled={isLoading}>
+            <button className="btn-principal" onClick={() => handleDeleteConfirm(currentAluno)} disabled={isLoading}>
               {isLoading? <div className="spinner"></div> : 'Excluir'}
             </button>
-            <button onClick={handleCloseConfirmModal}>Cancelar</button>
+            <button className="btn-principal" onClick={() => handleCloseConfirmModal()}>Cancelar</button>
           </div>
       </Modal>
     </div>
