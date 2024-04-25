@@ -139,7 +139,7 @@ export function CadastroAluno(props) {
       } finally {
           setIsLoading(false)
       }
-    }
+    } else showPopupWithProgress('Escolha pelo menos uma das áreas para o aluno!')
   }
 
   return (
