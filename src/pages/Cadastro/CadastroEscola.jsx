@@ -4,6 +4,7 @@ import { isValid as isCnpjValid } from '@fnando/cnpj'
 import { isValid as isCpfValid } from '@fnando/cpf'
 import ImgCadastro from '../../assets/images/cadastro.jpg'
 import InputMask from 'react-input-mask'
+import { conformToMask } from 'text-mask-core'
 import './styles.css'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -174,6 +175,22 @@ export function CadastroEscola() {
     }
   }
 
+  const [mask, setMask] = useState('')
+
+  const handlePhoneBlur = (e) => {
+    const number = e.target.value.replace(/\D/g, '')
+    const newMask = number.length === 11 ? '(99) 99999-9999' : '(99) 9999-9999'
+    setMask(newMask)
+
+    const mask = newMask.split('').map(char => (char === '9' ? /\d/ : char))
+    const result = conformToMask(number, mask)
+    const formattedNumber = result.conformedValue
+  
+    setFormData(prevState => ({ ...prevState, telefone: formattedNumber }))
+  } 
+
+  const handlePhoneFocus = () => setMask('(99) 99999-9999')
+
   return (
     <div className="container-cadastro under-header-container">
       <h1>Cadastro de Escolas</h1>
@@ -204,10 +221,10 @@ export function CadastroEscola() {
                 mask="99.999.999/0001-99" 
                 type="text" 
                 id="cnpj" 
-                name="cnpj" 
+                name="cnpj"  
                 placeholder="xx.xxx.xxx/0001-xx" 
                 onChange={handleCnpjChange} 
-                className={!cnpjValid ? 'error' : ''}
+                className={!cnpjValid ? 'error' : ''} 
                 required 
               />
               {!cnpjValid && <div className="error-message">{cnpjError}</div>}
@@ -215,12 +232,14 @@ export function CadastroEscola() {
             <span>
               <label htmlFor="telefone">Telefone:</label>
               <InputMask 
-                mask="(99) 99999-9999" 
+                mask={mask} 
                 type="text" 
                 id="telefone" 
                 name="telefone" 
                 placeholder="Ex: (77) 99999-9999" 
-                onChange={handleChange} 
+                onBlur={handlePhoneBlur} 
+                onFocus={handlePhoneFocus}
+                onChange={handleChange}
                 required 
               />
             </span>
@@ -294,7 +313,7 @@ export function CadastroEscola() {
                 name="cpfResponsavel" 
                 placeholder="xxx.xxx.xxx-xx"
                 onChange={handleCpfChange}
-                className={!cnpjValid ? 'error' : ''}
+                className={!cpfValid ? 'error' : ''}
                 required 
               />
               {!cpfValid && <div className="error-message">{cpfError}</div>}
