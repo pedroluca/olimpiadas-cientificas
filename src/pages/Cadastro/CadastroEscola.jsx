@@ -319,7 +319,7 @@ export function CadastroEscola() {
               {!cpfValid && <div className="error-message">{cpfError}</div>}
             </span>
           </section>
-        <BotaoPrincipal type="submit" disabled={isLoading}>
+        <BotaoPrincipal type="submit" disabled={isLoading || showPopup}>
           {isLoading ? <div className="spinner"></div> : 'Cadastrar'}
         </BotaoPrincipal>
           <p className="login-switch">Já possui conta? <a className="login-switch" href="/login">Faça login aqui</a></p>
