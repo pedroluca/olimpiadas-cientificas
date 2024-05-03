@@ -162,16 +162,13 @@ export function CadastroEscola() {
       }
       const data = await response.json()
       showPopupWithProgress(data.msg)
-      setTimeout(() => {
-        navigate('/login')
-      }, 5000)
-      return data.msg
     } catch (error) {
       console.log(error)
       console.error('An error occurred while submitting the form:', error)
-      showPopupWithProgress(`Erro ${error.status}. ${error.message}`)
+      showPopupWithProgress(`${error.message}`)
     } finally {
       setIsLoading(false)
+      navigate('/cadastro-confirmado', { state: { email: formData.email } })
     }
   }
 

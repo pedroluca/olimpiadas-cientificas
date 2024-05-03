@@ -8,6 +8,7 @@ import { Login } from './pages/Cadastro/Login'
 import { Aluno } from './pages/Aluno/Aluno'
 import { Admin } from './pages/admin/admin'
 import './App.css'
+import { ConfirmRegistration } from './pages/confirm-registration/confirm-registration'
 
 export function App() {
   return (
@@ -20,6 +21,7 @@ export function App() {
         <Route path="/aluno" element={<Aluno />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/cadastro-confirmado" element={<ConfirmRegistration />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

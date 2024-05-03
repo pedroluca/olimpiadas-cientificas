@@ -1,0 +1,52 @@
+.container-confirm {
+  height: calc(100vh - 4rem);
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.container-confirm h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.container-confirm p {
+  text-align: justify;
+}
+
+.email-confirm {
+  color: var(--main-color);
+}
+
+.login-confirm {
+  align-self: center;
+  margin-top: 5rem;
+  
+  background: var(--main-color);
+  border-radius: 10px;
+  color: var(--white-color) !important;
+  -webkit-box-shadow: 0px 0px 5px 0px #808080; 
+  box-shadow: 0px 0px 5px 0px #808080;
+  padding: .5rem;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+  .container-confirm h1 {
+     margin-bottom: 2rem;
+   }
+  .container-confirm p {
+     text-align: center;
+   }
+  .login-confirm {
+     margin-top: 5rem;
+   }
+}
+
+@media screen and (min-width: 1024px) {
+  .container-confirm {
+    height: calc(100vh - 5rem);
+  }
+}
