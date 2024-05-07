@@ -151,26 +151,35 @@ export function CadastroEscola() {
   
     let requisicao = {
       method: 'POST',
-      headers: {'Content-Type' : 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
     }
   
     try {
       const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/escola/cadastro', requisicao)
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        if (response.status === 422) {
+          const errorData = await response.json()
+          throw new Error(`Erro ${response.status}: ${errorData.msg}`)
+        } else {
+          throw new Error(`Erro ${response.status}: ${response.statusText}`)
+        }
+      } else {
+        const data = await response.json()
+        if (response.status === 200) {
+          navigate('/cadastro-confirmado', { state: { email: formData.email } })
+        } else {
+          showPopupWithProgress(data.msg)
+          return data.msg
+        }
       }
-      const data = await response.json()
-      showPopupWithProgress(data.msg)
     } catch (error) {
-      console.log(error)
-      console.error('An error occurred while submitting the form:', error)
       showPopupWithProgress(`${error.message}`)
     } finally {
       setIsLoading(false)
-      navigate('/cadastro-confirmado', { state: { email: formData.email } })
     }
   }
+  
 
   const [mask, setMask] = useState('')
 
