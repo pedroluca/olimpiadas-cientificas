@@ -46,8 +46,8 @@ export function Aluno() {
       <p>Área(s): {user.area1}{ user.area2 ? ` / ${user.area2}` : ''}</p>
       <h2>Sua olimpíada:</h2>
       <div className="olimp-container">
-        <OlimpiadaCard area={user.area1} data="07/06/2024" horario="07:30 - 17:30" allowAccess={false} classe='olimpiada-aluno' />
-        { user.area2 && <OlimpiadaCard area={user.area2} data="07/06/2024" horario="07:30 - 17:30" allowAccess={false} classe='olimpiada-aluno' /> }
+        <OlimpiadaCard area={user.area1} isAluno={true} allowAccess={false} classe='olimpiada-aluno' />
+        { user.area2 && <OlimpiadaCard area={user.area2} isAluno={true} allowAccess={false} classe='olimpiada-aluno' /> }
       </div>
     </div>
   )
