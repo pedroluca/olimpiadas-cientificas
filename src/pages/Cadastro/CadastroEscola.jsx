@@ -167,7 +167,7 @@ export function CadastroEscola() {
       } else {
         const data = await response.json()
         if (response.status === 200) {
-          navigate('/cadastro-confirmado', { state: { email: formData.email } })
+          navigate('/cadastro/confirmado', { state: { email: formData.email } })
         } else {
           showPopupWithProgress(data.msg)
           return data.msg
