@@ -1,3 +1,7 @@
+.msg-danger {
+  color: red;
+}
+
 .container-escola {
   display: flex;
   flex-direction: column;

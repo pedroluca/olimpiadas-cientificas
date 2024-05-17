@@ -1,10 +1,9 @@
+import "./styles.css"
 import { useEffect, useState } from "react"
 import { CadastroAluno } from "../Cadastro/Cadastro"
 import { useNavigate } from "react-router-dom"
 import { useMemo } from "react"
-import "./styles.css"
-import { Trash2 } from "lucide-react"
-import { Pencil } from "lucide-react"
+import { Trash2, Pencil } from "lucide-react"
 import { Modal } from "../../components/Modal/Modal"
 
 export function Escola() {
@@ -148,8 +147,8 @@ export function Escola() {
         <li>{user.area1}</li>
         { user.area2 && <li>{user.area2}</li> }
       </ul>
-      <CadastroAluno codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
       <h2>Lista de Alunos</h2>
+      <p className="msg-danger">OBS: O período para realizar novas inscrições foi encerrado</p>
       <table>
         <thead>
           <tr>

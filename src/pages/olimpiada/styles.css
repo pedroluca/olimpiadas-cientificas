@@ -1,0 +1,27 @@
+.container-questao {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.questao {
+  border: 1px solid #000;
+  background: var(--white2-color);
+  border-radius: 20px;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+.container-alternativa {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.alternativa {
+  background: var(--main-color);
+}
