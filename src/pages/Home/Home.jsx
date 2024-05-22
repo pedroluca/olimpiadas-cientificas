@@ -1,21 +1,31 @@
 /* eslint-disable react/jsx-key */
+import './styles.css'
 import ImgBack from '../../assets/images/oc-icon-colored.png'
 import ImgIF from '../../assets/images/if2.png'
 import ImgCNPQ from '../../assets/images/cnpq.svg'
+import ImgMCTI from '../../assets/images/mcti.svg'
 import { Footer } from '../../components/Footer/Footer'
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
 import { OlimpiadaCard } from '../../components/OlimpiadaCard/OlimpiadaCard'
 import { ChevronsDown } from 'lucide-react'
 import { Atom, Magnet, BookMarked, LineChart } from 'lucide-react'
-import './styles.css'
-import { BotaoRedirect } from '../../components/botao-redirect'
 
 export function Home() {
-
   const openPDF = (e) => {
     e.preventDefault()
     let link = document.createElement('a')
     link.href = './assets/files/regulamento-ofc.pdf'
+    link.target = '_blank'
+    link.rel = 'noopener noreferrer'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
+  const openPDF2 = (e) => {
+    e.preventDefault()
+    let link = document.createElement('a')
+    link.href = './assets/files/conteudo_programatico.pdf'
     link.target = '_blank'
     link.rel = 'noopener noreferrer'
     document.body.appendChild(link)
@@ -30,7 +40,7 @@ export function Home() {
         <ChevronsDown className='icone-home' />
       </session>
       <session className="container sessao-texto primeira-sessao">
-        <BotaoRedirect className="btn-wd-md" to='/cadastro'>Inscreva-se!</BotaoRedirect>
+        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={openPDF2}>Confira o conteúdo programático</BotaoPrincipal>
         <h2>O que são as Olimpíadas Científicas do Sertão Produtivo?</h2>
         <p>As Olimpíadas Científicas do Sertão Produtivo - na Trilha da Ciência, trata- se de um projeto de extensão vinculado ao Instituto Federal de Ciência e Tecnologia Baiano - IF Baiano Campus Guanambi, aprovado junto a Chamada CNPq/MCTI nº 03/2023 - Olimpíadas Científicas, que incluirá ações que irão reunir trabalhos de natureza científica, em geral, que serão desenvolvidos por jovens estudantes do ensino médio e  técnico, nas mais diversas áreas do conhecimento, sob a orientação de professores responsáveis nas suas referidas escolas presentes no do Território Sertão Produtivo.</p>
         <h2>Quem pode se inscrever?</h2>
@@ -68,7 +78,7 @@ export function Home() {
       </session>
       <session className="container sessao-texto sessao-bg">
         <h2>O desafio está lançado! Venha para as Olimpíadas Científicas do Sertão Produtivo e aumente seu conhecimento.</h2>
-        <BotaoRedirect className="btn-wd-md" to='/cadastro'>Inscreva-se!</BotaoRedirect>
+        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={openPDF2}>Confira o conteúdo programático</BotaoPrincipal>
       </session>
       <session className="container sessao-texto">
         <h2>Premiação</h2>
@@ -111,6 +121,7 @@ export function Home() {
         <div>
           <h3>Apoio:</h3>
           <img src={ImgCNPQ} loading="lazy" />
+          <img src={ImgMCTI} loading="lazy" />
         </div>
       </session>
       <Footer />

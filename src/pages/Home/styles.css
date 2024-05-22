@@ -121,6 +121,11 @@
   .sessao-img img {
     width: 60%;
   }
+
+  .sessao-logos div img {
+    margin-top: 1rem;
+    width: 50%;
+  }
 }
 
 @media screen and (min-width: 1024px) { 
@@ -139,15 +144,12 @@
   
   .sessao-logos {
     flex-direction: row;
+    padding-left: 10% !important;
+    padding-right: 10% !important;
   }
 
   .sessao-logos div {
     width: 50%;
-  }
-
-  .sessao-logos div img {
-    margin-top: 1rem;
-    width: 70%;
   }
 
   .sessao-texto {
