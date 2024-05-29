@@ -147,10 +147,10 @@ export function Escola() {
         <li>{user.area1}</li>
         { user.area2 && <li>{user.area2}</li> }
       </ul>
-      <h2>Cadastre seus alunos</h2>
-      <CadastroAluno codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} />
+      {/* <h2>Cadastre seus alunos</h2>
+      <CadastroAluno codigo={user.codigo_escola} idArea1={user.id_area1} idArea2={user.id_area2} area1={user.area1} area2={user.area2} onNewAluno={refreshAlunos} /> */}
       <h2>Lista de Alunos</h2>
-      {/* <p className="msg-danger">OBS: O período para realizar novas inscrições foi encerrado</p> */}
+      <p className="msg-danger">OBS: O período para realizar novas inscrições foi encerrado</p>
       <table>
         <thead>
           <tr>
