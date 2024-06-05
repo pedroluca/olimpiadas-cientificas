@@ -204,12 +204,12 @@ export function CadastroAluno(props) {
           </span>
           <span>
             <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Ex: joaopedro@gmail.com" onChange={handleChange} value={formData.email} required />
+            <input type="email" id="email" name="email" placeholder="Ex: joaopedro@gmail.com" onChange={handleChange} value={formData.email} required disabled={props.isEdit} />
           </span>
           <span>
             <label htmlFor="cpf">CPF:</label>
               <InputMask 
-                mask="999.999.999-99" 
+                mask="999.999.999-99"
                 type="text" 
                 id="cpf" 
                 name="cpf" 

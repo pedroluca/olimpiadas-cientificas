@@ -11,6 +11,7 @@ export function Olimpiada() {
   const [activeQuestion, setActiveQuestion] = useState(0)
   const [userQuestions, setUserQuestions] = useState([])
   const [currentQuestionContent, setCurrentQuestionContent] = useState({})
+  const [currentIdMarked, setCurrentIdMarked] = useState(null)
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const asideRef = useRef(null)
@@ -90,35 +91,37 @@ export function Olimpiada() {
     if (activeQuestion < lastQuestion) setActiveQuestion(activeQuestion + 1)
   }
 
-  const handleRadioChange = (e, question_id) => {
+  const handleRadioChange = (e, id_questao) => {
     setUserQuestions(prevState => {
       const newState = [...prevState]
-      const existingQuestionIndex = prevState.findIndex(q => q.question_id === question_id)
+      const existingQuestionIndex = prevState.findIndex(q => q?.question_id === id_questao)
       if (existingQuestionIndex !== -1) {
         newState[existingQuestionIndex].alternative_marked_id = e.target.value
         newState[existingQuestionIndex].is_confirmed = false
+        setCurrentIdMarked(e.target.value)
+        setCurrentQuestionContent(
+          {
+           ...currentQuestionContent,
+            questao: { ...currentQuestionContent.questao, id_alternativa_assinalada: null}
+          }
+        )
       } else {
-        newState[activeQuestion] = { question_id, alternative_marked_id: e.target.value, is_confirmed: false }
+        newState[activeQuestion] = { question_id: id_questao, alternative_marked_id: e.target.value, is_confirmed: false }
       }
       return newState
     })
-    
-    console.log("user questions: ", userQuestions)
-  }
-
-  const isAllQuestionsDone = () => {
-    if (userQuestions.length < (lastQuestion + 1)) return false
-    else return true
-  }
-
-  const questionsLeft = () => {
-    const answeredQuestions = userQuestions.filter(q => q.alternative_marked_id !== null && q.alternative_marked_id !== undefined)
-    return (lastQuestion + 1) - answeredQuestions.length
   }
 
   const handleCloseConfirmModal = () => setIsConfirmModalOpen(false)
   
   const handleSubmitAlternative = () => {
+    setCurrentQuestionContent(
+      {
+        ...currentQuestionContent,
+        questao: { ...currentQuestionContent.questao, id_alternativa_assinalada: currentIdMarked}
+      }
+    )
+    
     const questaoParaEnviar = {
       id_questao: currentQuestionContent.questao.id_questao,
       id_alternativa_assinalada: userQuestions.find(q => q.question_id === currentQuestionContent.questao.id_questao).alternative_marked_id,
@@ -137,7 +140,7 @@ export function Olimpiada() {
 
       try {
         setIsLoading(true)
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/questao/assinalar`, requisicao) //trocar url
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/questao/assinalar_temp`, requisicao) //trocar url
         const data = await response.json()
         if (!response.ok) {
           let error = data.msg
@@ -174,7 +177,7 @@ export function Olimpiada() {
           {
             [...Array(lastQuestion + 1)].map((_, i) => {
               const question = userQuestions[i]
-              const isDone = question && question.is_confirmed === true
+              const isDone = question && question.alternative_marked_id !== null
               return (
                 <div className={'nav-question-item ' + (i == activeQuestion ? 'nav-question-active' : '') + (isDone ? ' nav-question-done' : '')} key={i} onClick={() => setActiveQuestion(i)}>{i + 1}</div>
               )
@@ -204,7 +207,13 @@ export function Olimpiada() {
               currentQuestionContent.alternativas.map((alternative, index) => {
                 return (
                   <label key={index}>
-                    <input type="radio" name={"question" + currentQuestionContent.questao.id_questao} checked={currentQuestionContent.questao.id_alternativa_assinalada !== null ? currentQuestionContent.questao.id_alternativa_assinalada === alternative.id : undefined} value={alternative.id} onChange={e => handleRadioChange(e, currentQuestionContent.questao.id_questao)} />
+                    <input 
+                      type="radio" 
+                      name={"question" + currentQuestionContent.questao.id_questao} 
+                      checked={currentQuestionContent.questao.id_alternativa_assinalada !== null ? currentQuestionContent.questao.id_alternativa_assinalada === alternative.id : undefined} 
+                      value={alternative.id} 
+                      onChange={e => handleRadioChange(e, currentQuestionContent.questao.id_questao)} 
+                    />
                     <span className="question-check">{alternative.alternativa}</span>
                   </label>
                 )
@@ -219,7 +228,7 @@ export function Olimpiada() {
               !userQuestions || 
               !currentQuestionContent || 
               !currentQuestionContent.questao ||
-              !userQuestions.find(q => q.question_id === currentQuestionContent.questao.id_questao && q.is_confirmed !== true)
+              !userQuestions.find(q => q?.question_id === currentQuestionContent.questao?.id_questao && q.is_confirmed !== true)
             } 
             onClick={handleSubmitAlternative}
           >
@@ -230,7 +239,7 @@ export function Olimpiada() {
       </main>
       <Modal noButton openClose={isConfirmModalOpen}>
         <h2>Tem certeza que deseja finalizar a prova?</h2>
-        {isAllQuestionsDone && <p>Você ainda possui {questionsLeft()} questões sem responder</p>}
+        <p>Certifique-se de não ter nenhuma questão deixada sem responder<br/><br/>OBS: As questões podem ser deixadas em branco</p>
         <div className="deleteConfirmButtons">
           <button className="btn-principal btn-wd-lg" onClick={() => handleFinish()}>Finalizar</button>
           <button className="btn-principal btn-wd-lg" onClick={() => handleCloseConfirmModal()}>Cancelar</button>
