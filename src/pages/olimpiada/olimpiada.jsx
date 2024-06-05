@@ -204,7 +204,7 @@ export function Olimpiada() {
               currentQuestionContent.alternativas.map((alternative, index) => {
                 return (
                   <label key={index}>
-                    <input type="radio" name={"question" + currentQuestionContent.questao.id_questao} value={alternative.id} onChange={e => handleRadioChange(e, currentQuestionContent.questao.id_questao)} />
+                    <input type="radio" name={"question" + currentQuestionContent.questao.id_questao} checked={currentQuestionContent.questao.id_alternativa_assinalada !== null ? currentQuestionContent.questao.id_alternativa_assinalada === alternative.id : undefined} value={alternative.id} onChange={e => handleRadioChange(e, currentQuestionContent.questao.id_questao)} />
                     <span className="question-check">{alternative.alternativa}</span>
                   </label>
                 )
