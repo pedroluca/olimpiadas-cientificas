@@ -137,7 +137,7 @@ export function Olimpiada() {
 
       try {
         setIsLoading(true)
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/questao/assinalar`, requisicao)
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/questao/assinalar`, requisicao) //trocar url
         const data = await response.json()
         if (!response.ok) {
           let error = data.msg
