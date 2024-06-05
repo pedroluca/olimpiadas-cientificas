@@ -1,65 +1,241 @@
-import { useState } from 'react'
-import { NavButton } from '../../components/navigation-button/nav-button'
-import { ListTodo, X } from 'lucide-react'
 import './styles.css'
+import { useState, useRef, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import { ChevronLeft, ChevronRight, SquareCheckBig, ListTodo, X } from 'lucide-react'
+import { NavButton } from '../../components/navigation-button/nav-button'
+import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
+import { Modal } from '../../components/Modal/Modal'
 
 export function Olimpiada() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeQuestion, setActiveQuestion] = useState(0)
+  const [userQuestions, setUserQuestions] = useState([])
+  const [currentQuestionContent, setCurrentQuestionContent] = useState({})
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const asideRef = useRef(null)
+  const initialRender = useRef(true)
+  const lastQuestion = 19
+  const { id_area } = useParams()
+  const navigate = useNavigate()
+    
+  useEffect(() => {
+    let requisicao = {
+      method: 'GET',
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.getItem('token')}`
+      },
+    }
+  
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/verify-login`, requisicao)
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
+      } catch (error) {
+        console.error('Houve um erro ao enviar a requisição:', error)
+        navigate('/login')
+      }
+    }
+
+    fetchData()
+  }, [navigate])
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (asideRef.current && !asideRef.current.contains(event.target)) setIsMenuOpen(false)
+    }
+  
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  useEffect(() => {
+    if (initialRender.current) {
+      initialRender.current = false;
+    } else {
+      const fetchQuestionData = async () => {
+        let requisicao = {
+          method: 'GET',
+          headers: {
+            'Content-Type' : 'application/json',
+            'Authorization' : `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+
+        try {
+          setIsLoading(true)
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/questao/?id_area=${id_area}&numero_questao=${activeQuestion + 1}`, requisicao)
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+          }
+          const data = await response.json()
+          setCurrentQuestionContent(data)
+          return data
+        } catch (error) {
+          console.error('Houve um erro ao enviar a requisição:', error)
+        } finally {
+          setIsLoading(false)
+        }
+      }
+      fetchQuestionData()
+    }
+  }, [activeQuestion, id_area])
 
   const previousQuestion = () => {
     if (activeQuestion > 0) setActiveQuestion(activeQuestion - 1)
   }
 
   const nextQuestion = () => {
-    if (activeQuestion < 44) setActiveQuestion(activeQuestion + 1)
+    if (activeQuestion < lastQuestion) setActiveQuestion(activeQuestion + 1)
   }
 
-  const navigateToQuestion = (e) => {
-    setActiveQuestion(parseInt(e.target.innerText) - 1)
+  const handleRadioChange = (e, question_id) => {
+    setUserQuestions(prevState => {
+      const newState = [...prevState]
+      const existingQuestionIndex = prevState.findIndex(q => q.question_id === question_id)
+      if (existingQuestionIndex !== -1) {
+        newState[existingQuestionIndex].alternative_marked_id = e.target.value
+        newState[existingQuestionIndex].is_confirmed = false
+      } else {
+        newState[activeQuestion] = { question_id, alternative_marked_id: e.target.value, is_confirmed: false }
+      }
+      return newState
+    })
+    
+    console.log("user questions: ", userQuestions)
+  }
+
+  const isAllQuestionsDone = () => {
+    if (userQuestions.length < (lastQuestion + 1)) return false
+    else return true
+  }
+
+  const questionsLeft = () => {
+    const answeredQuestions = userQuestions.filter(q => q.alternative_marked_id !== null && q.alternative_marked_id !== undefined)
+    return (lastQuestion + 1) - answeredQuestions.length
+  }
+
+  const handleCloseConfirmModal = () => setIsConfirmModalOpen(false)
+  
+  const handleSubmitAlternative = () => {
+    const questaoParaEnviar = {
+      id_questao: currentQuestionContent.questao.id_questao,
+      id_alternativa_assinalada: userQuestions.find(q => q.question_id === currentQuestionContent.questao.id_questao).alternative_marked_id,
+      numero_questao: (activeQuestion + 1)
+    }
+    
+    const sendQuestionData = async () => {
+      let requisicao = {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+          'Authorization' : `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(questaoParaEnviar)
+      }
+
+      try {
+        setIsLoading(true)
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/questao/assinalar`, requisicao)
+        const data = await response.json()
+        if (!response.ok) {
+          let error = data.msg
+          throw new Error(`HTTP error! status: ${response.status} | error: ${error}`)
+        } else if (response.ok) {
+          setUserQuestions(prevState => {
+            const existingQuestion = prevState.find(q => q.question_id === currentQuestionContent.questao.id_questao)
+            if (existingQuestion) {
+              existingQuestion.is_confirmed = true
+              return [...prevState]
+            }
+          })
+        }
+      } catch (error) {
+        console.error('Houve um erro ao enviar a requisição:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    sendQuestionData()
+  }
+
+  const handleFinish = () => {
+
+    navigate(`/aluno/olimpiada/${id_area}/finish`)
   }
 
   return (
     <div className='container-olimpiada'>
-      <aside className={isMenuOpen ? 'menu-open' : ''}>
+      <aside className={(isMenuOpen ? 'menu-open' : '') + ' large-aside'} ref={asideRef}>
         <X className='menu-close' onClick={() => setIsMenuOpen(false)} />
+        <h2 className='titulo-prova'>Prova de {JSON.parse(localStorage.getItem('user')).id_area === id_area ? JSON.parse(localStorage.getItem('user')).area1 : JSON.parse(localStorage.getItem('user')).area2}</h2>
         <div className='nav-questions-container'>
           {
-            [...Array(45)].map((_, i) => (
-              <div className={'nav-question-item ' + (i == activeQuestion ? 'nav-question-active' : '')} key={i} onClick={navigateToQuestion}>{i + 1}</div>
-            ))
+            [...Array(lastQuestion + 1)].map((_, i) => {
+              const question = userQuestions[i]
+              const isDone = question && question.is_confirmed === true
+              return (
+                <div className={'nav-question-item ' + (i == activeQuestion ? 'nav-question-active' : '') + (isDone ? ' nav-question-done' : '')} key={i} onClick={() => setActiveQuestion(i)}>{i + 1}</div>
+              )
+            })
           }
         </div>
+        <BotaoPrincipal classe='btn-wd-lg ' btnClick={() => setIsConfirmModalOpen(true)}>Finalizar</BotaoPrincipal>
       </aside>
       <main>
         <ListTodo className='icon-list-questions' onClick={() => setIsMenuOpen(true)} />
         <section className='question-container'>
           <h1>Questão {activeQuestion + 1}:</h1>
+          {
+            isLoading ?
+            <div className="spinner"></div> :
+            <p>{
+              currentQuestionContent.questao ? 
+              currentQuestionContent.questao.titulo : 
+              'Não foi possível carregar a questão'
+            }</p>
+          }
           {/* <img /> */}
           <div className='alternative-container'>
-            <label>
-              <input type="radio" key={"radio0-" + activeQuestion} name={"question" + activeQuestion} value="0" required />
-              <span className="question-check">Alternativa 1</span>
-            </label>
-            <label>
-              <input type="radio" key={"radio1-" + activeQuestion} name={"question" + activeQuestion} value="1" required />
-              <span className="question-check">Alternativa 2</span>
-            </label>
-            <label>
-              <input type="radio" key={"radio2-" + activeQuestion} name={"question" + activeQuestion} value="2" required />
-              <span className="question-check">Alternativa 3</span>
-            </label>
-            <label>
-              <input type="radio" key={"radio3-" + activeQuestion} name={"question" + activeQuestion} value="3" required />
-              <span className="question-check">Alternativa 4</span>
-            </label>
+            {
+              !isLoading &&
+              currentQuestionContent.alternativas &&
+              currentQuestionContent.alternativas.map((alternative, index) => {
+                return (
+                  <label key={index}>
+                    <input type="radio" name={"question" + currentQuestionContent.questao.id_questao} value={alternative.id} onChange={e => handleRadioChange(e, currentQuestionContent.questao.id_questao)} />
+                    <span className="question-check">{alternative.alternativa}</span>
+                  </label>
+                )
+              })
+            }
           </div>
         </section>
         <section className='nav-buttons'>
-          <NavButton disabled={activeQuestion == 0} onClick={previousQuestion}>Anterior</NavButton>
-          <NavButton disabled={activeQuestion == 44} onClick={nextQuestion}>Próxima</NavButton>
+          <NavButton disabled={activeQuestion == 0} onClick={previousQuestion}><ChevronLeft />Anterior</NavButton>
+          <NavButton 
+            disabled={
+              !userQuestions || 
+              !currentQuestionContent || 
+              !currentQuestionContent.questao ||
+              !userQuestions.find(q => q.question_id === currentQuestionContent.questao.id_questao && q.is_confirmed !== true)
+            } 
+            onClick={handleSubmitAlternative}
+          >
+            <SquareCheckBig />Marcar alternativa
+          </NavButton>
+          <NavButton disabled={activeQuestion == lastQuestion} onClick={nextQuestion}>Próxima<ChevronRight /></NavButton>
         </section>
       </main>
+      <Modal noButton openClose={isConfirmModalOpen}>
+        <h2>Tem certeza que deseja finalizar a prova?</h2>
+        {isAllQuestionsDone && <p>Você ainda possui {questionsLeft()} questões sem responder</p>}
+        <div className="deleteConfirmButtons">
+          <button className="btn-principal btn-wd-lg" onClick={() => handleFinish()}>Finalizar</button>
+          <button className="btn-principal btn-wd-lg" onClick={() => handleCloseConfirmModal()}>Cancelar</button>
+        </div>
+      </Modal>
     </div>
   )
 }

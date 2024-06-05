@@ -2,6 +2,10 @@
   color: red;
 }
 
+.skeleton-container > :not(:first-child) {
+  margin-top: -8rem;
+}
+
 .container-escola {
   display: flex;
   flex-direction: column;

@@ -1,10 +1,9 @@
-import { useState } from 'react'
-import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
-import PropTypes from 'prop-types'
 import './styles.css'
+import { useState, useEffect } from 'react'
 import { isValid as isCpfValid } from '@fnando/cpf'
+import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
 import InputMask from 'react-input-mask'
-import { useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 export function CadastroAluno(props) {
   const [cpfValid, setCpfValid] = useState(true)
@@ -134,7 +133,7 @@ export function CadastroAluno(props) {
       setCpfValid(true)
       setCpfError('')
     }
-    setFormData(prevState => ({ ...prevState, cpf: cpf }));
+    setFormData(prevState => ({ ...prevState, cpf: cpf }))
   }
 
   const handleSubmit = async (e) => {
@@ -159,28 +158,29 @@ export function CadastroAluno(props) {
       let url
 
       if (props.isEdit) {
-        url = 'https://api.olimpiadasdosertaoprodutivo.com/api/aluno/update'
+        url = `${import.meta.env.VITE_API_URL}/api/aluno/update`
         requisicao = {
           ...requisicao,
           method: 'PUT'
         }
-      } else url = 'https://api.olimpiadasdosertaoprodutivo.com/api/aluno/cadastro'
+      } else url = `${import.meta.env.VITE_API_URL}/api/aluno/cadastro`
   
+      let data
       try {
         const response = await fetch(url, requisicao)
+        data = await response.json()
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
-        const data = await response.json()
         props.onNewAluno()
         if (props.isEdit) props.toClose()
         showPopupWithProgress(data.msg)
         return data.msg
       } catch (error) {
         console.error('An error occurred while submitting the form:', error)
-        showPopupWithProgress('Ocorreu um erro, por favor tente novamente.')
+        showPopupWithProgress(data?.msg)
       } finally {
-          setIsLoading(false)
+        setIsLoading(false)
       }
     } else showPopupWithProgress('Escolha pelo menos uma das áreas para o aluno!')
   }

@@ -9,6 +9,7 @@ import { Login } from './pages/Cadastro/Login'
 import { Aluno } from './pages/Aluno/Aluno'
 import { Admin } from './pages/admin/admin'
 import { Olimpiada } from './pages/olimpiada/olimpiada'
+import { Finish } from './pages/finish-page/finish-page'
 
 export function App() {
   return (
@@ -19,7 +20,8 @@ export function App() {
         <Route path="/escola" element={<Escola />} />
         <Route path="/cadastro" element={<InscricoesEncerradas />} />
         <Route path="/aluno" element={<Aluno />} />
-        <Route path="/aluno/olimpiada" element={<Olimpiada />} />
+        <Route path="/aluno/olimpiada/:id_area" element={<Olimpiada />} />
+        <Route path="/aluno/olimpiada/:id_area/finish" element={<Finish />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="*" element={<NotFound />} />

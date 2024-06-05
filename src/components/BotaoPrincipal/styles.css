@@ -17,6 +17,10 @@
   width: 75%;
 }
 
+.btn-wd-lg {
+  width: 100% !important;
+}
+
 .btn-principal:hover {
   background: linear-gradient(45deg, rgba(204,85,0,1) 0%, rgba(102,0,153,1) 100%);
 }

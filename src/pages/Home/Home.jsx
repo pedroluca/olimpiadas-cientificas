@@ -35,11 +35,11 @@ export function Home() {
   
   return (
     <div className='container'>
-      <session className='sessao-img'>
-        <img src={ImgBack} fetchPriority="high" alt="Logo do evento I Olimpíadas Científicas" />
+      <section className='sessao-img'>
+        <img src={ImgBack} alt="Logo do evento I Olimpíadas Científicas" />
         <ChevronsDown className='icone-home' />
-      </session>
-      <session className="container sessao-texto primeira-sessao">
+      </section>
+      <section className="container sessao-texto primeira-sessao">
         <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={openPDF2}>Confira o conteúdo programático</BotaoPrincipal>
         <h2>O que são as Olimpíadas Científicas do Sertão Produtivo?</h2>
         <p>As Olimpíadas Científicas do Sertão Produtivo - na Trilha da Ciência, trata- se de um projeto de extensão vinculado ao Instituto Federal de Ciência e Tecnologia Baiano - IF Baiano Campus Guanambi, aprovado junto a Chamada CNPq/MCTI nº 03/2023 - Olimpíadas Científicas, que incluirá ações que irão reunir trabalhos de natureza científica, em geral, que serão desenvolvidos por jovens estudantes do ensino médio e  técnico, nas mais diversas áreas do conhecimento, sob a orientação de professores responsáveis nas suas referidas escolas presentes no do Território Sertão Produtivo.</p>
@@ -47,8 +47,8 @@ export function Home() {
         <p>Escolas públicas que ofertam o ensino médio localizadas no Território Sertão Produtivo</p>
         <h2>Quem pode participar?</h2>
         <p>Estudantes regularmente matriculados no ensino médio de escolas públicas localizadas no Território Sertão Produtivo</p>
-      </session>
-      <session className="container sessao-texto sessao-bg">
+      </section>
+      <section className="container sessao-texto sessao-bg">
         <h2>Como funciona?</h2>
         <p>As Olimpíadas Científicas do Sertão Produtivo será online e a participação será gratuita.</p>
         <p>O período de inscrições será entre os dias 15/04/24 até 10/05/24</p>
@@ -57,8 +57,8 @@ export function Home() {
         <p>Depois de inscrito, estude bastante e nos dias das provas, responda as perguntas de maneira correta para aumentar sua pontuação</p>
         <p>Os alunos com as maiores pontuações estarão concorrendo a premiações</p>
         <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={openPDF}>Confira o regulamento</BotaoPrincipal>
-      </session>
-      <session className="container sessao-texto">
+      </section>
+      <section className="container sessao-texto">
         <h2>Áreas do conhecimento</h2>
         <p>Cada escola deverá escolher 2 dentre as seguintes áreas:</p>
         <div className="olimp-container olimp-container-desktop">
@@ -75,12 +75,12 @@ export function Home() {
             <LineChart className='olimp-img' loading="lazy" />
           </OlimpiadaCard>
         </div>
-      </session>
-      <session className="container sessao-texto sessao-bg">
+      </section>
+      <section className="container sessao-texto sessao-bg">
         <h2>O desafio está lançado! Venha para as Olimpíadas Científicas do Sertão Produtivo e aumente seu conhecimento.</h2>
         <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={openPDF2}>Confira o conteúdo programático</BotaoPrincipal>
-      </session>
-      <session className="container sessao-texto">
+      </section>
+      <section className="container sessao-texto">
         <h2>Premiação</h2>
         <p>Troféus, medalhas, menções honrosas e bolsas de iniciação científica, confira:</p>
         <div className='premiacao'>
@@ -98,8 +98,8 @@ export function Home() {
           <p>Serão concedidas um total de 10 bolsas de iniciação científica.</p>
           <p className='destaque'>OBS: As bolsas deverão ser destinadas, prioritariamente, a estudantes do ensino médio e técnico de escolas públicas, que atendam os seguintes perfis: estudantes mulheres, estudantes negros (homens e mulheres) e estudantes com deficiência.(PCD).</p>
         </div>
-      </session>
-      <session className="container sessao-texto sessao-bg sessao-cronograma">
+      </section>
+      <section className="container sessao-texto sessao-bg sessao-cronograma">
         <h2>Cronograma</h2>
         <div className='cronogram-holder'>
           <ul>
@@ -112,8 +112,8 @@ export function Home() {
             <li>11/10/24 - Cerimônia de encerramento e premiação</li>
           </ul>
         </div>
-      </session>
-      <session className="container sessao-texto sessao-logos">
+      </section>
+      <section className="container sessao-texto sessao-logos">
         <div>
           <h3>Realização:</h3>
           <img src={ImgIF} className='logo-if' loading="lazy" />
@@ -123,7 +123,7 @@ export function Home() {
           <img src={ImgCNPQ} loading="lazy" />
           <img src={ImgMCTI} loading="lazy" />
         </div>
-      </session>
+      </section>
       <Footer />
     </div>
   )

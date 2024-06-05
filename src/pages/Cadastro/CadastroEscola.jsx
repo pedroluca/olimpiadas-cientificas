@@ -19,6 +19,10 @@ export function CadastroEscola() {
   const [showPopup, setShowPopup] = useState(false)
   const [progress, setProgress] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+  const [isOther, setIsOther] = useState(false)
+  const [otherValue, setOtherValue] = useState('')
+  const [selectedCheckboxes, setSelectedCheckboxes] = useState([])
+  const [mask, setMask] = useState('')
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -32,7 +36,7 @@ export function CadastroEscola() {
   
     const fetchData = async () => {
       try {
-        const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/verify-login', requisicao)
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/verify-login`, requisicao)
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
@@ -74,8 +78,6 @@ export function CadastroEscola() {
     municipio: '',
     areas: []
   })
-
-  const [selectedCheckboxes, setSelectedCheckboxes] = useState([])
 
   function handleChange(event) {
     const { name, type } = event.target
@@ -128,9 +130,6 @@ export function CadastroEscola() {
     setFormData(prevState => ({ ...prevState, cpfResponsavel: cpf }))
   }
   
-  const [isOther, setIsOther] = useState(false)
-  const [otherValue, setOtherValue] = useState('')
-  
   const handleSelectChange = (e) => {
     if (e.target.value === 'Outro') {
       setIsOther(true)
@@ -155,33 +154,26 @@ export function CadastroEscola() {
       body: JSON.stringify(formData)
     }
   
+    let data
     try {
-      const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/escola/cadastro', requisicao)
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/escola/cadastro`, requisicao)
+      data = await response.json()
       if (!response.ok) {
-        if (response.status === 422) {
-          const errorData = await response.json()
-          throw new Error(`Erro ${response.status}: ${errorData.msg}`)
-        } else {
-          throw new Error(`Erro ${response.status}: ${response.statusText}`)
-        }
-      } else {
-        const data = await response.json()
-        if (response.status === 200) {
-          navigate('/cadastro/confirmado', { state: { email: formData.email } })
-        } else {
-          showPopupWithProgress(data.msg)
-          return data.msg
-        }
+        throw new Error(`HTTP error: ${response.status}}`)
       }
+      if (response.status === 200) {
+        navigate('/cadastro/confirmado', { state: { email: formData.email } })
+      } else {
+        showPopupWithProgress(data.msg)
+      }
+      return data
     } catch (error) {
-      showPopupWithProgress(`${error.message}`)
+      console.error('Houve um erro ao enviar a requisição:', error)
+      showPopupWithProgress(data?.msg)
     } finally {
       setIsLoading(false)
     }
   }
-  
-
-  const [mask, setMask] = useState('')
 
   const handlePhoneBlur = (e) => {
     const number = e.target.value.replace(/\D/g, '')

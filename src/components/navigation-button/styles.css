@@ -7,6 +7,10 @@
   cursor: pointer;
   transition: ease-in-out .2s;
   color: var(--white-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
 }
 .nav-button:hover:not(:disabled) {
   background: var(--main-color-hover);

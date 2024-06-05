@@ -16,13 +16,13 @@ export function OlimpiadaCard(props) {
       <h3>{props.area}</h3>
       <p>Data: 07/06/2024</p>
       <p>Horário: 07:30 - 17:30</p>
-      { props.isAluno && <BotaoPrincipal classe={props.allowAccess ? '' : 'disabled'} btnClick={props.allowAccess ? btnClick : ''} disabled={!props.allowAccess}>Acessar</BotaoPrincipal> }
+      { props.isAluno && <BotaoPrincipal classe={(props.allowAccess ? '' : 'disabled') + ' btn-md-olimpiada'} btnClick={props.allowAccess ? btnClick : ''} disabled={!props.allowAccess}>Acessar</BotaoPrincipal> }
     </div>
   )
 }
 
 OlimpiadaCard.propTypes = {
-  area: PropTypes.string.isRequired,
+  area: PropTypes.string,
   id: PropTypes.string,
   allowAccess: PropTypes.bool,
   classe: PropTypes.string,

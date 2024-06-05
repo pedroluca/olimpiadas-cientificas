@@ -7,8 +7,8 @@ import { LogOut } from "lucide-react"
 export function HeaderOptions(props) {
   return (
     <>
-      <NavLink exact to="/">Início</NavLink>
-      { props.isLoggedIn && <NavLink to={`/${props.userType}`}>{ props.userType === 'escola' ? 'Escola' : 'Aluno' }</NavLink> }
+      <NavLink exact="true" to="/">Início</NavLink>
+      { props.isLoggedIn && <NavLink to={`/${props.userType}`} end>{ props.userType === 'escola' ? 'Escola' : 'Aluno' }</NavLink> }
       { !props.isLoggedIn && <NavLink to="/login">Log in</NavLink> }
       { props.isLoggedIn && <NavLink to="/login" className='logout-opt' onClick={props.handleLogout}><LogOut />Sair</NavLink> }
     </>

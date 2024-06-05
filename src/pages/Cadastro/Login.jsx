@@ -23,12 +23,12 @@ export function Login() {
   
     const fetchData = async () => {
       try {
-        const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/verify-login', requisicao)
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/verify-login`, requisicao)
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
         const data = await response.json()
-        if (data.isAuthenticated) navigate('/')
+        navigate('../')
         return data
       } catch (error) {
         console.error('Houve um erro ao enviar a requisição:', error)
@@ -83,12 +83,13 @@ export function Login() {
       body: JSON.stringify(formData)
     }
     
+    let data
     try {
-      const response = await fetch(`https://api.olimpiadasdosertaoprodutivo.com/api/${urlEndpoint}/login`, requisicao)
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/${urlEndpoint}/login`, requisicao)
+      data = await response.json()
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        throw new Error(`${data.msg}`)
       }
-      const data = await response.json()
       if (data) {
         localStorage.setItem('token', data.msg.token)
         if (formData.userType === 'aluno') localStorage.setItem('user', JSON.stringify(data.msg.dadosAluno))
@@ -98,8 +99,7 @@ export function Login() {
         throw new Error('Token not found')
       }
     } catch (error) {
-      console.error('An error occurred while submitting the form:', error)
-      showPopupWithProgress('Ocorreu um erro ao tentar logar, por favor tente novamente')
+      showPopupWithProgress(data?.msg)
     } finally {
       setIsLoading(false)
     }

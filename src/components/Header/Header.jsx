@@ -23,7 +23,7 @@ export function Header() {
   
     const fetchData = async () => {
       try {
-        const response = await fetch('https://api.olimpiadasdosertaoprodutivo.com/api/verify-login', requisicao)
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/verify-login`, requisicao)
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
@@ -35,7 +35,7 @@ export function Header() {
           else setUserType('aluno')
         }
       } catch (error) {
-        console.error('Houve um erro ao enviar a requisição:', error)
+        //do nothing
       }
     }
 
