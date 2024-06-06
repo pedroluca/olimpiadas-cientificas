@@ -66,7 +66,7 @@ export function Olimpiada() {
 
         try {
           setIsLoading(true)
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/questao/?id_area=${id_area}&numero_questao=${activeQuestion + 1}`, requisicao)
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/questao/?id_area=${id_area}&numero_questao=${activeQuestion + 1}&usuario=${JSON.parse(localStorage.getItem('user')).usuario}`, requisicao)
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`)
           }
@@ -123,9 +123,10 @@ export function Olimpiada() {
     )
     
     const questaoParaEnviar = {
-      id_questao: currentQuestionContent.questao.id_questao,
-      id_alternativa_assinalada: userQuestions.find(q => q.question_id === currentQuestionContent.questao.id_questao).alternative_marked_id,
-      numero_questao: (activeQuestion + 1)
+      id_questao: currentQuestionContent.questao.id,
+      id_alternativa_assinalada: userQuestions.find(q => q.question_id === currentQuestionContent.questao.id).alternative_marked_id,
+      numero_questao: (activeQuestion + 1),
+      usuario: JSON.parse(localStorage.getItem('user')).usuario
     }
     
     const sendQuestionData = async () => {
@@ -147,7 +148,7 @@ export function Olimpiada() {
           throw new Error(`HTTP error! status: ${response.status} | error: ${error}`)
         } else if (response.ok) {
           setUserQuestions(prevState => {
-            const existingQuestion = prevState.find(q => q.question_id === currentQuestionContent.questao.id_questao)
+            const existingQuestion = prevState.find(q => q.question_id === currentQuestionContent.questao.id)
             if (existingQuestion) {
               existingQuestion.is_confirmed = true
               return [...prevState]
@@ -209,10 +210,10 @@ export function Olimpiada() {
                   <label key={index}>
                     <input 
                       type="radio" 
-                      name={"question" + currentQuestionContent.questao.id_questao} 
+                      name={"question" + currentQuestionContent.questao.id} 
                       checked={currentQuestionContent.questao.id_alternativa_assinalada !== null ? currentQuestionContent.questao.id_alternativa_assinalada === alternative.id : undefined} 
                       value={alternative.id} 
-                      onChange={e => handleRadioChange(e, currentQuestionContent.questao.id_questao)} 
+                      onChange={e => handleRadioChange(e, currentQuestionContent.questao.id)} 
                     />
                     <span className="question-check">{alternative.alternativa}</span>
                   </label>
@@ -228,7 +229,7 @@ export function Olimpiada() {
               !userQuestions || 
               !currentQuestionContent || 
               !currentQuestionContent.questao ||
-              !userQuestions.find(q => q?.question_id === currentQuestionContent.questao?.id_questao && q.is_confirmed !== true)
+              !userQuestions.find(q => q?.question_id === currentQuestionContent.questao?.id && q.is_confirmed !== true)
             } 
             onClick={handleSubmitAlternative}
           >
