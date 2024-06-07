@@ -56,6 +56,41 @@ export function Olimpiada() {
     if (initialRender.current) {
       initialRender.current = false;
     } else {
+      const checkTime = async () => {
+        let requestBody = {
+          'usuario': JSON.parse(localStorage.getItem('user')).usuario,
+          'id_area': id_area,
+          'modalidade': JSON.parse(localStorage.getItem('user')).modalidade
+        }
+
+        let requisicao = {
+          method: 'POST',
+          headers: {
+            'Content-Type' : 'application/json',
+            'Authorization' : `Bearer ${localStorage.getItem('token')}`
+          },
+          body: JSON.stringify(requestBody)
+        }
+
+        try {
+          setIsLoading(true)
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/verifica_tempo`, requisicao)
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+          }
+          const data = await response.json()
+          if (data.prova_encerrada === true) {
+            navigate(`/aluno/olimpiada/${id_area}/finish`)
+          }
+          return data
+        } catch (error) {
+          console.error('Houve um erro ao enviar a requisição:', error)
+        } finally {
+          setIsLoading(false)
+        }
+      }
+      checkTime()
+      
       const fetchQuestionData = async () => {
         let requisicao = {
           method: 'GET',
@@ -73,7 +108,7 @@ export function Olimpiada() {
           }
           const data = await response.json()
           setCurrentQuestionContent(data)
-          setImagePath(data.questao.path_img)
+          setImagePath(data.questao?.path_img)
           return data
         } catch (error) {
           console.error('Houve um erro ao enviar a requisição:', error)
@@ -83,7 +118,7 @@ export function Olimpiada() {
       }
       fetchQuestionData()
     }
-  }, [activeQuestion, id_area])
+  }, [activeQuestion, id_area, navigate])
       
   const previousQuestion = () => (activeQuestion > 0) ? setActiveQuestion(activeQuestion - 1) : null
   
