@@ -153,6 +153,7 @@ export function Olimpiada() {
               return [...prevState]
             }
           })
+          nextQuestion()
         }
       } catch (error) {
         console.error('Houve um erro ao enviar a requisição:', error)
@@ -181,21 +182,14 @@ export function Olimpiada() {
 
     try {
       setIsLoading(true)
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/prova_respondida`, requisicao) //trocar url
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/prova_respondida`, requisicao)
       const data = await response.json()
       if (!response.ok) {
         let error = data.msg
         throw new Error(`HTTP error! status: ${response.status} | error: ${error}`)
       }
 
-      const secondResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type' : 'application/json',
-          'Authorization' : `Bearer ${localStorage.getItem('token')}`
-        },
-        body: JSON.stringify(requestBody)
-      })
+      const secondResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/finalizar_prova`, requisicao)
       const secondData = await secondResponse.json()
       if (!secondResponse.ok) {
         throw new Error(`HTTP error! status: ${secondResponse.status}`)
