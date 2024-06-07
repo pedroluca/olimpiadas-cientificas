@@ -12,9 +12,9 @@ export function OlimpiadaCard(props) {
 
   useEffect(() => {
     let requestBody = {
-      'usuario': JSON.parse(localStorage.getItem('user')).usuario,
+      'usuario': JSON.parse(localStorage.getItem('user'))?.usuario,
       'id_area': props.id,
-      'modalidade': JSON.parse(localStorage.getItem('user')).modalidade
+      'modalidade': JSON.parse(localStorage.getItem('user'))?.modalidade
     }
     const fetchData = async () => {
       let requisicao = {

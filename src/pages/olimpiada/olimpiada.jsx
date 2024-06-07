@@ -16,7 +16,6 @@ export function Olimpiada() {
   const [isLoading, setIsLoading] = useState(false)
   const [imagePath, setImagePath] = useState(null)
   const asideRef = useRef(null)
-  const initialRender = useRef(true)
   const lastQuestion = 19
   const { id_area } = useParams()
   const navigate = useNavigate()
@@ -53,71 +52,73 @@ export function Olimpiada() {
   }, [])
 
   useEffect(() => {
-    if (initialRender.current) {
-      initialRender.current = false;
-    } else {
-      const checkTime = async () => {
-        let requestBody = {
-          'usuario': JSON.parse(localStorage.getItem('user')).usuario,
-          'id_area': id_area,
-          'modalidade': JSON.parse(localStorage.getItem('user')).modalidade
-        }
-
-        let requisicao = {
-          method: 'POST',
-          headers: {
-            'Content-Type' : 'application/json',
-            'Authorization' : `Bearer ${localStorage.getItem('token')}`
-          },
-          body: JSON.stringify(requestBody)
-        }
-
-        try {
-          setIsLoading(true)
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/verifica_tempo`, requisicao)
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`)
-          }
-          const data = await response.json()
-          if (data.prova_encerrada === true) {
-            navigate(`/aluno/olimpiada/${id_area}/finish`)
-          }
-          return data
-        } catch (error) {
-          console.error('Houve um erro ao enviar a requisição:', error)
-        } finally {
-          setIsLoading(false)
-        }
+    const checkTime = async () => {
+      let requestBody = {
+        'usuario': JSON.parse(localStorage.getItem('user')).usuario,
+        'id_area': id_area,
+        'modalidade': JSON.parse(localStorage.getItem('user')).modalidade
       }
-      checkTime()
-      
-      const fetchQuestionData = async () => {
-        let requisicao = {
-          method: 'GET',
-          headers: {
-            'Content-Type' : 'application/json',
-            'Authorization' : `Bearer ${localStorage.getItem('token')}`
-          }
-        }
-    
-        try {
-          setIsLoading(true)
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/questao/?id_area=${id_area}&numero_questao=${activeQuestion + 1}&usuario=${JSON.parse(localStorage.getItem('user')).usuario}`, requisicao)
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`)
-          }
-          const data = await response.json()
-          setCurrentQuestionContent(data)
-          setImagePath(data.questao?.path_img)
-          return data
-        } catch (error) {
-          console.error('Houve um erro ao enviar a requisição:', error)
-        } finally {
-          setIsLoading(false)
-        }
+
+      let requisicao = {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+          'Authorization' : `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(requestBody)
       }
-      fetchQuestionData()
+
+      try {
+        setIsLoading(true)
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/verifica_tempo`, requisicao)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const data = await response.json()
+        if (data.prova_encerrada === true) {
+          navigate(`/aluno/olimpiada/${id_area}/finish`)
+        }
+        return data
+      } catch (error) {
+        console.error('Houve um erro ao enviar a requisição:', error)
+      } finally {
+        setIsLoading(false)
+      }
     }
+    checkTime()
+    
+    const fetchQuestionData = async () => {
+      let requestBody = {
+        'usuario': JSON.parse(localStorage.getItem('user')).usuario,
+        'id_area': id_area,
+        'numero_questao': (activeQuestion + 1)
+      }
+      let requisicao = {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+          'Authorization' : `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(requestBody)
+      }
+  
+      try {
+        setIsLoading(true)
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/questao`, requisicao)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const data = await response.json()
+        setCurrentQuestionContent(data)
+        setImagePath(data.questao?.path_img)
+        return data
+      } catch (error) {
+        console.error('Houve um erro ao enviar a requisição:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchQuestionData()
   }, [activeQuestion, id_area, navigate])
       
   const previousQuestion = () => (activeQuestion > 0) ? setActiveQuestion(activeQuestion - 1) : null
@@ -125,7 +126,6 @@ export function Olimpiada() {
   const nextQuestion = () => (activeQuestion < lastQuestion) ? setActiveQuestion(activeQuestion + 1) : null
   
   const handleRadioChange = (e, id_questao) => {
-    console.log(imagePath)
     setUserQuestions(prevState => {
       const newState = [...prevState]
       const existingQuestionIndex = prevState.findIndex(q => q?.question_id === id_questao)
