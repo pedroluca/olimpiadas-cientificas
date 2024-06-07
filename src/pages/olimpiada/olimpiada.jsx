@@ -14,6 +14,7 @@ export function Olimpiada() {
   const [currentIdMarked, setCurrentIdMarked] = useState(null)
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [imagePath, setImagePath] = useState(null)
   const asideRef = useRef(null)
   const initialRender = useRef(true)
   const lastQuestion = 19
@@ -63,7 +64,7 @@ export function Olimpiada() {
             'Authorization' : `Bearer ${localStorage.getItem('token')}`
           }
         }
-
+    
         try {
           setIsLoading(true)
           const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/questao/?id_area=${id_area}&numero_questao=${activeQuestion + 1}&usuario=${JSON.parse(localStorage.getItem('user')).usuario}`, requisicao)
@@ -72,6 +73,7 @@ export function Olimpiada() {
           }
           const data = await response.json()
           setCurrentQuestionContent(data)
+          setImagePath(data.questao.path_img)
           return data
         } catch (error) {
           console.error('Houve um erro ao enviar a requisição:', error)
@@ -82,16 +84,13 @@ export function Olimpiada() {
       fetchQuestionData()
     }
   }, [activeQuestion, id_area])
-
-  const previousQuestion = () => {
-    if (activeQuestion > 0) setActiveQuestion(activeQuestion - 1)
-  }
-
-  const nextQuestion = () => {
-    if (activeQuestion < lastQuestion) setActiveQuestion(activeQuestion + 1)
-  }
-
+      
+  const previousQuestion = () => (activeQuestion > 0) ? setActiveQuestion(activeQuestion - 1) : null
+  
+  const nextQuestion = () => (activeQuestion < lastQuestion) ? setActiveQuestion(activeQuestion + 1) : null
+  
   const handleRadioChange = (e, id_questao) => {
+    console.log(imagePath)
     setUserQuestions(prevState => {
       const newState = [...prevState]
       const existingQuestionIndex = prevState.findIndex(q => q?.question_id === id_questao)
@@ -124,7 +123,7 @@ export function Olimpiada() {
     
     const questaoParaEnviar = {
       id_questao: currentQuestionContent.questao.id,
-      id_alternativa_assinalada: userQuestions.find(q => q.question_id === currentQuestionContent.questao.id).alternative_marked_id,
+      id_alternativa_assinalada: userQuestions.find(q => q?.question_id === currentQuestionContent.questao.id).alternative_marked_id,
       numero_questao: (activeQuestion + 1),
       usuario: JSON.parse(localStorage.getItem('user')).usuario
     }
@@ -141,14 +140,14 @@ export function Olimpiada() {
 
       try {
         setIsLoading(true)
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/questao/assinalar_temp`, requisicao) //trocar url
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/questao/assinalar_temp`, requisicao)
         const data = await response.json()
         if (!response.ok) {
           let error = data.msg
           throw new Error(`HTTP error! status: ${response.status} | error: ${error}`)
         } else if (response.ok) {
           setUserQuestions(prevState => {
-            const existingQuestion = prevState.find(q => q.question_id === currentQuestionContent.questao.id)
+            const existingQuestion = prevState.find(q => q?.question_id === currentQuestionContent.questao.id)
             if (existingQuestion) {
               existingQuestion.is_confirmed = true
               return [...prevState]
@@ -164,9 +163,52 @@ export function Olimpiada() {
     sendQuestionData()
   }
 
-  const handleFinish = () => {
+  const handleFinish = async () => {
+    let requestBody = {
+      'usuario': JSON.parse(localStorage.getItem('user')).usuario,
+      'id_area': id_area,
+      'modalidade': JSON.parse(localStorage.getItem('user')).modalidade
+    }
 
-    navigate(`/aluno/olimpiada/${id_area}/finish`)
+    let requisicao = {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify(requestBody)
+    }
+
+    try {
+      setIsLoading(true)
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/prova_respondida`, requisicao) //trocar url
+      const data = await response.json()
+      if (!response.ok) {
+        let error = data.msg
+        throw new Error(`HTTP error! status: ${response.status} | error: ${error}`)
+      }
+
+      const secondResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+          'Authorization' : `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(requestBody)
+      })
+      const secondData = await secondResponse.json()
+      if (!secondResponse.ok) {
+        throw new Error(`HTTP error! status: ${secondResponse.status}`)
+      }
+      return secondData
+      
+    } catch (error) {
+      console.error('Houve um erro ao enviar a requisição:', error)
+    } finally {
+      setIsLoading(false)
+      navigate(`/aluno/olimpiada/${id_area}/finish`)
+    }
+
   }
 
   return (
@@ -194,13 +236,16 @@ export function Olimpiada() {
           {
             isLoading ?
             <div className="spinner"></div> :
-            <p>{
-              currentQuestionContent.questao ? 
-              currentQuestionContent.questao.titulo : 
-              'Não foi possível carregar a questão'
-            }</p>
+            <>
+              <p>{
+                currentQuestionContent.questao ? 
+                currentQuestionContent.questao.titulo : 
+                'Não foi possível carregar a questão'
+              }</p>
+              {imagePath !== null && <img src={`/assets/questoes/${imagePath}`} />}
+            </>
+            
           }
-          {/* <img /> */}
           <div className='alternative-container'>
             {
               !isLoading &&
@@ -230,7 +275,7 @@ export function Olimpiada() {
               !currentQuestionContent || 
               !currentQuestionContent.questao ||
               !userQuestions.find(q => q?.question_id === currentQuestionContent.questao?.id && q.is_confirmed !== true)
-            } 
+            }
             onClick={handleSubmitAlternative}
           >
             <SquareCheckBig />Marcar alternativa
@@ -242,7 +287,7 @@ export function Olimpiada() {
         <h2>Tem certeza que deseja finalizar a prova?</h2>
         <p>Certifique-se de não ter nenhuma questão deixada sem responder<br/><br/>OBS: As questões podem ser deixadas em branco</p>
         <div className="deleteConfirmButtons">
-          <button className="btn-principal btn-wd-lg" onClick={() => handleFinish()}>Finalizar</button>
+          <button className="btn-principal btn-wd-lg" onClick={() => handleFinish()}>{ isLoading ? <div className="spinner"></div> : 'Finalizar' }</button>
           <button className="btn-principal btn-wd-lg" onClick={() => handleCloseConfirmModal()}>Cancelar</button>
         </div>
       </Modal>
