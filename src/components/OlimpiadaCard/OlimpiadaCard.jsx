@@ -49,7 +49,7 @@ export function OlimpiadaCard(props) {
       <h3>{props.area}</h3>
       <p>Data: 07/06/2024</p>
       <p>Horário: 07:30 - 17:30</p>
-      { props.isCompleted && <h3>Resultado:000/100 </h3>}
+      { props.isCompleted && <h3>Resultado: Por favor aguarde, seu resultado aparecerá em breve! </h3>}
       { props.isAluno && <BotaoPrincipal classe='disabled btn-md-olimpiada' disabled={true}>{ isLoading ? <div className="spinner"></div> : 'Encerrado' }</BotaoPrincipal> }
     </div>
   )

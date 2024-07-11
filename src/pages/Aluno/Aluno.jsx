@@ -52,8 +52,8 @@ export function Aluno() {
           <p>Área(s): {user.area1}{ user.area2 ? ` / ${user.area2}` : ''}</p>
           <h2>Sua olimpíada:</h2>
           <div className="olimp-container">
-            <OlimpiadaCard area={user.area1} id={user.id_area} isAluno={true} classe='olimpiada-aluno' />
-            { user.area2 && <OlimpiadaCard area={user.area2} id={user.id_area2} isAluno={true} classe='olimpiada-aluno' /> }
+            <OlimpiadaCard area={user.area1} id={user.id_area} isAluno={true} isCompleted={true} classe='olimpiada-aluno' />
+            { user.area2 && <OlimpiadaCard area={user.area2} id={user.id_area2} isAluno={true} isCompleted={true} classe='olimpiada-aluno' /> }
           </div>
         </>
       )}
