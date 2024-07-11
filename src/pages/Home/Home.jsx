@@ -8,24 +8,11 @@ import { Footer } from '../../components/Footer/Footer'
 import { BotaoPrincipal } from '../../components/BotaoPrincipal/BotaoPrincipal'
 import { OlimpiadaCard } from '../../components/OlimpiadaCard/OlimpiadaCard'
 import { ChevronsDown } from 'lucide-react'
-import { Atom, Magnet, BookMarked, LineChart } from 'lucide-react'
 
 export function Home() {
-  const openPDF = (e) => {
-    e.preventDefault()
+  const openPDF = (fileUrl) => {
     let link = document.createElement('a')
-    link.href = './assets/files/regulamento-ofc.pdf'
-    link.target = '_blank'
-    link.rel = 'noopener noreferrer'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
-
-  const openPDF2 = (e) => {
-    e.preventDefault()
-    let link = document.createElement('a')
-    link.href = './assets/files/conteudo_programatico.pdf'
+    link.href = `./assets/files/${fileUrl}`
     link.target = '_blank'
     link.rel = 'noopener noreferrer'
     document.body.appendChild(link)
@@ -36,11 +23,12 @@ export function Home() {
   return (
     <div className='container'>
       <section className='sessao-img'>
-        <img src={ImgBack} alt="Logo do evento I Olimpíadas Científicas" />
+        <img src={ImgBack} alt="Logo do evento I Olimpíadas Científicas, contendo fundo branco, um desenho de um cérebro e o nome do evento nas cores tema." />
         <ChevronsDown className='icone-home' />
       </section>
       <section className="container sessao-texto primeira-sessao">
-        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={openPDF2}>Confira o conteúdo programático</BotaoPrincipal>
+        <h2>Saiu a lista de classificados para a 2ª fase!! Confira no link abaixo:</h2>
+        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={() => openPDF('lista-classificados.pdf')}>Lista de classificados</BotaoPrincipal>
         <h2>O que são as Olimpíadas Científicas do Sertão Produtivo?</h2>
         <p>As Olimpíadas Científicas do Sertão Produtivo - na Trilha da Ciência, trata- se de um projeto de extensão vinculado ao Instituto Federal de Ciência e Tecnologia Baiano - IF Baiano Campus Guanambi, aprovado junto a Chamada CNPq/MCTI nº 03/2023 - Olimpíadas Científicas, que incluirá ações que irão reunir trabalhos de natureza científica, em geral, que serão desenvolvidos por jovens estudantes do ensino médio e  técnico, nas mais diversas áreas do conhecimento, sob a orientação de professores responsáveis nas suas referidas escolas presentes no do Território Sertão Produtivo.</p>
         <h2>Quem pode se inscrever?</h2>
@@ -56,29 +44,21 @@ export function Home() {
         <p>Se você é estudante, converse com o representante da sua escola e apresente a proposta, peça para se inscrever no evento e participar</p>
         <p>Depois de inscrito, estude bastante e nos dias das provas, responda as perguntas de maneira correta para aumentar sua pontuação</p>
         <p>Os alunos com as maiores pontuações estarão concorrendo a premiações</p>
-        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={openPDF}>Confira o regulamento</BotaoPrincipal>
+        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={() => openPDF('regulamento-ofc.pdf')}>Confira o regulamento</BotaoPrincipal>
       </section>
       <section className="container sessao-texto">
         <h2>Áreas do conhecimento</h2>
         <p>Cada escola deverá escolher 2 dentre as seguintes áreas:</p>
         <div className="olimp-container olimp-container-desktop">
-          <OlimpiadaCard area="Química">
-            <Atom className='olimp-img' loading="lazy" />
-          </OlimpiadaCard>
-          <OlimpiadaCard area="Física">
-            <Magnet className='olimp-img' loading="lazy" />
-          </OlimpiadaCard>
-          <OlimpiadaCard area="História">
-            <BookMarked className='olimp-img' loading="lazy" />
-          </OlimpiadaCard>
-          <OlimpiadaCard area="Empreendedorismo e Inovação">
-            <LineChart className='olimp-img' loading="lazy" />
-          </OlimpiadaCard>
+          <OlimpiadaCard area="Química" />
+          <OlimpiadaCard area="Física" />
+          <OlimpiadaCard area="História" />
+          <OlimpiadaCard area="Empreendedorismo e Inovação" />
         </div>
       </section>
       <section className="container sessao-texto sessao-bg">
         <h2>O desafio está lançado! Venha para as Olimpíadas Científicas do Sertão Produtivo e aumente seu conhecimento.</h2>
-        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={openPDF2}>Confira o conteúdo programático</BotaoPrincipal>
+        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={() => openPDF('lista-classificados.pdf')}>Lista de classificados</BotaoPrincipal>
       </section>
       <section className="container sessao-texto">
         <h2>Premiação</h2>

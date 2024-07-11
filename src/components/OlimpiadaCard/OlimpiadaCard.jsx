@@ -44,43 +44,12 @@ export function OlimpiadaCard(props) {
     fetchData()
   },[props.id])
 
-  // const btnClick = () => {
-  //   const start = async () => {
-  //     let requisicao = {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type' : 'application/json',
-  //         'Authorization' : `Bearer ${localStorage.getItem('token')}`
-  //       },
-  //       body: JSON.stringify({
-  //         'usuario': JSON.parse(localStorage.getItem('user')).usuario,
-  //         'id_area': props.id
-  //       })
-  //     }
-
-  //     try {
-  //       setIsLoading(true)
-  //       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/iniciar_prova`, requisicao)
-  //       const data = await response.json()
-  //       if (!response.ok) {
-  //         let error = data.msg
-  //         throw new Error(`HTTP error! status: ${response.status} | error: ${error}`)
-  //       }
-  //     } catch (error) {
-  //       console.error('Houve um erro ao enviar a requisição:', error)
-  //     } finally {
-  //       setIsLoading(false)
-  //     }
-  //   }
-  //   start()
-  //   navigate(`/aluno/olimpiada/${props.id}`)
-  // }
-
   return (
     <div className={"olimpiada " + props.classe}>
       <h3>{props.area}</h3>
       <p>Data: 07/06/2024</p>
       <p>Horário: 07:30 - 17:30</p>
+      { props.isCompleted && <h3>Resultado:000/100 </h3>}
       { props.isAluno && <BotaoPrincipal classe='disabled btn-md-olimpiada' disabled={true}>{ isLoading ? <div className="spinner"></div> : 'Encerrado' }</BotaoPrincipal> }
     </div>
   )
@@ -91,4 +60,5 @@ OlimpiadaCard.propTypes = {
   id: PropTypes.string,
   classe: PropTypes.string,
   isAluno: PropTypes.bool,
+  isCompleted: PropTypes.bool
 }
