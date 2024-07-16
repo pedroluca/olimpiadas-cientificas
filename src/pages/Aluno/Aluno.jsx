@@ -29,7 +29,7 @@ export function Aluno() {
         const data = await response.json()
         setUser(JSON.parse(localStorage.getItem('user')))
         const fetchUserScore = async () => {
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/result/?usuario=${JSON.parse(localStorage.getItem('user')).usuario}`, requisicao)
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/aluno/prova/result?usuario=${JSON.parse(localStorage.getItem('user')).usuario}`, requisicao)
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`)
           }
