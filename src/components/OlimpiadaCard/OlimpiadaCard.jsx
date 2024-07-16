@@ -1,14 +1,11 @@
 import './styles.css'
 import PropTypes from 'prop-types'
 import { BotaoPrincipal } from '../BotaoPrincipal/BotaoPrincipal'
-// import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
 export function OlimpiadaCard(props) {
-  // const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
-  // const [allowAccess, setAllowAccess] = useState(true)
 
   useEffect(() => {
     let requestBody = {
@@ -34,7 +31,6 @@ export function OlimpiadaCard(props) {
           let error = data.msg
           throw new Error(`HTTP error! status: ${response.status} | error: ${error}`)
         }
-        if (data.status === 'finalizada') console.log(data.status) //setAllowAccess(false)
       } catch (error) {
         console.error('Houve um erro ao enviar a requisição:', error)
       } finally {
@@ -49,7 +45,7 @@ export function OlimpiadaCard(props) {
       <h3>{props.area}</h3>
       <p>Data: 07/06/2024</p>
       <p>Horário: 07:30 - 17:30</p>
-      { props.isCompleted && <h3>Resultado: Por favor aguarde, seu resultado aparecerá em breve! </h3>}
+      { props.isCompleted && <h3>Resultado: { isLoading ? <div className="spinner"></div> : `${props.score}/20` } </h3>}
       { props.isAluno && <BotaoPrincipal classe='disabled btn-md-olimpiada' disabled={true}>{ isLoading ? <div className="spinner"></div> : 'Encerrado' }</BotaoPrincipal> }
     </div>
   )
@@ -59,6 +55,7 @@ OlimpiadaCard.propTypes = {
   area: PropTypes.string,
   id: PropTypes.string,
   classe: PropTypes.string,
+  score: PropTypes.number,
   isAluno: PropTypes.bool,
   isCompleted: PropTypes.bool
 }
