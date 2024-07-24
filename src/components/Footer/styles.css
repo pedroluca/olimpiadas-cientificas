@@ -39,6 +39,10 @@
   fill: var(--white-color);
 }
 
+.footer .copyright:hover {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
   .footer {
     flex-direction: row;
@@ -75,5 +79,9 @@
 
   .footer .copyright {
     color: var(--gray-color);
+  }
+
+  .footer .copyright:hover {
+    text-decoration: underline;
   }
 }
