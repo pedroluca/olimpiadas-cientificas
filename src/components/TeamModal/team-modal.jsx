@@ -30,17 +30,17 @@ export function TeamModal({ onClick }) {
           <div className="team-member" onClick={() => handleMemberClick('https://github.com/anthoniusdev')}>
             <img src={DevAnthonius} alt='Foto' />
             <h3>Anthonius Figueiredo</h3>
-            <p>Desenvolvedor</p>
+            <p>Desenvolvedor Full Stack</p>
           </div>
           <div className="team-member" onClick={() => handleMemberClick('https://www.linkedin.com/in/tharlis-fábio/')}>
             <img src={DevTharlis} alt='Foto' />
             <h3>Tharlis Fábio</h3>
             <p>Desenvolvedor Full Stack</p>
           </div>
-          <div className="team-member" onClick={() => handleMemberClick('https://github.com/saviodev23')}>
+          <div className="team-member" onClick={() => handleMemberClick('https://github.com/saviocoder')}>
             <img src={DevSavio} alt='Foto' />
             <h3>Sávio Santos</h3>
-            <p>Desenvolvedor Backend</p>
+            <p>Desenvolvedor Full Stack</p>
           </div>
         </div>
       </div>
