@@ -86,9 +86,8 @@ export function Home() {
             <li>15/04/24 a 10/05/24 - Inscrição das escolas e estudantes</li>
             <li>07/06/24 - 1ª Fase das Olimpíadas Científicas</li>
             <li>15/07/24 - Resultado da 1ª fase</li>
-            <li>01/09/24 - Prazo limite para envio dos vídeos (2ª fase)</li>
-            <li>15/09/24 - Resultado da 2ª fase</li>
-            <li>01/09/24 - Resultado final</li>
+            <li>15/09/24 - Prazo limite para envio dos vídeos (2ª fase)</li>
+            <li>01/10/24 - Resultado final</li>
             <li>11/10/24 - Cerimônia de encerramento e premiação</li>
           </ul>
         </div>
@@ -96,12 +95,12 @@ export function Home() {
       <section className="container sessao-texto sessao-logos">
         <div>
           <h3>Realização:</h3>
-          <img src={ImgIF} className='logo-if' loading="lazy" />
+          <img src={ImgIF} className='logo-if' loading="lazy" alt="Logo do IFBAIANO, sigla IF composta por quadrados verdes e o escrito Instituto Federal de Educação, Ciência e Tecnologia Baiano - Campus Guanambi" />
         </div>
         <div>
           <h3>Apoio:</h3>
-          <img src={ImgCNPQ} loading="lazy" />
-          <img src={ImgMCTI} loading="lazy" />
+          <img src={ImgCNPQ} loading="lazy" alt="Logo do CNPq - Conselho Nacional de Desenvolvimento Científico e Tecnológico" />
+          <img src={ImgMCTI} loading="lazy" alt="Logo do MCTI - Ministério da Ciência, Tecnologia e Inovação"/>
         </div>
       </section>
       <Footer />
