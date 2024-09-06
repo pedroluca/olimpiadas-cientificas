@@ -27,8 +27,8 @@ export function Home() {
         <ChevronsDown className='icone-home' />
       </section>
       <section className="container sessao-texto primeira-sessao">
-        <h2>Saiu a lista de classificados para a 2ª fase!! Confira no link abaixo:</h2>
-        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={() => openPDF('lista-classificados.pdf')}>Lista de classificados</BotaoPrincipal>
+        <h2>Ideias inovadoras dos estudantes participantes da 2ª fase da 1ª Olimpíada Científica do Sertão Produtivo</h2>
+        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={() => window.location.href = 'videos'}>Ver produções</BotaoPrincipal>
         <h2>O que são as Olimpíadas Científicas do Sertão Produtivo?</h2>
         <p>As Olimpíadas Científicas do Sertão Produtivo - na Trilha da Ciência, trata- se de um projeto de extensão vinculado ao Instituto Federal de Ciência e Tecnologia Baiano - IF Baiano Campus Guanambi, aprovado junto a Chamada CNPq/MCTI nº 03/2023 - Olimpíadas Científicas, que incluirá ações que irão reunir trabalhos de natureza científica, em geral, que serão desenvolvidos por jovens estudantes do ensino médio e  técnico, nas mais diversas áreas do conhecimento, sob a orientação de professores responsáveis nas suas referidas escolas presentes no do Território Sertão Produtivo.</p>
         <h2>Quem pode se inscrever?</h2>

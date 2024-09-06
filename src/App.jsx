@@ -10,6 +10,7 @@ import { Aluno } from './pages/Aluno/Aluno'
 import { Admin } from './pages/admin/admin'
 import { Olimpiada } from './pages/olimpiada/olimpiada'
 import { Finish } from './pages/finish-page/finish-page'
+import { Videos } from './pages/videos/videos'
 
 export function App() {
   return (
@@ -17,6 +18,7 @@ export function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/videos" element={<Videos />} />
         <Route path="/escola" element={<Escola />} />
         <Route path="/cadastro" element={<InscricoesEncerradas />} />
         <Route path="/aluno" element={<Aluno />} />
