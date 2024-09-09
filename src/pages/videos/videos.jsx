@@ -13,9 +13,9 @@ export function Videos() {
           {videosData.map((video, index) => (
             <div className="video-card" key={index}>
               <h3>{video.title}</h3>
-              <p><strong>Escola: </strong>{video.school}</p>
+              <p><strong>Instituição de ensino: </strong>{video.school}</p>
               <p><strong>Área: </strong>{video.area}</p>
-              {video.students && <p><strong>Alunos: </strong>{video.students}</p>}
+              {video.students && <p><strong>Equipe de estudantes: </strong>{video.students}</p>}
               <iframe
                 width="560"
                 height="315"
