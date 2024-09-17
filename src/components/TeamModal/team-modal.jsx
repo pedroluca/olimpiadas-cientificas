@@ -22,7 +22,7 @@ export function TeamModal({ onClick }) {
       <div className='modal-content'>
         <h2>Desenvolvido por</h2>
         <div className="team-holder">
-          <div className="team-member" onClick={() => handleMemberClick('https://pedroluca.vercel.app')}>
+          <div className="team-member" onClick={() => handleMemberClick('https://pedroluca.tech')}>
             <img src={DevPedro} alt='Foto' />
             <h3>Pedro Luca Prates</h3>
             <p>Desenvolvedor Full Stack</p>

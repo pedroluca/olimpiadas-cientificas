@@ -4,6 +4,11 @@
   padding: 20px;
 }
 
+#center-title {
+  text-align: center;
+  margin: 20px 0;
+}
+
 .description {
   text-align: center;
   margin-bottom: 20px;
@@ -63,4 +68,41 @@
   .video-card {
     width: 100%;
   }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton-text,
+.skeleton-video {
+  background-color: #e0e0e0;
+  margin: 10px 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 2000px 100%;
+  animation: shimmer 1.2s infinite;
+}
+
+.skeleton-title {
+  width: 60%;
+  height: 20px;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 2000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+.skeleton-text {
+  width: 80%;
+  height: 15px;
+}
+
+.skeleton-video {
+  width: 100%;
+  height: 315px;
 }
