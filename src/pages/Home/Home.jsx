@@ -88,8 +88,8 @@ export function Home() {
             <li>07/06/24 - 1ª Fase das Olimpíadas Científicas</li>
             <li>15/07/24 - Resultado da 1ª fase</li>
             <li>15/09/24 - Prazo limite para envio dos vídeos (2ª fase)</li>
-            <li>01/10/24 - Resultado final</li>
-            <li>11/10/24 - Cerimônia de encerramento e premiação</li>
+            <li>11/10/24 - Resultado final</li>
+            <li>31/10/24 - Cerimônia de encerramento e premiação</li>
           </ul>
         </div>
       </section>
