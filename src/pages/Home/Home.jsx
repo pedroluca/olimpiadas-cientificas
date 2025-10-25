@@ -27,10 +27,10 @@ export function Home() {
         <ChevronsDown className='icone-home' />
       </section>
       <section className="container sessao-texto primeira-sessao">
-        <h2>Ideias inovadoras dos estudantes participantes da 2ª fase da 1ª Olimpíada Científica do Sertão Produtivo</h2>
-        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={() => window.location.href = 'videos'}>2ª Fase</BotaoPrincipal>
+        <h2>Conheça as equipes vencedoras das I Olimpíadas Científicas do Sertão Produtivo</h2>
+        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={() => window.location.href = 'vencedores'}>Ver vencedores</BotaoPrincipal>
         <h2>O que são as Olimpíadas Científicas do Sertão Produtivo?</h2>
-        <p>As Olimpíadas Científicas do Sertão Produtivo - na Trilha da Ciência, trata- se de um projeto de extensão vinculado ao Instituto Federal de Ciência e Tecnologia Baiano - IF Baiano Campus Guanambi, aprovado junto a Chamada CNPq/MCTI nº 03/2023 - Olimpíadas Científicas, que incluirá ações que irão reunir trabalhos de natureza científica, em geral, que serão desenvolvidos por jovens estudantes do ensino médio e  técnico, nas mais diversas áreas do conhecimento, sob a orientação de professores responsáveis nas suas referidas escolas presentes no do Território Sertão Produtivo.</p>
+        <p>As Olimpíadas Científicas do Sertão Produtivo - na Trilha da Ciência, trata- se de um projeto de extensão vinculado ao Instituto Federal de Educação, Ciência e Tecnologia Baiano - <em>Campus</em> Guanambi, aprovado junto a Chamada CNPq/MCTI nº 03/2023 - Olimpíadas Científicas, que incluirá ações que irão reunir trabalhos de natureza científica, em geral, que serão desenvolvidos por jovens estudantes do ensino médio e  técnico, nas mais diversas áreas do conhecimento, sob a orientação de professores responsáveis nas suas referidas escolas presentes no do Território Sertão Produtivo.</p>
         <h2>Quem pode se inscrever?</h2>
         <p>Escolas públicas que ofertam o ensino médio localizadas no Território Sertão Produtivo</p>
         <h2>Quem pode participar?</h2>
@@ -58,8 +58,10 @@ export function Home() {
       </section>
       <section className="container sessao-texto sessao-bg">
         <h2>O desafio está lançado! Venha para as Olimpíadas Científicas do Sertão Produtivo e aumente seu conhecimento.</h2>
-        <p>Confira as produções dos alunos classificados para a 2ª fase:</p>
-        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={() => window.location.href = 'videos'}>2ª Fase</BotaoPrincipal>
+        <p>Conheça as equipes vencedoras da etapa final:</p>
+        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={() => window.location.href = 'vencedores'}>Ver vencedores</BotaoPrincipal>
+        <p>Confira os trabalhos das equipes classificadas para a 2ª fase:</p>
+        <BotaoPrincipal type="button" classe="btn-wd-md" btnClick={() => window.location.href = 'videos'}>Produções dos alunos</BotaoPrincipal>
       </section>
       <section className="container sessao-texto">
         <h2>Premiação</h2>

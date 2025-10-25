@@ -1,0 +1,137 @@
+.podium-page {
+  text-align: center;
+  padding: 20px;
+}
+
+.podium-title {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.podium {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 400px;
+  margin: 20px;
+}
+
+.podium__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  margin: 0 10px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.podium__item--first {
+  height: 270px;
+  background-color: gold;
+}
+
+.podium__item--second {
+  height: 230px;
+  background-color: silver;
+}
+
+.podium__item--third {
+  height: 200px;
+  background-color: #cd7f32; /* Bronze color */
+}
+
+.podium__rank {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.podium__team {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.podium__area,
+.podium__students {
+  font-size: 16px;
+}
+
+.medal {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  position: absolute;
+  top: -40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.medal--gold {
+  background: radial-gradient(circle, #ffd700, #d4af37);
+  border: 3px solid #d4af37;
+}
+
+.medal--silver {
+  background: radial-gradient(circle, #c0c0c0, #a9a9a9);
+  border: 3px solid #a9a9a9;
+}
+
+.medal--bronze {
+  background: radial-gradient(circle, #cd7f32, #8c6239);
+  border: 3px solid #8c6239;
+}
+
+@media (max-width: 768px) {
+  .podium {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .podium__item {
+    width: 90%;
+    margin: 10px auto;
+    height: auto;
+  }
+
+  .podium__item--first {
+    order: 1;
+  }
+
+  .podium__item--second {
+    order: 2;
+  }
+
+  .podium__item--third {
+    order: 3;
+  }
+
+  .medal {
+    top: -20px;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .podium__rank {
+    font-size: 20px;
+  }
+
+  .podium__team {
+    font-size: 16px;
+    margin-top: 1rem;
+  }
+
+  .podium__area,
+  .podium__students {
+    font-size: 14px;
+  }
+}

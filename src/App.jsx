@@ -11,6 +11,7 @@ import { Admin } from './pages/admin/admin'
 import { Olimpiada } from './pages/olimpiada/olimpiada'
 import { Finish } from './pages/finish-page/finish-page'
 import { Videos } from './pages/videos/videos'
+import { Winners } from './pages/winners/winners'
 
 export function App() {
   return (
@@ -26,6 +27,7 @@ export function App() {
         <Route path="/aluno/olimpiada/:id_area/finish" element={<Finish />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/vencedores" element={<Winners />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
